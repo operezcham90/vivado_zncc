@@ -1,0 +1,12 @@
+
+*** Running vivado
+    with args -log soc_xlslice_0_7.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source soc_xlslice_0_7.tcl
+
+
+****** Vivado v2017.3 (64-bit)
+  **** SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+  **** IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source soc_xlslice_0_7.tcl -notrace
+INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP soc_xlslice_0_7, cache-ID = d4f8082cc1398db5.

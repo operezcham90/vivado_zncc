@@ -1,0 +1,270 @@
+
+*** Running vivado
+    with args -log soc_axi_smc_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source soc_axi_smc_0.tcl
+
+
+****** Vivado v2017.3 (64-bit)
+  **** SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+  **** IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source soc_axi_smc_0.tcl -notrace
+Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 440.828 ; gain = 106.793
+INFO: [Synth 8-638] synthesizing module 'soc_axi_smc_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/synth/soc_axi_smc_0.v:57]
+INFO: [Synth 8-638] synthesizing module 'bd_776a' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:10]
+INFO: [Synth 8-638] synthesizing module 'clk_map_imp_1N17OWC' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:2508]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_one_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_0/synth/bd_776a_one_0.v:57]
+INFO: [Synth 8-638] synthesizing module 'xlconstant_v1_1_3_xlconstant' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ipshared/0750/hdl/xlconstant_v1_1_vl_rfs.v:23]
+INFO: [Synth 8-256] done synthesizing module 'xlconstant_v1_1_3_xlconstant' (1#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ipshared/0750/hdl/xlconstant_v1_1_vl_rfs.v:23]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_one_0' (2#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_0/synth/bd_776a_one_0.v:57]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_psr_aclk_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_1/synth/bd_776a_psr_aclk_0.vhd:74]
+INFO: [Synth 8-638] synthesizing module 'proc_sys_reset' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1323]
+INFO: [Synth 8-638] synthesizing module 'lpf' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:816]
+INFO: [Synth 8-638] synthesizing module 'SRL16' [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:50689]
+INFO: [Synth 8-256] done synthesizing module 'SRL16' (3#1) [C:/Xilinx/Vivado/2017.3/scripts/rt/data/unisim_comp.v:50689]
+INFO: [Synth 8-638] synthesizing module 'cdc_sync' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
+INFO: [Synth 8-256] done synthesizing module 'cdc_sync' (4#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ipshared/ef1e/hdl/lib_cdc_v1_0_rfs.vhd:106]
+INFO: [Synth 8-256] done synthesizing module 'lpf' (5#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:816]
+INFO: [Synth 8-638] synthesizing module 'sequence_psr' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:301]
+INFO: [Synth 8-638] synthesizing module 'upcnt_n' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:125]
+INFO: [Synth 8-256] done synthesizing module 'upcnt_n' (6#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:125]
+INFO: [Synth 8-256] done synthesizing module 'sequence_psr' (7#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:301]
+INFO: [Synth 8-256] done synthesizing module 'proc_sys_reset' (8#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ipshared/f86a/hdl/proc_sys_reset_v5_0_vh_rfs.vhd:1323]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_psr_aclk_0' (9#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_1/synth/bd_776a_psr_aclk_0.vhd:74]
+INFO: [Synth 8-256] done synthesizing module 'clk_map_imp_1N17OWC' (10#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:2508]
+INFO: [Synth 8-638] synthesizing module 'm00_exit_pipeline_imp_CBSD93' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:2576]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m00e_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_22/synth/bd_776a_m00e_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m00e_0' (19#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_22/synth/bd_776a_m00e_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'm00_exit_pipeline_imp_CBSD93' (20#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:2576]
+INFO: [Synth 8-638] synthesizing module 'm00_nodes_imp_YI26NV' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:2947]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m00arn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_17/synth/bd_776a_m00arn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'xpm_memory_base' [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'xpm_memory_base' (24#1) [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-638] synthesizing module 'xpm_memory_base__parameterized0' [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'xpm_memory_base__parameterized0' (28#1) [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m00arn_0' (34#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_17/synth/bd_776a_m00arn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m00awn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_19/synth/bd_776a_m00awn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m00awn_0' (35#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_19/synth/bd_776a_m00awn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m00bn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_21/synth/bd_776a_m00bn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'xpm_memory_base__parameterized1' [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'xpm_memory_base__parameterized1' (35#1) [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-638] synthesizing module 'xpm_memory_base__parameterized2' [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'xpm_memory_base__parameterized2' (35#1) [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m00bn_0' (36#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_21/synth/bd_776a_m00bn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m00rn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_18/synth/bd_776a_m00rn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'xpm_memory_base__parameterized3' [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'xpm_memory_base__parameterized3' (36#1) [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m00rn_0' (37#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_18/synth/bd_776a_m00rn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m00wn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_20/synth/bd_776a_m00wn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'xpm_memory_base__parameterized4' [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'xpm_memory_base__parameterized4' (37#1) [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m00wn_0' (38#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_20/synth/bd_776a_m00wn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'm00_nodes_imp_YI26NV' (39#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:2947]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m00s2a_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_16/synth/bd_776a_m00s2a_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m00s2a_0' (41#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_16/synth/bd_776a_m00s2a_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'm01_exit_pipeline_imp_GG1WBB' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:3243]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m01e_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_29/synth/bd_776a_m01e_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m01e_0' (57#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_29/synth/bd_776a_m01e_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'm01_exit_pipeline_imp_GG1WBB' (58#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:3243]
+INFO: [Synth 8-638] synthesizing module 'm01_nodes_imp_1QIV8ZX' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:3544]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m01arn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_24/synth/bd_776a_m01arn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m01arn_0' (59#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_24/synth/bd_776a_m01arn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m01awn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_26/synth/bd_776a_m01awn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m01awn_0' (60#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_26/synth/bd_776a_m01awn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m01bn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_28/synth/bd_776a_m01bn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m01bn_0' (61#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_28/synth/bd_776a_m01bn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m01rn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_25/synth/bd_776a_m01rn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m01rn_0' (62#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_25/synth/bd_776a_m01rn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m01wn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_27/synth/bd_776a_m01wn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m01wn_0' (63#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_27/synth/bd_776a_m01wn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'm01_nodes_imp_1QIV8ZX' (64#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:3544]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m01s2a_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_23/synth/bd_776a_m01s2a_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m01s2a_0' (65#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_23/synth/bd_776a_m01s2a_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'm02_exit_pipeline_imp_MCWBB' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:3840]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m02e_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_36/synth/bd_776a_m02e_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m02e_0' (66#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_36/synth/bd_776a_m02e_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'm02_exit_pipeline_imp_MCWBB' (67#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:3840]
+INFO: [Synth 8-638] synthesizing module 'm02_nodes_imp_17MCP7A' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:4141]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m02arn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_31/synth/bd_776a_m02arn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m02arn_0' (68#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_31/synth/bd_776a_m02arn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m02awn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_33/synth/bd_776a_m02awn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m02awn_0' (69#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_33/synth/bd_776a_m02awn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m02bn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_35/synth/bd_776a_m02bn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m02bn_0' (70#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_35/synth/bd_776a_m02bn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m02rn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_32/synth/bd_776a_m02rn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m02rn_0' (71#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_32/synth/bd_776a_m02rn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m02wn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_34/synth/bd_776a_m02wn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m02wn_0' (72#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_34/synth/bd_776a_m02wn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'm02_nodes_imp_17MCP7A' (73#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:4141]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m02s2a_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_30/synth/bd_776a_m02s2a_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m02s2a_0' (74#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_30/synth/bd_776a_m02s2a_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'm03_exit_pipeline_imp_5ULHZR' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:4437]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m03e_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_43/synth/bd_776a_m03e_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m03e_0' (75#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_43/synth/bd_776a_m03e_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'm03_exit_pipeline_imp_5ULHZR' (76#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:4437]
+INFO: [Synth 8-638] synthesizing module 'm03_nodes_imp_28UE8' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:4738]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m03arn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_38/synth/bd_776a_m03arn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m03arn_0' (77#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_38/synth/bd_776a_m03arn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m03awn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_40/synth/bd_776a_m03awn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m03awn_0' (78#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_40/synth/bd_776a_m03awn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m03bn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_42/synth/bd_776a_m03bn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m03bn_0' (79#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_42/synth/bd_776a_m03bn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m03rn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_39/synth/bd_776a_m03rn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m03rn_0' (80#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_39/synth/bd_776a_m03rn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m03wn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_41/synth/bd_776a_m03wn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m03wn_0' (81#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_41/synth/bd_776a_m03wn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'm03_nodes_imp_28UE8' (82#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:4738]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m03s2a_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_37/synth/bd_776a_m03s2a_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m03s2a_0' (83#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_37/synth/bd_776a_m03s2a_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'm04_exit_pipeline_imp_VAPLAV' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:5034]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m04e_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_50/synth/bd_776a_m04e_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m04e_0' (84#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_50/synth/bd_776a_m04e_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'm04_exit_pipeline_imp_VAPLAV' (85#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:5034]
+INFO: [Synth 8-638] synthesizing module 'm04_nodes_imp_SADXY8' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:5405]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m04arn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_45/synth/bd_776a_m04arn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m04arn_0' (86#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_45/synth/bd_776a_m04arn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m04awn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_47/synth/bd_776a_m04awn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m04awn_0' (87#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_47/synth/bd_776a_m04awn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m04bn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_49/synth/bd_776a_m04bn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m04bn_0' (88#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_49/synth/bd_776a_m04bn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m04rn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_46/synth/bd_776a_m04rn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m04rn_0' (89#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_46/synth/bd_776a_m04rn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m04wn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_48/synth/bd_776a_m04wn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m04wn_0' (90#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_48/synth/bd_776a_m04wn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'm04_nodes_imp_SADXY8' (91#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:5405]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_m04s2a_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_44/synth/bd_776a_m04s2a_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_m04s2a_0' (92#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_44/synth/bd_776a_m04s2a_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_s00a2s_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_10/synth/bd_776a_s00a2s_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_s00a2s_0' (94#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_10/synth/bd_776a_s00a2s_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 's00_entry_pipeline_imp_1CMOPHW' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:5701]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_s00mmu_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_7/synth/bd_776a_s00mmu_0.sv:59]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_s00mmu_0' (99#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_7/synth/bd_776a_s00mmu_0.sv:59]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_s00sic_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_9/synth/bd_776a_s00sic_0.sv:59]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_s00sic_0' (105#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_9/synth/bd_776a_s00sic_0.sv:59]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_s00tr_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_8/synth/bd_776a_s00tr_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_s00tr_0' (108#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_8/synth/bd_776a_s00tr_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 's00_entry_pipeline_imp_1CMOPHW' (109#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:5701]
+INFO: [Synth 8-638] synthesizing module 's00_nodes_imp_1FVSDU6' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:6349]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_sarn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_11/synth/bd_776a_sarn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'xpm_memory_base__parameterized5' [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'xpm_memory_base__parameterized5' (109#1) [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-638] synthesizing module 'xpm_memory_base__parameterized6' [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'xpm_memory_base__parameterized6' (109#1) [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_sarn_0' (110#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_11/synth/bd_776a_sarn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_sawn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_13/synth/bd_776a_sawn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_sawn_0' (111#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_13/synth/bd_776a_sawn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_sbn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_15/synth/bd_776a_sbn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'xpm_memory_base__parameterized7' [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'xpm_memory_base__parameterized7' (112#1) [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_sbn_0' (113#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_15/synth/bd_776a_sbn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_srn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_12/synth/bd_776a_srn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'xpm_memory_base__parameterized8' [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'xpm_memory_base__parameterized8' (113#1) [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_srn_0' (114#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_12/synth/bd_776a_srn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_swn_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_14/synth/bd_776a_swn_0.sv:58]
+INFO: [Synth 8-638] synthesizing module 'xpm_memory_base__parameterized9' [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'xpm_memory_base__parameterized9' (114#1) [C:/Xilinx/Vivado/2017.3/data/ip/xpm/xpm_memory/hdl/xpm_memory.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_swn_0' (115#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_14/synth/bd_776a_swn_0.sv:58]
+INFO: [Synth 8-256] done synthesizing module 's00_nodes_imp_1FVSDU6' (116#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:6349]
+INFO: [Synth 8-638] synthesizing module 'switchboards_imp_1M02HI2' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:6645]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_arsw_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_2/synth/bd_776a_arsw_0.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_arsw_0' (119#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_2/synth/bd_776a_arsw_0.sv:57]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_awsw_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_4/synth/bd_776a_awsw_0.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_awsw_0' (120#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_4/synth/bd_776a_awsw_0.sv:57]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_bsw_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_6/synth/bd_776a_bsw_0.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_bsw_0' (121#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_6/synth/bd_776a_bsw_0.sv:57]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_rsw_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_3/synth/bd_776a_rsw_0.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_rsw_0' (122#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_3/synth/bd_776a_rsw_0.sv:57]
+INFO: [Synth 8-638] synthesizing module 'bd_776a_wsw_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_5/synth/bd_776a_wsw_0.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a_wsw_0' (123#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/ip/ip_5/synth/bd_776a_wsw_0.sv:57]
+INFO: [Synth 8-256] done synthesizing module 'switchboards_imp_1M02HI2' (124#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:6645]
+INFO: [Synth 8-256] done synthesizing module 'bd_776a' (125#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/bd_0/synth/bd_776a.v:10]
+INFO: [Synth 8-256] done synthesizing module 'soc_axi_smc_0' (126#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_smc_0/synth/soc_axi_smc_0.v:57]
+Finished RTL Elaboration : Time (s): cpu = 00:00:27 ; elapsed = 00:00:29 . Memory (MB): peak = 678.813 ; gain = 344.777
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:29 ; elapsed = 00:00:32 . Memory (MB): peak = 678.813 ; gain = 344.777
+INFO: [Device 21-403] Loading part xc7z045ffg900-2
+Constraint Validation Runtime : Time (s): cpu = 00:00:07 ; elapsed = 00:00:05 . Memory (MB): peak = 2299.133 ; gain = 199.895
+Finished Constraint Validation : Time (s): cpu = 00:02:08 ; elapsed = 00:02:11 . Memory (MB): peak = 2299.133 ; gain = 1965.098
+Finished Loading Part and Timing Information : Time (s): cpu = 00:02:08 ; elapsed = 00:02:11 . Memory (MB): peak = 2299.133 ; gain = 1965.098
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:02:08 ; elapsed = 00:02:11 . Memory (MB): peak = 2299.133 ; gain = 1965.098
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:02:17 ; elapsed = 00:02:21 . Memory (MB): peak = 2299.133 ; gain = 1965.098
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:03:36 ; elapsed = 00:03:49 . Memory (MB): peak = 2299.133 ; gain = 1965.098
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Preliminary Mapping  Report (see note below)
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+----------------+----------------------+---------------+
+|Module Name                                                                                                                                                     | RTL Object                       | Inference      | Size (Depth x Width) | Primitives    | 
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+----------------+----------------------+---------------+
+|inst/i_0/\m00_nodes/m00_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory        | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 164             | RAM32M x 28   | 
+|inst/i_0/\m00_nodes/m00_aw_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory        | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 164             | RAM32M x 28   | 
+|inst/i_0/\m00_nodes/m00_b_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 7               | RAM32M x 2    | 
+|inst/i_0/\m00_nodes/m00_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 53              | RAM32M x 9    | 
+|inst/i_0/\m00_nodes/m00_w_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 74              | RAM32M x 13   | 
+|inst/i_0/\m01_nodes/m01_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory        | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 164             | RAM32M x 28   | 
+|inst/i_0/\m01_nodes/m01_aw_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory        | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 164             | RAM32M x 28   | 
+|inst/i_0/\m01_nodes/m01_b_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 7               | RAM32M x 2    | 
+|inst/i_0/\m01_nodes/m01_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 53              | RAM32M x 9    | 
+|inst/i_0/\m01_nodes/m01_w_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 74              | RAM32M x 13   | 
+|inst/i_0/\m02_nodes/m02_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory        | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 164             | RAM32M x 28   | 
+|inst/i_0/\m02_nodes/m02_aw_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory        | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 164             | RAM32M x 28   | 
+|inst/i_0/\m02_nodes/m02_b_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 7               | RAM32M x 2    | 
+|inst/i_0/\m02_nodes/m02_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 53              | RAM32M x 9    | 
+|inst/i_0/\m02_nodes/m02_w_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 74              | RAM32M x 13   | 
+|inst/i_0/\m03_nodes/m03_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory        | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 164             | RAM32M x 28   | 
+|inst/i_0/\m03_nodes/m03_aw_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory        | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 164             | RAM32M x 28   | 
+|inst/i_0/\m03_nodes/m03_b_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 7               | RAM32M x 2    | 
+|inst/i_0/\m03_nodes/m03_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 53              | RAM32M x 9    | 
+|inst/i_0/\m03_nodes/m03_w_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 74              | RAM32M x 13   | 
+|inst/i_0/\m04_nodes/m04_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory        | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 164             | RAM32M x 28   | 
+|inst/i_0/\m04_nodes/m04_aw_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory        | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 164             | RAM32M x 28   | 
+|inst/i_0/\m04_nodes/m04_b_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 7               | RAM32M x 2    | 
+|inst/i_0/\m04_nodes/m04_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 53              | RAM32M x 9    | 
+|inst/i_0/\m04_nodes/m04_w_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 74              | RAM32M x 13   | 
+|inst/i_0/\s00_nodes/s00_ar_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory  | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 22              | RAM32M x 4    | 
+|inst/i_0/\s00_nodes/s00_ar_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory        | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 146             | RAM32M x 25   | 
+|inst/i_0/\s00_nodes/s00_aw_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory  | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 22              | RAM32M x 4    | 
+|inst/i_0/\s00_nodes/s00_aw_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory        | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 146             | RAM32M x 25   | 
+|inst/i_0/\s00_nodes/s00_b_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 27              | RAM32M x 5    | 
+|inst/i_0/\s00_nodes/s00_r_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 73              | RAM32M x 13   | 
+|inst/i_0/\s00_nodes/s00_w_node/inst /\inst_mi_handler/gen_normal_area.gen_fifo_req.inst_fifo_req/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory   | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 22              | RAM32M x 4    | 
+|inst/i_0/\s00_nodes/s00_w_node/inst /\inst_mi_handler/gen_normal_area.inst_fifo_node_payld/gen_xpm_memory_fifo.inst_fifo/gen_mem_rep[0].inst_xpm_memory         | gen_wr_a.gen_word_narrow.mem_reg | User Attribute | 32 x 56              | RAM32M x 10   | 
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------------------+----------------+----------------------+---------------+
+
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:03:47 ; elapsed = 00:04:00 . Memory (MB): peak = 2299.133 ; gain = 1965.098
+Finished Timing Optimization : Time (s): cpu = 00:03:54 ; elapsed = 00:04:07 . Memory (MB): peak = 2299.133 ; gain = 1965.098
+Finished Technology Mapping : Time (s): cpu = 00:04:06 ; elapsed = 00:04:20 . Memory (MB): peak = 2299.133 ; gain = 1965.098
+Finished IO Insertion : Time (s): cpu = 00:04:08 ; elapsed = 00:04:22 . Memory (MB): peak = 2299.133 ; gain = 1965.098
+Finished Renaming Generated Instances : Time (s): cpu = 00:04:08 ; elapsed = 00:04:22 . Memory (MB): peak = 2299.133 ; gain = 1965.098
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:04:10 ; elapsed = 00:04:24 . Memory (MB): peak = 2299.133 ; gain = 1965.098
+Finished Renaming Generated Ports : Time (s): cpu = 00:04:11 ; elapsed = 00:04:25 . Memory (MB): peak = 2299.133 ; gain = 1965.098
+Finished Handling Custom Attributes : Time (s): cpu = 00:04:11 ; elapsed = 00:04:25 . Memory (MB): peak = 2299.133 ; gain = 1965.098
+Finished Renaming Generated Nets : Time (s): cpu = 00:04:11 ; elapsed = 00:04:25 . Memory (MB): peak = 2299.133 ; gain = 1965.098
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |CARRY4  |    56|
+|2     |LUT1    |   354|
+|3     |LUT2    |  1399|
+|4     |LUT3    |   687|
+|5     |LUT4    |  1949|
+|6     |LUT5    |  1193|
+|7     |LUT6    |  2034|
+|8     |MUXF7   |    69|
+|9     |RAM32M  |   209|
+|10    |SRL16   |     1|
+|11    |SRL16E  |    47|
+|12    |SRLC32E |   434|
+|13    |FDR     |     4|
+|14    |FDRE    |  6431|
+|15    |FDSE    |   288|
++------+--------+------+
+Finished Writing Synthesis Report : Time (s): cpu = 00:04:11 ; elapsed = 00:04:25 . Memory (MB): peak = 2299.133 ; gain = 1965.098
+synth_design: Time (s): cpu = 00:04:19 ; elapsed = 00:04:35 . Memory (MB): peak = 2299.133 ; gain = 1976.621

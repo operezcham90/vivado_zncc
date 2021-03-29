@@ -1,0 +1,32 @@
+{
+   ExpandedHierarchyInLayout: "",
+   guistr: "# # String gsaved with Nlview 6.6.11  2017-06-12 bk=1.3860 VDI=40 GEI=35 GUI=JA:1.6
+#  -string -flagsOSRD
+preplace port valid_out1 -pg 1 -y 340 -defaultsOSRD
+preplace port CLK -pg 1 -y 170 -defaultsOSRD
+preplace port s_avg -pg 1 -y 90 -defaultsOSRD
+preplace port valid_out0 -pg 1 -y 130 -defaultsOSRD
+preplace portBus divisor -pg 1 -y 70 -defaultsOSRD
+preplace portBus dividend0 -pg 1 -y 130 -defaultsOSRD
+preplace portBus quot0 -pg 1 -y 80 -defaultsOSRD
+preplace portBus dividend1 -pg 1 -y 340 -defaultsOSRD
+preplace portBus quot1 -pg 1 -y 290 -defaultsOSRD
+preplace inst xlslice_0 -pg 1 -lvl 2 -y 80 -defaultsOSRD
+preplace inst xlslice_1 -pg 1 -lvl 2 -y 290 -defaultsOSRD
+preplace inst div_gen_0 -pg 1 -lvl 1 -y 110 -defaultsOSRD
+preplace inst div_gen_1 -pg 1 -lvl 1 -y 320 -defaultsOSRD
+preplace netloc xlslice_1_Dout 1 2 1 NJ
+preplace netloc dividend1_1 1 0 1 NJ
+preplace netloc dividend0_1 1 0 1 NJ
+preplace netloc divisor_1 1 0 1 40
+preplace netloc div_cont1_valid_out 1 1 2 NJ 340 NJ
+preplace netloc div_gen_0_m_axis_dout_tdata 1 1 1 460J
+preplace netloc div_gen_0_m_axis_dout_tdata_1 1 1 1 460J
+preplace netloc processing_system7_0_FCLK_CLK1 1 0 1 20
+preplace netloc avg_err_state_s_2 1 0 1 30
+preplace netloc xlslice_0_Dout 1 2 1 NJ
+preplace netloc div_cont_valid_out 1 1 2 NJ 130 NJ
+levelinfo -pg 1 0 250 560 680 -top 0 -bot 430
+",
+}
+

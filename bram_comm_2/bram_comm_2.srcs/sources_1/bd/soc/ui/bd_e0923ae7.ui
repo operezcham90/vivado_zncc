@@ -1,0 +1,66 @@
+{
+   ExpandedHierarchyInLayout: "",
+   guistr: "# # String gsaved with Nlview 6.6.11  2017-06-12 bk=1.3860 VDI=40 GEI=35 GUI=JA:1.6
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -y 1130 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -y 1150 -defaultsOSRD
+preplace port reset -pg 1 -y 160 -defaultsOSRD
+preplace port sys_diff_clock -pg 1 -y 140 -defaultsOSRD
+preplace inst axi_bram_ctrl_2 -pg 1 -lvl 4 -y 930 -defaultsOSRD
+preplace inst datapath -pg 1 -lvl 5 -y 500 -defaultsOSRD
+preplace inst rst_ps7_0_50M -pg 1 -lvl 2 -y 840 -defaultsOSRD
+preplace inst axi_smc -pg 1 -lvl 3 -y 750 -defaultsOSRD
+preplace inst control_unit -pg 1 -lvl 4 -y 200 -defaultsOSRD
+preplace inst axi_gpio_0 -pg 1 -lvl 4 -y 540 -defaultsOSRD
+preplace inst axi_gpio_1 -pg 1 -lvl 4 -y 670 -defaultsOSRD
+preplace inst axi_gpio_2 -pg 1 -lvl 4 -y 1060 -defaultsOSRD
+preplace inst clk_wiz_0 -pg 1 -lvl 1 -y 150 -defaultsOSRD
+preplace inst axi_bram_ctrl_0 -pg 1 -lvl 4 -y 400 -defaultsOSRD
+preplace inst axi_bram_ctrl_1 -pg 1 -lvl 4 -y 800 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 2 -y 1210 -defaultsOSRD
+preplace netloc processing_system7_0_DDR 1 2 4 NJ 1130 NJ 1130 NJ 1130 NJ
+preplace netloc avg_err_state_s_4 1 4 1 1410
+preplace netloc avg_cont1_avg 1 4 2 NJ 1070 1760
+preplace netloc axi_smc_M02_AXI 1 3 1 1030
+preplace netloc axi_smc_M01_AXI 1 3 1 1000
+preplace netloc valid_zncc_1 1 3 3 1030 470 1330J 670 1740
+preplace netloc addr_zero_1 1 3 3 1020 330 1360J 320 1770
+preplace netloc avg_err_state_s_5 1 4 1 1430
+preplace netloc len_cont_not_zero 1 3 3 1020 30 NJ 30 1800
+preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 4 1 N
+preplace netloc processing_system7_0_M_AXI_GP0 1 2 1 680
+preplace netloc axi_bram_ctrl_0_BRAM_PORTA1 1 4 1 1390
+preplace netloc axi_smc_M00_AXI 1 3 1 980
+preplace netloc util_vector_logic_0_Res 1 3 3 990 40 NJ 40 1750
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 2 250 930 670
+preplace netloc sys_diff_clock_1 1 0 1 NJ
+preplace netloc axi_bram_ctrl_2_BRAM_PORTA 1 4 1 1400
+preplace netloc avg_cont_avg 1 4 2 1320J 680 1750
+preplace netloc s_zncc_1 1 4 1 1350
+preplace netloc processing_system7_0_FIXED_IO 1 2 4 NJ 1150 NJ 1150 NJ 1150 NJ
+preplace netloc cycle_cont_stop_cycle 1 3 3 1030 60 NJ 60 1760
+preplace netloc rst_ps7_0_50M_peripheral_aresetn 1 2 2 700 880 1020
+preplace netloc axi_smc_M05_AXI 1 3 1 980
+preplace netloc control_unit_s_done 1 4 1 1340
+preplace netloc avg_err_state_s_0 1 4 1 1370
+preplace netloc err_cont_err 1 4 2 1310J 690 1780
+preplace netloc util_vector_logic_1_Res 1 3 3 1000 50 NJ 50 1740
+preplace netloc acc_state_s_2 1 4 1 1440
+preplace netloc processing_system7_0_FCLK_CLK0 1 1 3 240 750 690 850 1010
+preplace netloc axi_smc_M04_AXI 1 3 1 N
+preplace netloc avg_err_state_s_2 1 4 1 1380
+preplace netloc acc_state_s_3 1 4 1 1420
+preplace netloc reset_1 1 0 1 NJ
+preplace netloc processing_system7_0_FCLK_CLK1 1 1 4 NJ 130 NJ 130 980 10 1460
+preplace netloc axi_smc_M03_AXI 1 3 1 990
+preplace netloc avg_err_state_s_3 1 4 1 1450
+preplace netloc do_cycle_1 1 3 3 1010 20 NJ 20 1790
+levelinfo -pg 1 0 130 460 840 1170 1600 1820 -top 0 -bot 1340
+",
+}
+{
+   da_axi4_cnt: "6",
+   da_board_cnt: "2",
+   da_bram_cntlr_cnt: "3",
+   da_ps7_cnt: "1",
+}

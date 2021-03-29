@@ -1,0 +1,38 @@
+{
+   ExpandedHierarchyInLayout: "",
+   guistr: "# # String gsaved with Nlview 6.6.11  2017-06-12 bk=1.3860 VDI=40 GEI=35 GUI=JA:1.6
+#  -string -flagsOSRD
+preplace port len_not_zero -pg 1 -y 210 -defaultsOSRD
+preplace port s_square -pg 1 -y 210 -defaultsOSRD
+preplace port stop_cycle -pg 1 -y 230 -defaultsOSRD
+preplace port s_avg -pg 1 -y 290 -defaultsOSRD
+preplace port s_wait -pg 1 -y 310 -defaultsOSRD
+preplace port addr_zero -pg 1 -y 290 -defaultsOSRD
+preplace port valid_div -pg 1 -y 250 -defaultsOSRD
+preplace port CLK -pg 1 -y 110 -defaultsOSRD
+preplace port s_root -pg 1 -y 190 -defaultsOSRD
+preplace port valid_sqrt -pg 1 -y 270 -defaultsOSRD
+preplace port do_cycle -pg 1 -y 90 -defaultsOSRD
+preplace port s_restart -pg 1 -y 170 -defaultsOSRD
+preplace portBus s_acc -pg 1 -y 100 -defaultsOSRD
+preplace portBus s_addr -pg 1 -y 120 -defaultsOSRD
+preplace inst acc_state -pg 1 -lvl 2 -y 90 -defaultsOSRD
+preplace inst avg_err_state -pg 1 -lvl 1 -y 230 -defaultsOSRD
+preplace netloc avg_err_state_s_4 1 1 2 NJ 210 NJ
+preplace netloc addr_zero_1 1 0 1 NJ
+preplace netloc avg_err_state_s_5 1 1 2 NJ 190 NJ
+preplace netloc len_cont_not_zero 1 0 1 NJ
+preplace netloc util_vector_logic_0_Res 1 0 1 NJ
+preplace netloc cycle_cont_stop_cycle 1 0 1 NJ
+preplace netloc avg_err_state_s_0 1 1 2 NJ 310 NJ
+preplace netloc util_vector_logic_1_Res 1 0 1 NJ
+preplace netloc acc_state_s_2 1 2 1 NJ
+preplace netloc avg_err_state_s_2 1 1 2 NJ 290 NJ
+preplace netloc acc_state_s_3 1 2 1 NJ
+preplace netloc processing_system7_0_FCLK_CLK1 1 0 2 20 70 NJ
+preplace netloc avg_err_state_s_3 1 1 2 220 170 NJ
+preplace netloc do_cycle_1 1 0 2 NJ 90 NJ
+levelinfo -pg 1 0 120 320 440 -top 0 -bot 360
+",
+}
+

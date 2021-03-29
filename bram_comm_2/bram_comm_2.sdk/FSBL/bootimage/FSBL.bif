@@ -1,0 +1,7 @@
+//arch = zynq; split = false; format = BIN
+the_ROM_image:
+{
+	[bootloader]C:\Users\dell_\bram_comm_2\bram_comm_2.sdk\FSBL\Debug\FSBL.elf
+	C:\Users\dell_\bram_comm_2\bram_comm_2.sdk\soc_wrapper_hw_platform_0\soc_wrapper.bit
+	C:\Users\dell_\zncc_slave\u-boot.elf
+}

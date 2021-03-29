@@ -1,0 +1,29 @@
+{
+   ExpandedHierarchyInLayout: "",
+   guistr: "# # String gsaved with Nlview 6.6.11  2017-06-12 bk=1.3860 VDI=40 GEI=35 GUI=JA:1.6
+#  -string -flagsOSRD
+preplace port valid_zncc -pg 1 -y 130 -defaultsOSRD
+preplace port s_zncc -pg 1 -y 90 -defaultsOSRD
+preplace port CLK -pg 1 -y 110 -defaultsOSRD
+preplace portBus zncc -pg 1 -y 300 -defaultsOSRD
+preplace portBus cc -pg 1 -y 210 -defaultsOSRD
+preplace portBus norm -pg 1 -y 70 -defaultsOSRD
+preplace inst xlslice_0 -pg 1 -lvl 3 -y 270 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 1 -y 160 -defaultsOSRD
+preplace inst div_gen_0 -pg 1 -lvl 3 -y 110 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 2 -y 170 -defaultsOSRD
+preplace inst c_shift_ram_0 -pg 1 -lvl 4 -y 300 -defaultsOSRD
+preplace netloc CLK_1 1 0 4 0J 100 NJ 100 390 320 860J
+preplace netloc div_gen_0_m_axis_dout_tvalid 1 3 2 850 130 NJ
+preplace netloc xlconcat_0_dout 1 2 1 380
+preplace netloc xlconstant_0_dout 1 1 1 NJ
+preplace netloc cc_1 1 0 2 10J 110 160J
+preplace netloc s_zncc_1 1 0 3 0J 80 NJ 80 400
+preplace netloc div_gen_0_m_axis_dout_tdata 1 2 2 400 220 840
+preplace netloc norm_1 1 0 3 NJ 70 NJ 70 NJ
+preplace netloc c_shift_ram_0_Q 1 4 1 NJ
+preplace netloc xlslice_0_Dout 1 3 1 NJ
+levelinfo -pg 1 -20 90 280 630 970 1090 -top 0 -bot 380
+",
+}
+0

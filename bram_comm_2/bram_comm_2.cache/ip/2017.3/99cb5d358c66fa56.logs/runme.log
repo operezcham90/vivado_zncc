@@ -1,0 +1,41 @@
+
+*** Running vivado
+    with args -log soc_xbip_dsp48_macro_0_2.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source soc_xbip_dsp48_macro_0_2.tcl
+
+
+****** Vivado v2017.3 (64-bit)
+  **** SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
+  **** IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
+    ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+
+source soc_xbip_dsp48_macro_0_2.tcl -notrace
+Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 406.582 ; gain = 98.586
+INFO: [Synth 8-638] synthesizing module 'soc_xbip_dsp48_macro_0_2' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_xbip_dsp48_macro_0_2/synth/soc_xbip_dsp48_macro_0_2.vhd:70]
+INFO: [Synth 8-256] done synthesizing module 'soc_xbip_dsp48_macro_0_2' (6#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_xbip_dsp48_macro_0_2/synth/soc_xbip_dsp48_macro_0_2.vhd:70]
+Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 454.762 ; gain = 146.766
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:14 . Memory (MB): peak = 454.762 ; gain = 146.766
+INFO: [Device 21-403] Loading part xc7z045ffg900-2
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 753.910 ; gain = 0.000
+Finished Constraint Validation : Time (s): cpu = 00:00:25 ; elapsed = 00:00:32 . Memory (MB): peak = 753.910 ; gain = 445.914
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:25 ; elapsed = 00:00:32 . Memory (MB): peak = 753.910 ; gain = 445.914
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:32 . Memory (MB): peak = 753.910 ; gain = 445.914
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:25 ; elapsed = 00:00:32 . Memory (MB): peak = 753.910 ; gain = 445.914
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:33 . Memory (MB): peak = 753.910 ; gain = 445.914
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:41 ; elapsed = 00:00:52 . Memory (MB): peak = 819.336 ; gain = 511.340
+Finished Timing Optimization : Time (s): cpu = 00:00:41 ; elapsed = 00:00:52 . Memory (MB): peak = 819.336 ; gain = 511.340
+Finished Technology Mapping : Time (s): cpu = 00:00:41 ; elapsed = 00:00:52 . Memory (MB): peak = 831.484 ; gain = 523.488
+Finished IO Insertion : Time (s): cpu = 00:00:42 ; elapsed = 00:00:54 . Memory (MB): peak = 831.484 ; gain = 523.488
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:42 ; elapsed = 00:00:54 . Memory (MB): peak = 831.484 ; gain = 523.488
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:42 ; elapsed = 00:00:54 . Memory (MB): peak = 831.484 ; gain = 523.488
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:42 ; elapsed = 00:00:54 . Memory (MB): peak = 831.484 ; gain = 523.488
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:42 ; elapsed = 00:00:54 . Memory (MB): peak = 831.484 ; gain = 523.488
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:42 ; elapsed = 00:00:54 . Memory (MB): peak = 831.484 ; gain = 523.488
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |DSP48E1 |     1|
++------+--------+------+
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:42 ; elapsed = 00:00:54 . Memory (MB): peak = 831.484 ; gain = 523.488
+synth_design: Time (s): cpu = 00:00:44 ; elapsed = 00:00:57 . Memory (MB): peak = 831.484 ; gain = 533.383

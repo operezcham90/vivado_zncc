@@ -1,0 +1,40 @@
+{
+   ExpandedHierarchyInLayout: "",
+   guistr: "# # String gsaved with Nlview 6.6.11  2017-06-12 bk=1.3860 VDI=40 GEI=35 GUI=JA:1.6
+#  -string -flagsOSRD
+preplace port CLK -pg 1 -y 130 -defaultsOSRD
+preplace port s_root -pg 1 -y 320 -defaultsOSRD
+preplace portBus norm -pg 1 -y 360 -defaultsOSRD
+preplace portBus num0 -pg 1 -y 80 -defaultsOSRD
+preplace portBus valid_sqrt -pg 1 -y 440 -defaultsOSRD
+preplace portBus num1 -pg 1 -y 270 -defaultsOSRD
+preplace inst xlslice_0 -pg 1 -lvl 1 -y 80 -defaultsOSRD
+preplace inst xlslice_1 -pg 1 -lvl 1 -y 270 -defaultsOSRD
+preplace inst xlconstant_0 -pg 1 -lvl 1 -y 180 -defaultsOSRD
+preplace inst xlconcat_0 -pg 1 -lvl 2 -y 70 -defaultsOSRD
+preplace inst mult_gen_0 -pg 1 -lvl 4 -y 90 -defaultsOSRD
+preplace inst xlconcat_1 -pg 1 -lvl 2 -y 260 -defaultsOSRD
+preplace inst cordic_0 -pg 1 -lvl 3 -y 80 -defaultsOSRD
+preplace inst util_vector_logic_1 -pg 1 -lvl 4 -y 280 -defaultsOSRD
+preplace inst cordic_1 -pg 1 -lvl 3 -y 270 -defaultsOSRD
+preplace inst c_shift_ram_0 -pg 1 -lvl 5 -y 360 -defaultsOSRD
+preplace netloc sqrt_cont1_valid_out 1 3 1 N
+preplace netloc xlslice_1_Dout 1 1 1 NJ
+preplace netloc num1_1 1 0 1 NJ
+preplace netloc avg_err_state_s_5 1 0 3 NJ 320 NJ 320 440
+preplace netloc cordic_1_m_axis_dout_tdata 1 3 1 900
+preplace netloc xlconcat_1_dout 1 2 1 N
+preplace netloc xlconstant_0_dout 1 1 1 220
+preplace netloc xlconcat_0_dout 1 2 1 N
+preplace netloc valid_sqrt_1 1 3 1 890
+preplace netloc mult_gen_0_P 1 4 1 1220
+preplace netloc num0_1 1 0 1 NJ
+preplace netloc util_vector_logic_1_Res 1 4 2 1210 440 NJ
+preplace netloc c_shift_ram_0_Q 1 5 1 NJ
+preplace netloc cordic_0_m_axis_dout_tdata 1 3 1 N
+preplace netloc processing_system7_0_FCLK_CLK1 1 0 5 NJ 130 NJ 130 450 350 NJ 350 NJ
+preplace netloc xlslice_0_Dout 1 1 1 NJ
+levelinfo -pg 1 -10 120 340 680 1060 1320 1440 -top 0 -bot 460
+",
+}
+0
