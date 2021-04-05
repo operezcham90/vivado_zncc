@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="soc_xlslice_0_10_synth_1" LaunchPart="xc7z045ffg900-2" LaunchTime="1615355130">
+<GenRun Id="soc_xlslice_0_10_synth_1" LaunchPart="xc7z045ffg900-2" LaunchTime="1617483199">
   <File Type="PA-TCL" Name="soc_xlslice_0_10.tcl"/>
   <File Type="REPORTS-TCL" Name="soc_xlslice_0_10_reports.tcl"/>
   <File Type="RDS-RDS" Name="soc_xlslice_0_10.vds"/>
@@ -7,9 +7,11 @@
   <FileSet Name="sources" Type="BlockSrcs" RelSrcDir="$PSRCDIR/soc_xlslice_0_10">
     <File Path="$PSRCDIR/sources_1/bd/soc/ip/soc_xlslice_0_10/soc_xlslice_0_10.xci">
       <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="ProcessingOrder" Val="EARLY"/>
       </FileInfo>
     </File>
     <Config>
@@ -20,9 +22,11 @@
   <FileSet Name="constrs_in" Type="BlockSrcs" RelSrcDir="$PSRCDIR/soc_xlslice_0_10">
     <File Path="$PSRCDIR/sources_1/bd/soc/ip/soc_xlslice_0_10/soc_xlslice_0_10.xci">
       <FileInfo>
+        <Attr Name="Library" Val="xil_defaultlib"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
+        <Attr Name="ProcessingOrder" Val="EARLY"/>
       </FileInfo>
     </File>
     <Config>

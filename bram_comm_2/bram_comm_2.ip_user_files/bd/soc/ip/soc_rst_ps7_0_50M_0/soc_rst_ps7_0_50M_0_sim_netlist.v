@@ -1,7 +1,7 @@
 // Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-// Date        : Sat Feb 27 23:16:48 2021
+// Date        : Thu Mar 25 15:39:15 2021
 // Host        : DESKTOP-K3HMOPR running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim -rename_top soc_rst_ps7_0_50M_0 -prefix
 //               soc_rst_ps7_0_50M_0_ soc_rst_ps7_0_50M_0_sim_netlist.v
@@ -500,19 +500,16 @@ module soc_rst_ps7_0_50M_0_sequence_psr
   wire seq_cnt_en;
   wire slowest_sync_clk;
 
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \ACTIVE_LOW_BSR_OUT_DFF[0].FDRE_BSR_N_i_1 
        (.I0(Bsr_out),
         .O(\ACTIVE_LOW_BSR_OUT_DFF[0].FDRE_BSR_N ));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \ACTIVE_LOW_PR_OUT_DFF[0].FDRE_PER_N_i_1 
        (.I0(Pr_out),
         .O(\ACTIVE_LOW_PR_OUT_DFF[0].FDRE_PER_N ));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT2 #(
     .INIT(4'h2)) 
     Core_i_1
@@ -540,7 +537,6 @@ module soc_rst_ps7_0_50M_0_sequence_psr
         .I2(seq_cnt[5]),
         .I3(seq_cnt[4]),
         .O(p_5_out[0]));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \bsr_dec[2]_i_1 
@@ -563,7 +559,6 @@ module soc_rst_ps7_0_50M_0_sequence_psr
         .D(p_5_out[2]),
         .Q(\bsr_dec_reg_n_0_[2] ),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair5" *) 
   LUT2 #(
     .INIT(4'h2)) 
     bsr_i_1
@@ -578,7 +573,6 @@ module soc_rst_ps7_0_50M_0_sequence_psr
         .D(bsr_i_1_n_0),
         .Q(Bsr_out),
         .S(lpf_int));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT4 #(
     .INIT(16'h8040)) 
     \core_dec[0]_i_1 
@@ -587,7 +581,6 @@ module soc_rst_ps7_0_50M_0_sequence_psr
         .I2(seq_cnt[5]),
         .I3(seq_cnt_en),
         .O(\core_dec[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair6" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \core_dec[2]_i_1 
@@ -618,7 +611,6 @@ module soc_rst_ps7_0_50M_0_sequence_psr
         .D(\core_dec[2]_i_1_n_0 ),
         .Q(p_0_in),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair3" *) 
   LUT2 #(
     .INIT(4'h8)) 
     from_sys_i_1
@@ -641,7 +633,6 @@ module soc_rst_ps7_0_50M_0_sequence_psr
         .I2(seq_cnt[2]),
         .I3(seq_cnt_en),
         .O(pr_dec0__0));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
   LUT4 #(
     .INIT(16'h1080)) 
     \pr_dec[0]_i_1 
@@ -672,7 +663,6 @@ module soc_rst_ps7_0_50M_0_sequence_psr
         .D(p_3_out[2]),
         .Q(\pr_dec_reg_n_0_[2] ),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair4" *) 
   LUT2 #(
     .INIT(4'h2)) 
     pr_i_1
@@ -710,7 +700,7 @@ module soc_rst_ps7_0_50M_0
     peripheral_reset,
     interconnect_aresetn,
     peripheral_aresetn);
-  (* x_interface_info = "xilinx.com:signal:clock:1.0 clock CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME clock, ASSOCIATED_RESET mb_reset:bus_struct_reset:interconnect_aresetn:peripheral_aresetn:peripheral_reset, FREQ_HZ 50000000, PHASE 0.000, CLK_DOMAIN soc_processing_system7_0_0_FCLK_CLK0" *) input slowest_sync_clk;
+  (* x_interface_info = "xilinx.com:signal:clock:1.0 clock CLK" *) (* x_interface_parameter = "XIL_INTERFACENAME clock, ASSOCIATED_RESET mb_reset:bus_struct_reset:interconnect_aresetn:peripheral_aresetn:peripheral_reset, FREQ_HZ 450000000, PHASE 0.0, CLK_DOMAIN soc_clk_wiz_0_0_clk_out1" *) input slowest_sync_clk;
   (* x_interface_info = "xilinx.com:signal:reset:1.0 ext_reset RST" *) (* x_interface_parameter = "XIL_INTERFACENAME ext_reset, BOARD.ASSOCIATED_PARAM RESET_BOARD_INTERFACE, POLARITY ACTIVE_LOW" *) input ext_reset_in;
   (* x_interface_info = "xilinx.com:signal:reset:1.0 aux_reset RST" *) (* x_interface_parameter = "XIL_INTERFACENAME aux_reset, POLARITY ACTIVE_LOW" *) input aux_reset_in;
   (* x_interface_info = "xilinx.com:signal:reset:1.0 dbg_reset RST" *) (* x_interface_parameter = "XIL_INTERFACENAME dbg_reset, POLARITY ACTIVE_HIGH" *) input mb_debug_sys_rst;
@@ -776,14 +766,12 @@ module soc_rst_ps7_0_50M_0_upcnt_n
     \q_int[0]_i_1 
        (.I0(Q[0]),
         .O(q_int0[0]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \q_int[1]_i_1 
        (.I0(Q[0]),
         .I1(Q[1]),
         .O(q_int0[1]));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \q_int[2]_i_1 
@@ -791,7 +779,6 @@ module soc_rst_ps7_0_50M_0_upcnt_n
         .I1(Q[1]),
         .I2(Q[2]),
         .O(q_int0[2]));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \q_int[3]_i_1 
@@ -800,7 +787,6 @@ module soc_rst_ps7_0_50M_0_upcnt_n
         .I2(Q[2]),
         .I3(Q[3]),
         .O(q_int0[3]));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \q_int[4]_i_1 

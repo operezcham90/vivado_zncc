@@ -1,7 +1,7 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-| Date         : Sat Mar 27 14:19:53 2021
+| Date         : Sun Apr  4 18:39:02 2021
 | Host         : DESKTOP-K3HMOPR running 64-bit major release  (build 9200)
 | Command      : report_control_sets -file soc_wrapper_control_sets_placed.rpt
 | Design       : soc_wrapper
@@ -21,7 +21,7 @@ Table of Contents
 +-------------------------------+-------+
 |             Status            | Count |
 +-------------------------------+-------+
-| Number of unique control sets |   534 |
+| Number of unique control sets |   535 |
 +-------------------------------+-------+
 
 
@@ -31,12 +31,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |            6929 |         1842 |
+| No           | No                    | No                     |            6929 |         1944 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |            1949 |          664 |
-| Yes          | No                    | No                     |            3391 |         1007 |
+| No           | Yes                   | No                     |            1949 |          688 |
+| Yes          | No                    | No                     |            3391 |         1003 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |            2217 |          744 |
+| Yes          | Yes                   | No                     |            2279 |          741 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 

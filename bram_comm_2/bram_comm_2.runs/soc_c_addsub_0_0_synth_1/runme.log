@@ -9,35 +9,4 @@
     ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 
 source soc_c_addsub_0_0.tcl -notrace
-Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:09 . Memory (MB): peak = 404.664 ; gain = 98.504
-INFO: [Synth 8-638] synthesizing module 'soc_c_addsub_0_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_c_addsub_0_0/synth/soc_c_addsub_0_0.vhd:67]
-INFO: [Synth 8-256] done synthesizing module 'soc_c_addsub_0_0' (6#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_c_addsub_0_0/synth/soc_c_addsub_0_0.vhd:67]
-Finished RTL Elaboration : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 452.773 ; gain = 146.613
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 452.773 ; gain = 146.613
-INFO: [Device 21-403] Loading part xc7z045ffg900-2
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 750.684 ; gain = 0.000
-Finished Constraint Validation : Time (s): cpu = 00:00:23 ; elapsed = 00:00:28 . Memory (MB): peak = 750.684 ; gain = 444.523
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:23 ; elapsed = 00:00:28 . Memory (MB): peak = 750.684 ; gain = 444.523
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:28 . Memory (MB): peak = 750.684 ; gain = 444.523
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:23 ; elapsed = 00:00:28 . Memory (MB): peak = 750.684 ; gain = 444.523
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:24 ; elapsed = 00:00:29 . Memory (MB): peak = 750.684 ; gain = 444.523
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:34 ; elapsed = 00:00:40 . Memory (MB): peak = 788.570 ; gain = 482.410
-Finished Timing Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:40 . Memory (MB): peak = 788.570 ; gain = 482.410
-Finished Technology Mapping : Time (s): cpu = 00:00:34 ; elapsed = 00:00:40 . Memory (MB): peak = 798.715 ; gain = 492.555
-Finished IO Insertion : Time (s): cpu = 00:00:35 ; elapsed = 00:00:41 . Memory (MB): peak = 798.715 ; gain = 492.555
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:35 ; elapsed = 00:00:41 . Memory (MB): peak = 798.715 ; gain = 492.555
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:35 ; elapsed = 00:00:41 . Memory (MB): peak = 798.715 ; gain = 492.555
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:35 ; elapsed = 00:00:41 . Memory (MB): peak = 798.715 ; gain = 492.555
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:35 ; elapsed = 00:00:41 . Memory (MB): peak = 798.715 ; gain = 492.555
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:35 ; elapsed = 00:00:41 . Memory (MB): peak = 798.715 ; gain = 492.555
-
-Report Cell Usage: 
-+------+------+------+
-|      |Cell  |Count |
-+------+------+------+
-|1     |LUT2  |    32|
-|2     |MUXCY |    31|
-|3     |XORCY |    32|
-+------+------+------+
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:35 ; elapsed = 00:00:41 . Memory (MB): peak = 798.715 ; gain = 492.555
-synth_design: Time (s): cpu = 00:00:37 ; elapsed = 00:00:43 . Memory (MB): peak = 820.566 ; gain = 523.680
+INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP soc_c_addsub_0_0, cache-ID = 6585554cf88f816d.

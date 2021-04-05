@@ -1,4 +1,4 @@
-17:46:01 **** Build of project FSBL_bsp ****
+18:50:47 **** Build of project FSBL_bsp ****
 make -k all 
 "Running Make include in ps7_cortexa9_0/libsrc/bram_v4_2/src"
 make -C ps7_cortexa9_0/libsrc/bram_v4_2/src -s include  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
@@ -119,5 +119,5 @@ ff.c:2610:4: warning: dereferencing type-punned pointer will break strict-aliasi
 make -C ps7_cortexa9_0/libsrc/xilrsa_v1_4/src -s libs  "SHELL=CMD" "COMPILER=arm-none-eabi-gcc" "ARCHIVER=arm-none-eabi-ar" "COMPILER_FLAGS=  -O2 -c" "EXTRA_COMPILER_FLAGS=-mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -nostartfiles -Wall -Wextra"
 'Finished building libraries'
 
-17:46:33 Build Finished (took 31s.815ms)
+18:51:16 Build Finished (took 29s.557ms)
 

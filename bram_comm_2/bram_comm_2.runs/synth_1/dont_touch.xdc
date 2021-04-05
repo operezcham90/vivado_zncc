@@ -346,23 +346,14 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_xlslice_0_1
 # IP: bd/soc/ip/soc_mult_gen_0_0/soc_mult_gen_0_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_mult_gen_0_0 || ORIG_REF_NAME==soc_mult_gen_0_0} -quiet] -quiet
 
-# IP: bd/soc/ip/soc_div_gen_0_3/soc_div_gen_0_3.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_div_gen_0_3 || ORIG_REF_NAME==soc_div_gen_0_3} -quiet] -quiet
-
 # IP: bd/soc/ip/soc_xlconcat_0_3/soc_xlconcat_0_3.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_xlconcat_0_3 || ORIG_REF_NAME==soc_xlconcat_0_3} -quiet] -quiet
 
 # IP: bd/soc/ip/soc_xlconstant_0_7/soc_xlconstant_0_7.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_xlconstant_0_7 || ORIG_REF_NAME==soc_xlconstant_0_7} -quiet] -quiet
 
-# IP: bd/soc/ip/soc_xlslice_0_12/soc_xlslice_0_12.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_xlslice_0_12 || ORIG_REF_NAME==soc_xlslice_0_12} -quiet] -quiet
-
 # IP: bd/soc/ip/soc_util_vector_logic_5_0/soc_util_vector_logic_5_0.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_util_vector_logic_5_0 || ORIG_REF_NAME==soc_util_vector_logic_5_0} -quiet] -quiet
-
-# IP: bd/soc/ip/soc_c_shift_ram_0_4/soc_c_shift_ram_0_4.xci
-set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_c_shift_ram_0_4 || ORIG_REF_NAME==soc_c_shift_ram_0_4} -quiet] -quiet
 
 # IP: bd/soc/ip/soc_xlslice_0_5/soc_xlslice_0_5.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_xlslice_0_5 || ORIG_REF_NAME==soc_xlslice_0_5} -quiet] -quiet
@@ -417,5 +408,71 @@ set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_util_vector
 
 # IP: bd/soc/ip/soc_util_vector_logic_0_9/soc_util_vector_logic_0_9.xci
 set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_util_vector_logic_0_9 || ORIG_REF_NAME==soc_util_vector_logic_0_9} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_util_reduced_logic_0_6/soc_util_reduced_logic_0_6.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_util_reduced_logic_0_6 || ORIG_REF_NAME==soc_util_reduced_logic_0_6} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_util_vector_logic_1_5/soc_util_vector_logic_1_5.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_util_vector_logic_1_5 || ORIG_REF_NAME==soc_util_vector_logic_1_5} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_util_vector_logic_1_6/soc_util_vector_logic_1_6.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_util_vector_logic_1_6 || ORIG_REF_NAME==soc_util_vector_logic_1_6} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_util_vector_logic_0_10/soc_util_vector_logic_0_10.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_util_vector_logic_0_10 || ORIG_REF_NAME==soc_util_vector_logic_0_10} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_util_vector_logic_7_0/soc_util_vector_logic_7_0.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_util_vector_logic_7_0 || ORIG_REF_NAME==soc_util_vector_logic_7_0} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_util_vector_logic_0_13/soc_util_vector_logic_0_13.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_util_vector_logic_0_13 || ORIG_REF_NAME==soc_util_vector_logic_0_13} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_c_shift_ram_0_5/soc_c_shift_ram_0_5.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_c_shift_ram_0_5 || ORIG_REF_NAME==soc_c_shift_ram_0_5} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_c_shift_ram_0_8/soc_c_shift_ram_0_8.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_c_shift_ram_0_8 || ORIG_REF_NAME==soc_c_shift_ram_0_8} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_util_vector_logic_0_14/soc_util_vector_logic_0_14.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_util_vector_logic_0_14 || ORIG_REF_NAME==soc_util_vector_logic_0_14} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_c_addsub_0_1/soc_c_addsub_0_1.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_c_addsub_0_1 || ORIG_REF_NAME==soc_c_addsub_0_1} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_xlslice_0_8/soc_xlslice_0_8.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_xlslice_0_8 || ORIG_REF_NAME==soc_xlslice_0_8} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_xlconcat_0_9/soc_xlconcat_0_9.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_xlconcat_0_9 || ORIG_REF_NAME==soc_xlconcat_0_9} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_xlconstant_0_4/soc_xlconstant_0_4.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_xlconstant_0_4 || ORIG_REF_NAME==soc_xlconstant_0_4} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_xlslice_0_13/soc_xlslice_0_13.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_xlslice_0_13 || ORIG_REF_NAME==soc_xlslice_0_13} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_c_shift_ram_0_7/soc_c_shift_ram_0_7.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_c_shift_ram_0_7 || ORIG_REF_NAME==soc_c_shift_ram_0_7} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_div_gen_0_3/soc_div_gen_0_3.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_div_gen_0_3 || ORIG_REF_NAME==soc_div_gen_0_3} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_xlslice_1_3/soc_xlslice_1_3.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_xlslice_1_3 || ORIG_REF_NAME==soc_xlslice_1_3} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_xlconcat_0_10/soc_xlconcat_0_10.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_xlconcat_0_10 || ORIG_REF_NAME==soc_xlconcat_0_10} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_xlconstant_0_8/soc_xlconstant_0_8.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_xlconstant_0_8 || ORIG_REF_NAME==soc_xlconstant_0_8} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_util_vector_logic_1_7/soc_util_vector_logic_1_7.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_util_vector_logic_1_7 || ORIG_REF_NAME==soc_util_vector_logic_1_7} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_util_reduced_logic_0_7/soc_util_reduced_logic_0_7.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_util_reduced_logic_0_7 || ORIG_REF_NAME==soc_util_reduced_logic_0_7} -quiet] -quiet
+
+# IP: bd/soc/ip/soc_util_vector_logic_2_1/soc_util_vector_logic_2_1.xci
+set_property DONT_TOUCH TRUE [get_cells -hier -filter {REF_NAME==soc_util_vector_logic_2_1 || ORIG_REF_NAME==soc_util_vector_logic_2_1} -quiet] -quiet
 
 # XDC: bd/soc/soc_ooc.xdc

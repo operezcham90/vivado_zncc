@@ -419,18 +419,11 @@
 -endlib
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/soc/ip/soc_mult_gen_0_0/sim/soc_mult_gen_0_0.vhd" \
-  "../../../bd/soc/ip/soc_div_gen_0_3/sim/soc_div_gen_0_3.vhd" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/soc/ip/soc_xlconcat_0_3/sim/soc_xlconcat_0_3.v" \
   "../../../bd/soc/ip/soc_xlconstant_0_7/sim/soc_xlconstant_0_7.v" \
-  "../../../bd/soc/ip/soc_xlslice_0_12/sim/soc_xlslice_0_12.v" \
   "../../../bd/soc/ip/soc_util_vector_logic_5_0/sim/soc_util_vector_logic_5_0.v" \
--endlib
--makelib ies_lib/xil_defaultlib \
-  "../../../bd/soc/ip/soc_c_shift_ram_0_4/sim/soc_c_shift_ram_0_4.vhd" \
--endlib
--makelib ies_lib/xil_defaultlib \
   "../../../bd/soc/ip/soc_xlslice_0_5/sim/soc_xlslice_0_5.v" \
   "../../../bd/soc/ip/soc_xlconcat_0_5/sim/soc_xlconcat_0_5.v" \
   "../../../bd/soc/ip/soc_xlconstant_0_1/sim/soc_xlconstant_0_1.v" \
@@ -457,6 +450,43 @@
 -makelib ies_lib/xil_defaultlib \
   "../../../bd/soc/ip/soc_util_vector_logic_1_4/sim/soc_util_vector_logic_1_4.v" \
   "../../../bd/soc/ip/soc_util_vector_logic_0_9/sim/soc_util_vector_logic_0_9.v" \
+  "../../../bd/soc/ip/soc_util_reduced_logic_0_6/sim/soc_util_reduced_logic_0_6.v" \
+  "../../../bd/soc/ip/soc_util_vector_logic_1_5/sim/soc_util_vector_logic_1_5.v" \
+  "../../../bd/soc/ip/soc_util_vector_logic_1_6/sim/soc_util_vector_logic_1_6.v" \
+  "../../../bd/soc/ip/soc_util_vector_logic_0_10/sim/soc_util_vector_logic_0_10.v" \
+  "../../../bd/soc/ip/soc_util_vector_logic_7_0/sim/soc_util_vector_logic_7_0.v" \
+  "../../../bd/soc/ip/soc_util_vector_logic_0_13/sim/soc_util_vector_logic_0_13.v" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/soc/ip/soc_c_shift_ram_0_5/sim/soc_c_shift_ram_0_5.vhd" \
+  "../../../bd/soc/ip/soc_c_shift_ram_0_8/sim/soc_c_shift_ram_0_8.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/soc/ip/soc_util_vector_logic_0_14/sim/soc_util_vector_logic_0_14.v" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/soc/ip/soc_c_addsub_0_1/sim/soc_c_addsub_0_1.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/soc/ip/soc_xlslice_0_8/sim/soc_xlslice_0_8.v" \
+  "../../../bd/soc/ip/soc_xlconcat_0_9/sim/soc_xlconcat_0_9.v" \
+  "../../../bd/soc/ip/soc_xlconstant_0_4/sim/soc_xlconstant_0_4.v" \
+  "../../../bd/soc/ip/soc_xlconcat_1_3/sim/soc_xlconcat_1_3.v" \
+  "../../../bd/soc/ip/soc_xlslice_1_3/sim/soc_xlslice_1_3.v" \
+  "../../../bd/soc/ip/soc_util_vector_logic_0_15/sim/soc_util_vector_logic_0_15.v" \
+  "../../../bd/soc/ip/soc_util_vector_logic_1_7/sim/soc_util_vector_logic_1_7.v" \
+  "../../../bd/soc/ip/soc_util_vector_logic_1_8/sim/soc_util_vector_logic_1_8.v" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/soc/ip/soc_div_gen_0_2/sim/soc_div_gen_0_2.vhd" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/soc/ip/soc_xlslice_0_13/sim/soc_xlslice_0_13.v" \
+-endlib
+-makelib ies_lib/xil_defaultlib \
+  "../../../bd/soc/ip/soc_c_shift_ram_0_4/sim/soc_c_shift_ram_0_4.vhd" \
+  "../../../bd/soc/ip/soc_c_shift_ram_0_6/sim/soc_c_shift_ram_0_6.vhd" \
+  "../../../bd/soc/ip/soc_c_shift_ram_0_7/sim/soc_c_shift_ram_0_7.vhd" \
 -endlib
 -makelib ies_lib/xil_defaultlib \
   glbl.v

@@ -1,10 +1,10 @@
 // Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-// Date        : Mon Mar 15 16:33:08 2021
+// Date        : Mon Mar 15 16:33:07 2021
 // Host        : DESKTOP-K3HMOPR running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               C:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_xlconcat_0_5/soc_xlconcat_0_5_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top soc_xlconcat_0_5 -prefix
+//               soc_xlconcat_0_5_ soc_xlconcat_0_5_sim_netlist.v
 // Design      : soc_xlconcat_0_5
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.

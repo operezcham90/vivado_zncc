@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/dell_/bram_comm_2/bram_comm_2.runs/soc_xlslice_0_6_synth_1'
+HD_PWD='C:/Users/dell_/Documents/vivado_zncc/bram_comm_2/bram_comm_2.runs/soc_xlslice_0_6_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

@@ -166,27 +166,26 @@ proc create_hier_cell_zncc_cont { parentCell nameHier } {
   create_bd_pin -dir O valid_zncc
   create_bd_pin -dir O -from 31 -to 0 zncc
 
-  # Create instance: c_shift_ram_0, and set properties
-  set c_shift_ram_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 c_shift_ram_0 ]
+  # Create instance: c_shift_ram_2, and set properties
+  set c_shift_ram_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 c_shift_ram_2 ]
   set_property -dict [ list \
    CONFIG.AsyncInitVal {00000000000000000000000000000000} \
    CONFIG.CE {true} \
    CONFIG.DefaultData {00000000000000000000000000000000} \
    CONFIG.Depth {1} \
-   CONFIG.SCLR {true} \
    CONFIG.SyncInitVal {00000000000000000000000000000000} \
    CONFIG.Width {32} \
- ] $c_shift_ram_0
+ ] $c_shift_ram_2
 
   # Create instance: div_gen_0, and set properties
   set div_gen_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:div_gen:5.1 div_gen_0 ]
   set_property -dict [ list \
+   CONFIG.FlowControl {NonBlocking} \
    CONFIG.algorithm_type {High_Radix} \
    CONFIG.dividend_and_quotient_width {64} \
    CONFIG.divisor_width {64} \
    CONFIG.fractional_width {18} \
    CONFIG.latency {44} \
-   CONFIG.latency_configuration {Automatic} \
    CONFIG.remainder_type {Fractional} \
  ] $div_gen_0
 
@@ -195,6 +194,7 @@ proc create_hier_cell_zncc_cont { parentCell nameHier } {
   set_property -dict [ list \
    CONFIG.IN0_WIDTH {16} \
    CONFIG.IN1_WIDTH {48} \
+   CONFIG.NUM_PORTS {2} \
  ] $xlconcat_0
 
   # Create instance: xlconstant_0, and set properties
@@ -204,26 +204,191 @@ proc create_hier_cell_zncc_cont { parentCell nameHier } {
    CONFIG.CONST_WIDTH {16} \
  ] $xlconstant_0
 
-  # Create instance: xlslice_0, and set properties
-  set xlslice_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_0 ]
+  # Create instance: xlslice_0_ok, and set properties
+  set xlslice_0_ok [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_0_ok ]
   set_property -dict [ list \
    CONFIG.DIN_FROM {49} \
    CONFIG.DIN_TO {18} \
    CONFIG.DIN_WIDTH {88} \
    CONFIG.DOUT_WIDTH {32} \
- ] $xlslice_0
+ ] $xlslice_0_ok
 
   # Create port connections
-  connect_bd_net -net CLK_1 [get_bd_pins CLK] [get_bd_pins c_shift_ram_0/CLK] [get_bd_pins div_gen_0/aclk]
-  connect_bd_net -net c_shift_ram_0_Q [get_bd_pins zncc] [get_bd_pins c_shift_ram_0/Q]
+  connect_bd_net -net CLK_1 [get_bd_pins CLK] [get_bd_pins c_shift_ram_2/CLK] [get_bd_pins div_gen_0/aclk]
+  connect_bd_net -net c_shift_ram_2_Q [get_bd_pins zncc] [get_bd_pins c_shift_ram_2/Q]
   connect_bd_net -net cc_1 [get_bd_pins cc] [get_bd_pins xlconcat_0/In1]
-  connect_bd_net -net div_gen_0_m_axis_dout_tdata [get_bd_pins div_gen_0/m_axis_dout_tdata] [get_bd_pins xlslice_0/Din]
-  connect_bd_net -net div_gen_0_m_axis_dout_tvalid [get_bd_pins valid_zncc] [get_bd_pins c_shift_ram_0/CE] [get_bd_pins div_gen_0/m_axis_dout_tvalid]
+  connect_bd_net -net div_gen_0_m_axis_dout_tdata [get_bd_pins div_gen_0/m_axis_dout_tdata] [get_bd_pins xlslice_0_ok/Din]
+  connect_bd_net -net div_gen_0_m_axis_dout_tvalid [get_bd_pins valid_zncc] [get_bd_pins c_shift_ram_2/CE] [get_bd_pins div_gen_0/m_axis_dout_tvalid]
   connect_bd_net -net norm_1 [get_bd_pins norm] [get_bd_pins div_gen_0/s_axis_divisor_tdata]
   connect_bd_net -net s_zncc_1 [get_bd_pins s_zncc] [get_bd_pins div_gen_0/s_axis_dividend_tvalid] [get_bd_pins div_gen_0/s_axis_divisor_tvalid]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins div_gen_0/s_axis_dividend_tdata] [get_bd_pins xlconcat_0/dout]
   connect_bd_net -net xlconstant_0_dout [get_bd_pins xlconcat_0/In0] [get_bd_pins xlconstant_0/dout]
-  connect_bd_net -net xlslice_0_Dout [get_bd_pins c_shift_ram_0/D] [get_bd_pins xlslice_0/Dout]
+  connect_bd_net -net xlslice_0_ok_Dout [get_bd_pins c_shift_ram_2/D] [get_bd_pins xlslice_0_ok/Dout]
+
+  # Restore current instance
+  current_bd_instance $oldCurInst
+}
+
+# Hierarchical cell: max_cont
+proc create_hier_cell_max_cont { parentCell nameHier } {
+
+  variable script_folder
+
+  if { $parentCell eq "" || $nameHier eq "" } {
+     catch {common::send_msg_id "BD_TCL-102" "ERROR" "create_hier_cell_max_cont() - Empty argument(s)!"}
+     return
+  }
+
+  # Get object for parentCell
+  set parentObj [get_bd_cells $parentCell]
+  if { $parentObj == "" } {
+     catch {common::send_msg_id "BD_TCL-100" "ERROR" "Unable to find parent cell <$parentCell>!"}
+     return
+  }
+
+  # Make sure parentObj is hier blk
+  set parentType [get_property TYPE $parentObj]
+  if { $parentType ne "hier" } {
+     catch {common::send_msg_id "BD_TCL-101" "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
+     return
+  }
+
+  # Save current instance; Restore later
+  set oldCurInst [current_bd_instance .]
+
+  # Set parent object as current
+  current_bd_instance $parentObj
+
+  # Create cell and set as current instance
+  set hier_obj [create_bd_cell -type hier $nameHier]
+  current_bd_instance $hier_obj
+
+  # Create interface pins
+
+  # Create pins
+  create_bd_pin -dir I CLK
+  create_bd_pin -dir I SCLR
+  create_bd_pin -dir I compare
+  create_bd_pin -dir I -from 31 -to 0 index
+  create_bd_pin -dir O -from 31 -to 0 max_index
+  create_bd_pin -dir I -from 31 -to 0 value
+
+  # Create instance: c_addsub_0, and set properties
+  set c_addsub_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_addsub:12.0 c_addsub_0 ]
+  set_property -dict [ list \
+   CONFIG.A_Width {32} \
+   CONFIG.Add_Mode {Subtract} \
+   CONFIG.B_Value {00000000000000000000000000000000} \
+   CONFIG.B_Width {32} \
+   CONFIG.CE {false} \
+   CONFIG.Latency {0} \
+   CONFIG.Out_Width {32} \
+ ] $c_addsub_0
+
+  # Create instance: c_shift_ram_0, and set properties
+  set c_shift_ram_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 c_shift_ram_0 ]
+  set_property -dict [ list \
+   CONFIG.AsyncInitVal {00000000000000000000000000000000} \
+   CONFIG.CE {true} \
+   CONFIG.DefaultData {00000000000000000000000000000000} \
+   CONFIG.Depth {1} \
+   CONFIG.SCLR {true} \
+   CONFIG.SINIT {false} \
+   CONFIG.SyncInitVal {00000000000000000000000000000000} \
+   CONFIG.Width {32} \
+ ] $c_shift_ram_0
+
+  # Create instance: c_shift_ram_1, and set properties
+  set c_shift_ram_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_shift_ram:12.0 c_shift_ram_1 ]
+  set_property -dict [ list \
+   CONFIG.AsyncInitVal {00000000000000000000000000000000} \
+   CONFIG.CE {true} \
+   CONFIG.DefaultData {00000000000000000000000000000000} \
+   CONFIG.Depth {1} \
+   CONFIG.SCLR {true} \
+   CONFIG.SINIT {false} \
+   CONFIG.SyncInitVal {11111111111111111111111011111110} \
+   CONFIG.Width {32} \
+ ] $c_shift_ram_1
+
+  # Create instance: util_reduced_logic_0, and set properties
+  set util_reduced_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_reduced_logic:2.0 util_reduced_logic_0 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {or} \
+   CONFIG.C_SIZE {32} \
+   CONFIG.LOGO_FILE {data/sym_orgate.png} \
+ ] $util_reduced_logic_0
+
+  # Create instance: util_vector_logic_0, and set properties
+  set util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_0 ]
+  set_property -dict [ list \
+   CONFIG.C_SIZE {1} \
+ ] $util_vector_logic_0
+
+  # Create instance: util_vector_logic_1, and set properties
+  set util_vector_logic_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_1 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {or} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_orgate.png} \
+ ] $util_vector_logic_1
+
+  # Create instance: util_vector_logic_2, and set properties
+  set util_vector_logic_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_2 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {not} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_notgate.png} \
+ ] $util_vector_logic_2
+
+  # Create instance: xlconcat_0, and set properties
+  set xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0 ]
+  set_property -dict [ list \
+   CONFIG.IN0_WIDTH {30} \
+   CONFIG.IN1_WIDTH {2} \
+ ] $xlconcat_0
+
+  # Create instance: xlconstant_0, and set properties
+  set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
+  set_property -dict [ list \
+   CONFIG.CONST_VAL {0} \
+   CONFIG.CONST_WIDTH {2} \
+ ] $xlconstant_0
+
+  # Create instance: xlslice_0, and set properties
+  set xlslice_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_0 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {31} \
+   CONFIG.DIN_TO {31} \
+   CONFIG.DIN_WIDTH {32} \
+   CONFIG.DOUT_WIDTH {1} \
+ ] $xlslice_0
+
+  # Create instance: xlslice_1, and set properties
+  set xlslice_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 xlslice_1 ]
+  set_property -dict [ list \
+   CONFIG.DIN_FROM {31} \
+   CONFIG.DIN_TO {2} \
+   CONFIG.DOUT_WIDTH {30} \
+ ] $xlslice_1
+
+  # Create port connections
+  connect_bd_net -net CLK_1 [get_bd_pins CLK] [get_bd_pins c_shift_ram_0/CLK] [get_bd_pins c_shift_ram_1/CLK]
+  connect_bd_net -net SCLR_1 [get_bd_pins SCLR] [get_bd_pins c_shift_ram_0/SCLR] [get_bd_pins c_shift_ram_1/SCLR]
+  connect_bd_net -net c_addsub_0_S [get_bd_pins c_addsub_0/S] [get_bd_pins xlslice_0/Din]
+  connect_bd_net -net c_shift_ram_0_Q [get_bd_pins max_index] [get_bd_pins c_shift_ram_0/Q]
+  connect_bd_net -net c_shift_ram_1_Q [get_bd_pins c_addsub_0/A] [get_bd_pins c_shift_ram_1/Q]
+  connect_bd_net -net compare_1 [get_bd_pins compare] [get_bd_pins util_vector_logic_0/Op1]
+  connect_bd_net -net index_1 [get_bd_pins index] [get_bd_pins util_reduced_logic_0/Op1] [get_bd_pins xlslice_1/Din]
+  connect_bd_net -net util_reduced_logic_0_Res [get_bd_pins util_reduced_logic_0/Res] [get_bd_pins util_vector_logic_2/Op1]
+  connect_bd_net -net util_vector_logic_0_Res [get_bd_pins c_shift_ram_0/CE] [get_bd_pins c_shift_ram_1/CE] [get_bd_pins util_vector_logic_0/Res]
+  connect_bd_net -net util_vector_logic_1_Res [get_bd_pins util_vector_logic_0/Op2] [get_bd_pins util_vector_logic_1/Res]
+  connect_bd_net -net util_vector_logic_2_Res [get_bd_pins util_vector_logic_1/Op2] [get_bd_pins util_vector_logic_2/Res]
+  connect_bd_net -net value_1 [get_bd_pins value] [get_bd_pins c_addsub_0/B] [get_bd_pins c_shift_ram_1/D]
+  connect_bd_net -net xlconcat_0_dout [get_bd_pins c_shift_ram_0/D] [get_bd_pins xlconcat_0/dout]
+  connect_bd_net -net xlconstant_0_dout [get_bd_pins xlconcat_0/In1] [get_bd_pins xlconstant_0/dout]
+  connect_bd_net -net xlslice_0_Dout [get_bd_pins util_vector_logic_1/Op1] [get_bd_pins xlslice_0/Dout]
+  connect_bd_net -net xlslice_1_Dout [get_bd_pins xlconcat_0/In0] [get_bd_pins xlslice_1/Dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -268,11 +433,12 @@ proc create_hier_cell_len_cont { parentCell nameHier } {
   # Create pins
   create_bd_pin -dir I CE
   create_bd_pin -dir I -type clk CLK
-  create_bd_pin -dir I SCLR
+  create_bd_pin -dir O clear
   create_bd_pin -dir O -from 31 -to 0 len
   create_bd_pin -dir I -from 31 -to 0 -type data len_in
   create_bd_pin -dir O -from 31 -to 0 len_off
   create_bd_pin -dir O not_zero
+  create_bd_pin -dir I s_zncc
   create_bd_pin -dir O -from 0 -to 0 zero
 
   # Create instance: c_addsub_0, and set properties
@@ -308,6 +474,14 @@ proc create_hier_cell_len_cont { parentCell nameHier } {
    CONFIG.LOGO_FILE {data/sym_orgate.png} \
  ] $util_reduced_logic_0
 
+  # Create instance: util_reduced_logic_1, and set properties
+  set util_reduced_logic_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_reduced_logic:2.0 util_reduced_logic_1 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {and} \
+   CONFIG.C_SIZE {32} \
+   CONFIG.LOGO_FILE {data/sym_andgate.png} \
+ ] $util_reduced_logic_1
+
   # Create instance: util_vector_logic_0, and set properties
   set util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_0 ]
   set_property -dict [ list \
@@ -316,15 +490,25 @@ proc create_hier_cell_len_cont { parentCell nameHier } {
    CONFIG.LOGO_FILE {data/sym_notgate.png} \
  ] $util_vector_logic_0
 
+  # Create instance: util_vector_logic_1, and set properties
+  set util_vector_logic_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_1 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {or} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_orgate.png} \
+ ] $util_vector_logic_1
+
   # Create port connections
   connect_bd_net -net CE_1 [get_bd_pins CE] [get_bd_pins c_shift_ram_0/CE]
-  connect_bd_net -net SCLR_1 [get_bd_pins SCLR] [get_bd_pins c_shift_ram_0/SCLR]
   connect_bd_net -net axi_bram_ctrl_0_bram_doutb [get_bd_pins len_in] [get_bd_pins c_shift_ram_0/D]
   connect_bd_net -net c_addsub_0_S [get_bd_pins len_off] [get_bd_pins c_addsub_0/S]
-  connect_bd_net -net c_shift_ram_0_Q [get_bd_pins len] [get_bd_pins c_addsub_0/A] [get_bd_pins c_shift_ram_0/Q] [get_bd_pins util_reduced_logic_0/Op1]
+  connect_bd_net -net c_shift_ram_0_Q [get_bd_pins len] [get_bd_pins c_addsub_0/A] [get_bd_pins c_shift_ram_0/Q] [get_bd_pins util_reduced_logic_0/Op1] [get_bd_pins util_reduced_logic_1/Op1]
   connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins CLK] [get_bd_pins c_shift_ram_0/CLK]
+  connect_bd_net -net s_zncc_1 [get_bd_pins s_zncc] [get_bd_pins util_vector_logic_1/Op1]
   connect_bd_net -net util_reduced_logic_0_Res [get_bd_pins not_zero] [get_bd_pins util_reduced_logic_0/Res] [get_bd_pins util_vector_logic_0/Op1]
+  connect_bd_net -net util_reduced_logic_1_Res [get_bd_pins clear] [get_bd_pins util_reduced_logic_1/Res] [get_bd_pins util_vector_logic_1/Op2]
   connect_bd_net -net util_vector_logic_0_Res [get_bd_pins zero] [get_bd_pins util_vector_logic_0/Res]
+  connect_bd_net -net util_vector_logic_1_Res [get_bd_pins c_shift_ram_0/SCLR] [get_bd_pins util_vector_logic_1/Res]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -368,7 +552,8 @@ proc create_hier_cell_index_cont { parentCell nameHier } {
 
   # Create pins
   create_bd_pin -dir I -type clk CLK
-  create_bd_pin -dir O -from 31 -to 0 -type data Q
+  create_bd_pin -dir I SCLR
+  create_bd_pin -dir O -from 31 -to 0 -type data index
   create_bd_pin -dir I -type ce s_done
 
   # Create instance: c_counter_binary_0, and set properties
@@ -384,7 +569,8 @@ proc create_hier_cell_index_cont { parentCell nameHier } {
  ] $c_counter_binary_0
 
   # Create port connections
-  connect_bd_net -net c_counter_binary_0_Q [get_bd_pins Q] [get_bd_pins c_counter_binary_0/Q]
+  connect_bd_net -net SCLR_1 [get_bd_pins SCLR] [get_bd_pins c_counter_binary_0/SCLR]
+  connect_bd_net -net c_counter_binary_0_Q [get_bd_pins index] [get_bd_pins c_counter_binary_0/Q]
   connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins CLK] [get_bd_pins c_counter_binary_0/CLK]
   connect_bd_net -net s_done_1 [get_bd_pins s_done] [get_bd_pins c_counter_binary_0/CE]
 
@@ -1017,6 +1203,7 @@ proc create_hier_cell_addr_cont { parentCell nameHier } {
   # Create pins
   create_bd_pin -dir I CE
   create_bd_pin -dir I CLK
+  create_bd_pin -dir I SCLR
   create_bd_pin -dir O -from 31 -to 0 -type data addr
   create_bd_pin -dir O not_zero
   create_bd_pin -dir I -type clk s_restart
@@ -1056,15 +1243,25 @@ proc create_hier_cell_addr_cont { parentCell nameHier } {
    CONFIG.LOGO_FILE {data/sym_orgate.png} \
  ] $util_vector_logic_1
 
+  # Create instance: util_vector_logic_2, and set properties
+  set util_vector_logic_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_2 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {or} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_orgate.png} \
+ ] $util_vector_logic_2
+
   # Create port connections
   connect_bd_net -net CE_1 [get_bd_pins CE] [get_bd_pins c_counter_binary_0/CE]
   connect_bd_net -net CLK_1 [get_bd_pins CLK] [get_bd_pins c_counter_binary_0/CLK]
+  connect_bd_net -net SCLR_1 [get_bd_pins SCLR] [get_bd_pins util_vector_logic_2/Op2]
   connect_bd_net -net c_counter_binary_0_Q [get_bd_pins addr] [get_bd_pins c_counter_binary_0/Q] [get_bd_pins util_reduced_logic_0/Op1]
   connect_bd_net -net s_reset_1 [get_bd_pins s_restart] [get_bd_pins util_vector_logic_1/Op1]
   connect_bd_net -net s_zncc_1 [get_bd_pins s_zncc] [get_bd_pins util_vector_logic_1/Op2]
   connect_bd_net -net util_reduced_logic_0_Res [get_bd_pins not_zero] [get_bd_pins util_reduced_logic_0/Res] [get_bd_pins util_vector_logic_0/Op1]
   connect_bd_net -net util_vector_logic_0_Res [get_bd_pins zero] [get_bd_pins util_vector_logic_0/Res]
-  connect_bd_net -net util_vector_logic_1_Res [get_bd_pins c_counter_binary_0/SCLR] [get_bd_pins util_vector_logic_1/Res]
+  connect_bd_net -net util_vector_logic_1_Res [get_bd_pins util_vector_logic_1/Res] [get_bd_pins util_vector_logic_2/Op1]
+  connect_bd_net -net util_vector_logic_2_Res [get_bd_pins c_counter_binary_0/SCLR] [get_bd_pins util_vector_logic_2/Res]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -1108,6 +1305,7 @@ proc create_hier_cell_acc_group { parentCell nameHier } {
 
   # Create pins
   create_bd_pin -dir I -type clk CLK
+  create_bd_pin -dir I SCLR
   create_bd_pin -dir O -from 47 -to 0 acc0
   create_bd_pin -dir O -from 47 -to 0 acc1
   create_bd_pin -dir O -from 47 -to 0 acc2
@@ -1204,6 +1402,14 @@ proc create_hier_cell_acc_group { parentCell nameHier } {
   set_property -dict [ list \
    CONFIG.C_SIZE {1} \
  ] $util_vector_logic_1
+
+  # Create instance: util_vector_logic_2, and set properties
+  set util_vector_logic_2 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_2 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {or} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_orgate.png} \
+ ] $util_vector_logic_2
 
   # Create instance: xbip_dsp48_macro_0, and set properties
   set xbip_dsp48_macro_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xbip_dsp48_macro:3.0 xbip_dsp48_macro_0 ]
@@ -1569,6 +1775,7 @@ proc create_hier_cell_acc_group { parentCell nameHier } {
  ] $xlslice_7
 
   # Create port connections
+  connect_bd_net -net SCLR_1 [get_bd_pins SCLR] [get_bd_pins util_vector_logic_2/Op1]
   connect_bd_net -net acc_state_s_2 [get_bd_pins s_acc] [get_bd_pins util_vector_logic_1/Op2]
   connect_bd_net -net addr_cont_addr [get_bd_pins addr] [get_bd_pins xlslice_5/Din] [get_bd_pins xlslice_7/Din]
   connect_bd_net -net avg0_1 [get_bd_pins avg0] [get_bd_pins xbip_dsp48_macro_5/C]
@@ -1595,9 +1802,10 @@ proc create_hier_cell_acc_group { parentCell nameHier } {
   connect_bd_net -net long_in1_1 [get_bd_pins long_in1] [get_bd_pins b_10/Din] [get_bd_pins b_11/Din] [get_bd_pins b_12/Din] [get_bd_pins b_13/Din]
   connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins CLK] [get_bd_pins xbip_dsp48_macro_0/CLK] [get_bd_pins xbip_dsp48_macro_3/CLK] [get_bd_pins xbip_dsp48_macro_6/CLK]
   connect_bd_net -net s_done_1 [get_bd_pins s_done] [get_bd_pins util_vector_logic_0/Op2]
-  connect_bd_net -net s_restart_1 [get_bd_pins s_restart] [get_bd_pins util_vector_logic_0/Op1]
+  connect_bd_net -net s_restart_1 [get_bd_pins s_restart] [get_bd_pins util_vector_logic_2/Op2]
   connect_bd_net -net util_reduced_logic_0_Res_1 [get_bd_pins util_reduced_logic_1/Res] [get_bd_pins util_vector_logic_1/Op1]
   connect_bd_net -net util_vector_logic_0_Res_1 [get_bd_pins util_vector_logic_1/Res] [get_bd_pins xbip_dsp48_macro_0/CE] [get_bd_pins xbip_dsp48_macro_3/CE] [get_bd_pins xbip_dsp48_macro_6/CE]
+  connect_bd_net -net util_vector_logic_2_Res [get_bd_pins util_vector_logic_0/Op1] [get_bd_pins util_vector_logic_2/Res]
   connect_bd_net -net xbip_dsp48_macro_0_P [get_bd_pins acc1] [get_bd_pins xbip_dsp48_macro_0/P]
   connect_bd_net -net xbip_dsp48_macro_1_P [get_bd_pins xbip_dsp48_macro_1/P] [get_bd_pins xbip_dsp48_macro_2/A]
   connect_bd_net -net xbip_dsp48_macro_1_P_1 [get_bd_pins xbip_dsp48_macro_4/P] [get_bd_pins xbip_dsp48_macro_5/A]
@@ -1655,6 +1863,7 @@ proc create_hier_cell_avg_err_state { parentCell nameHier } {
 
   # Create pins
   create_bd_pin -dir I -type clk CLK
+  create_bd_pin -dir I SCLR
   create_bd_pin -dir I addr_zero
   create_bd_pin -dir I len_not_zero
   create_bd_pin -dir O s_0
@@ -1666,6 +1875,7 @@ proc create_hier_cell_avg_err_state { parentCell nameHier } {
   create_bd_pin -dir O s_6
   create_bd_pin -dir O s_7
   create_bd_pin -dir O s_8
+  create_bd_pin -dir O -from 3 -to 0 state
   create_bd_pin -dir I stop_cycle
   create_bd_pin -dir I valid_div
   create_bd_pin -dir I valid_sqrt
@@ -1881,6 +2091,14 @@ proc create_hier_cell_avg_err_state { parentCell nameHier } {
    CONFIG.C_SIZE {1} \
  ] $util_vector_logic_6
 
+  # Create instance: util_vector_logic_7, and set properties
+  set util_vector_logic_7 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_7 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {or} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_orgate.png} \
+ ] $util_vector_logic_7
+
   # Create instance: x_0, and set properties
   set x_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlslice:1.0 x_0 ]
   set_property -dict [ list \
@@ -1930,6 +2148,7 @@ proc create_hier_cell_avg_err_state { parentCell nameHier } {
  ] $xlconstant_0
 
   # Create port connections
+  connect_bd_net -net SCLR_1 [get_bd_pins SCLR] [get_bd_pins util_vector_logic_7/Op2]
   connect_bd_net -net addr_zero_1 [get_bd_pins addr_zero] [get_bd_pins util_vector_logic_5/Op2]
   connect_bd_net -net avg_err_logic_enable [get_bd_pins c_counter_binary_0/CE] [get_bd_pins util_reduced_logic_0/Res]
   connect_bd_net -net c_0_dout [get_bd_pins c_0/dout] [get_bd_pins s_0/Op1]
@@ -1941,7 +2160,7 @@ proc create_hier_cell_avg_err_state { parentCell nameHier } {
   connect_bd_net -net c_6_dout [get_bd_pins c_6/dout] [get_bd_pins s_6/Op1]
   connect_bd_net -net c_7_dout [get_bd_pins c_7/dout] [get_bd_pins s_7/Op1]
   connect_bd_net -net c_8_dout [get_bd_pins c_8/dout] [get_bd_pins s_8/Op1]
-  connect_bd_net -net c_counter_binary_0_Q [get_bd_pins c_counter_binary_0/Q] [get_bd_pins x_0/Din] [get_bd_pins x_1/Din] [get_bd_pins x_2/Din] [get_bd_pins x_3/Din]
+  connect_bd_net -net c_counter_binary_0_Q [get_bd_pins state] [get_bd_pins c_counter_binary_0/Q] [get_bd_pins x_0/Din] [get_bd_pins x_1/Din] [get_bd_pins x_2/Din] [get_bd_pins x_3/Din]
   connect_bd_net -net len_not_zero_1 [get_bd_pins len_not_zero] [get_bd_pins util_vector_logic_0/Op2]
   connect_bd_net -net n_x_0_Res [get_bd_pins c_0/In0] [get_bd_pins c_2/In0] [get_bd_pins c_4/In0] [get_bd_pins c_6/In0] [get_bd_pins c_8/In0] [get_bd_pins n_x_0/Res]
   connect_bd_net -net n_x_1_Res [get_bd_pins c_0/In1] [get_bd_pins c_1/In1] [get_bd_pins c_4/In1] [get_bd_pins c_5/In1] [get_bd_pins c_8/In1] [get_bd_pins n_x_1/Res]
@@ -1956,7 +2175,7 @@ proc create_hier_cell_avg_err_state { parentCell nameHier } {
   connect_bd_net -net s_5_Res [get_bd_pins s_5] [get_bd_pins s_5/Res] [get_bd_pins util_vector_logic_4/Op1]
   connect_bd_net -net s_6_Res [get_bd_pins s_6] [get_bd_pins s_6/Res] [get_bd_pins util_vector_logic_6/Op1]
   connect_bd_net -net s_7_Res [get_bd_pins s_7] [get_bd_pins s_7/Res] [get_bd_pins xlconcat_0/In7]
-  connect_bd_net -net s_8_Res [get_bd_pins s_8] [get_bd_pins c_counter_binary_0/SCLR] [get_bd_pins s_8/Res]
+  connect_bd_net -net s_8_Res [get_bd_pins s_8] [get_bd_pins s_8/Res] [get_bd_pins util_vector_logic_7/Op1]
   connect_bd_net -net slicer_cont_x_3 [get_bd_pins c_8/In3] [get_bd_pins n_x_3/Op1] [get_bd_pins x_3/Dout]
   connect_bd_net -net stop_cycle_1 [get_bd_pins stop_cycle] [get_bd_pins util_vector_logic_1/Op2] [get_bd_pins util_vector_logic_3/Op2]
   connect_bd_net -net util_vector_logic_0_Res [get_bd_pins util_vector_logic_0/Res] [get_bd_pins xlconcat_0/In0]
@@ -1966,6 +2185,7 @@ proc create_hier_cell_avg_err_state { parentCell nameHier } {
   connect_bd_net -net util_vector_logic_4_Res [get_bd_pins util_vector_logic_4/Res] [get_bd_pins xlconcat_0/In5]
   connect_bd_net -net util_vector_logic_5_Res [get_bd_pins util_vector_logic_5/Res] [get_bd_pins xlconcat_0/In3]
   connect_bd_net -net util_vector_logic_6_Res [get_bd_pins util_vector_logic_6/Res] [get_bd_pins xlconcat_0/In6]
+  connect_bd_net -net util_vector_logic_7_Res [get_bd_pins c_counter_binary_0/SCLR] [get_bd_pins util_vector_logic_7/Res]
   connect_bd_net -net valid_div_1 [get_bd_pins valid_div] [get_bd_pins util_vector_logic_2/Op2]
   connect_bd_net -net valid_sqrt_1 [get_bd_pins valid_sqrt] [get_bd_pins util_vector_logic_4/Op2]
   connect_bd_net -net valid_zncc_1 [get_bd_pins valid_zncc] [get_bd_pins util_vector_logic_6/Op2]
@@ -2023,6 +2243,7 @@ proc create_hier_cell_acc_state { parentCell nameHier } {
   create_bd_pin -dir O -from 0 -to 0 s_1
   create_bd_pin -dir O -from 0 -to 0 s_2
   create_bd_pin -dir O -from 0 -to 0 s_3
+  create_bd_pin -dir O -from 1 -to 0 state
 
   # Create instance: c_counter_binary_0, and set properties
   set c_counter_binary_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:c_counter_binary:12.0 c_counter_binary_0 ]
@@ -2121,7 +2342,7 @@ proc create_hier_cell_acc_state { parentCell nameHier } {
 
   # Create port connections
   connect_bd_net -net SCLR_1 [get_bd_pins SCLR] [get_bd_pins c_counter_binary_0/SCLR]
-  connect_bd_net -net c_counter_binary_0_Q [get_bd_pins c_counter_binary_0/Q] [get_bd_pins x_0/Din] [get_bd_pins x_1/Din]
+  connect_bd_net -net c_counter_binary_0_Q [get_bd_pins state] [get_bd_pins c_counter_binary_0/Q] [get_bd_pins x_0/Din] [get_bd_pins x_1/Din]
   connect_bd_net -net do_cycle_1 [get_bd_pins do_cycle] [get_bd_pins s_0_c/Op1]
   connect_bd_net -net n_x_0_Res [get_bd_pins n_x_0/Res] [get_bd_pins s_0/Op1] [get_bd_pins s_2/Op1]
   connect_bd_net -net n_x_1_Res [get_bd_pins n_x_1/Res] [get_bd_pins s_0/Op2] [get_bd_pins s_1/Op2]
@@ -2182,11 +2403,11 @@ proc create_hier_cell_datapath { parentCell nameHier } {
   # Create pins
   create_bd_pin -dir I -type clk CLK
   create_bd_pin -dir O -from 0 -to 0 addr_zero
-  create_bd_pin -dir O -from 31 -to 0 debug_0
-  create_bd_pin -dir O -from 31 -to 0 debug_1
+  create_bd_pin -dir O clear
   create_bd_pin -dir O -from 31 -to 0 debug_2
   create_bd_pin -dir O -from 0 -to 0 do_cycle
   create_bd_pin -dir O len_not_zero
+  create_bd_pin -dir O -from 31 -to 0 max_index
   create_bd_pin -dir I -type ce s_acc
   create_bd_pin -dir I s_addr
   create_bd_pin -dir I s_avg
@@ -2228,6 +2449,9 @@ proc create_hier_cell_datapath { parentCell nameHier } {
   # Create instance: len_cont
   create_hier_cell_len_cont $hier_obj len_cont
 
+  # Create instance: max_cont
+  create_hier_cell_max_cont $hier_obj max_cont
+
   # Create instance: zncc_cont
   create_hier_cell_zncc_cont $hier_obj zncc_cont
 
@@ -2237,6 +2461,7 @@ proc create_hier_cell_datapath { parentCell nameHier } {
   connect_bd_intf_net -intf_net axi_bram_ctrl_0_BRAM_PORTA1 [get_bd_intf_pins BRAM_PORTA0] [get_bd_intf_pins bram_pair/BRAM_PORTA1]
 
   # Create port connections
+  connect_bd_net -net SCLR_1 [get_bd_pins clear] [get_bd_pins acc_group/SCLR] [get_bd_pins addr_cont/SCLR] [get_bd_pins index_cont/SCLR] [get_bd_pins len_cont/clear] [get_bd_pins max_cont/SCLR]
   connect_bd_net -net acc_group_acc0 [get_bd_pins acc_group/acc0] [get_bd_pins avg_pair/dividend0] [get_bd_pins err_pair/num0]
   connect_bd_net -net acc_group_acc1 [get_bd_pins acc_group/acc1] [get_bd_pins avg_pair/dividend1] [get_bd_pins err_pair/num1]
   connect_bd_net -net acc_group_acc2 [get_bd_pins acc_group/acc2] [get_bd_pins zncc_cont/cc]
@@ -2253,20 +2478,21 @@ proc create_hier_cell_datapath { parentCell nameHier } {
   connect_bd_net -net avg_pair_avg1 [get_bd_pins acc_group/avg1] [get_bd_pins avg_pair/avg1]
   connect_bd_net -net avg_pair_valid_div [get_bd_pins valid_div] [get_bd_pins avg_pair/valid_div]
   connect_bd_net -net bram_cont_long_sel [get_bd_pins acc_group/long_in0] [get_bd_pins bram_pair/long_sel_0] [get_bd_pins len_cont/len_in]
-  connect_bd_net -net c_counter_binary_0_Q [get_bd_pins debug_0] [get_bd_pins bram_res/index] [get_bd_pins index_cont/Q]
+  connect_bd_net -net c_counter_binary_0_Q [get_bd_pins bram_res/index] [get_bd_pins index_cont/index] [get_bd_pins max_cont/index]
   connect_bd_net -net cycle_cont_stop_cycle [get_bd_pins stop_cycle] [get_bd_pins cycle_cont/stop_cycle]
-  connect_bd_net -net divisor_1 [get_bd_pins debug_1] [get_bd_pins avg_pair/divisor] [get_bd_pins len_cont/len]
+  connect_bd_net -net divisor_1 [get_bd_pins avg_pair/divisor] [get_bd_pins len_cont/len]
   connect_bd_net -net do_cycle_1 [get_bd_pins do_cycle] [get_bd_pins cycle_cont/do_cycle]
   connect_bd_net -net err_pair_norm [get_bd_pins err_pair/norm] [get_bd_pins zncc_cont/norm]
   connect_bd_net -net len_cont_len_off [get_bd_pins cycle_cont/len] [get_bd_pins len_cont/len_off]
   connect_bd_net -net len_cont_not_zero [get_bd_pins len_not_zero] [get_bd_pins bram_pair/clear_len] [get_bd_pins cycle_cont/len_not_zero] [get_bd_pins len_cont/not_zero]
   connect_bd_net -net long_in_1 [get_bd_pins acc_group/long_in1] [get_bd_pins bram_pair/long_sel_1]
-  connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins CLK] [get_bd_pins acc_group/CLK] [get_bd_pins addr_cont/CLK] [get_bd_pins avg_pair/CLK] [get_bd_pins bram_pair/CLK] [get_bd_pins bram_res/CLK] [get_bd_pins err_pair/CLK] [get_bd_pins index_cont/CLK] [get_bd_pins len_cont/CLK] [get_bd_pins zncc_cont/CLK]
+  connect_bd_net -net max_cont_max_index [get_bd_pins max_index] [get_bd_pins max_cont/max_index]
+  connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins CLK] [get_bd_pins acc_group/CLK] [get_bd_pins addr_cont/CLK] [get_bd_pins avg_pair/CLK] [get_bd_pins bram_pair/CLK] [get_bd_pins bram_res/CLK] [get_bd_pins err_pair/CLK] [get_bd_pins index_cont/CLK] [get_bd_pins len_cont/CLK] [get_bd_pins max_cont/CLK] [get_bd_pins zncc_cont/CLK]
   connect_bd_net -net s_done_1 [get_bd_pins s_done] [get_bd_pins acc_group/s_done] [get_bd_pins index_cont/s_done]
-  connect_bd_net -net s_zncc_1 [get_bd_pins s_zncc] [get_bd_pins addr_cont/s_zncc] [get_bd_pins len_cont/SCLR] [get_bd_pins zncc_cont/s_zncc]
+  connect_bd_net -net s_zncc_1 [get_bd_pins s_zncc] [get_bd_pins addr_cont/s_zncc] [get_bd_pins len_cont/s_zncc] [get_bd_pins zncc_cont/s_zncc]
   connect_bd_net -net util_vector_logic_1_Res [get_bd_pins valid_sqrt] [get_bd_pins err_pair/valid_sqrt]
-  connect_bd_net -net zncc_cont_valid_zncc [get_bd_pins valid_zncc] [get_bd_pins bram_res/save] [get_bd_pins zncc_cont/valid_zncc]
-  connect_bd_net -net zncc_cont_zncc [get_bd_pins debug_2] [get_bd_pins bram_res/zncc_val] [get_bd_pins zncc_cont/zncc]
+  connect_bd_net -net zncc_cont_valid_zncc [get_bd_pins valid_zncc] [get_bd_pins bram_res/save] [get_bd_pins max_cont/compare] [get_bd_pins zncc_cont/valid_zncc]
+  connect_bd_net -net zncc_cont_zncc [get_bd_pins debug_2] [get_bd_pins bram_res/zncc_val] [get_bd_pins max_cont/value] [get_bd_pins zncc_cont/zncc]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -2310,6 +2536,7 @@ proc create_hier_cell_control_unit { parentCell nameHier } {
 
   # Create pins
   create_bd_pin -dir I -type clk CLK
+  create_bd_pin -dir I SCLR
   create_bd_pin -dir I addr_zero
   create_bd_pin -dir I -type ce do_cycle
   create_bd_pin -dir I len_not_zero
@@ -2322,6 +2549,7 @@ proc create_hier_cell_control_unit { parentCell nameHier } {
   create_bd_pin -dir O s_square
   create_bd_pin -dir O s_wait
   create_bd_pin -dir O s_zncc
+  create_bd_pin -dir O -from 31 -to 0 states
   create_bd_pin -dir I stop_cycle
   create_bd_pin -dir I valid_div
   create_bd_pin -dir I valid_sqrt
@@ -2333,24 +2561,54 @@ proc create_hier_cell_control_unit { parentCell nameHier } {
   # Create instance: avg_err_state
   create_hier_cell_avg_err_state $hier_obj avg_err_state
 
+  # Create instance: util_vector_logic_0, and set properties
+  set util_vector_logic_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:util_vector_logic:2.0 util_vector_logic_0 ]
+  set_property -dict [ list \
+   CONFIG.C_OPERATION {or} \
+   CONFIG.C_SIZE {1} \
+   CONFIG.LOGO_FILE {data/sym_orgate.png} \
+ ] $util_vector_logic_0
+
+  # Create instance: xlconcat_0, and set properties
+  set xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0 ]
+  set_property -dict [ list \
+   CONFIG.IN0_WIDTH {2} \
+   CONFIG.IN1_WIDTH {4} \
+   CONFIG.IN2_WIDTH {26} \
+   CONFIG.NUM_PORTS {3} \
+ ] $xlconcat_0
+
+  # Create instance: xlconstant_0, and set properties
+  set xlconstant_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconstant:1.1 xlconstant_0 ]
+  set_property -dict [ list \
+   CONFIG.CONST_VAL {0} \
+   CONFIG.CONST_WIDTH {26} \
+ ] $xlconstant_0
+
   # Create port connections
+  connect_bd_net -net SCLR_1 [get_bd_pins SCLR] [get_bd_pins avg_err_state/SCLR] [get_bd_pins util_vector_logic_0/Op2]
   connect_bd_net -net acc_state_s_2 [get_bd_pins s_acc] [get_bd_pins acc_state/s_2]
   connect_bd_net -net acc_state_s_3 [get_bd_pins s_addr] [get_bd_pins acc_state/s_3]
+  connect_bd_net -net acc_state_state [get_bd_pins acc_state/state] [get_bd_pins xlconcat_0/In0]
   connect_bd_net -net addr_zero_1 [get_bd_pins addr_zero] [get_bd_pins avg_err_state/addr_zero]
   connect_bd_net -net avg_err_state_s_0 [get_bd_pins s_wait] [get_bd_pins avg_err_state/s_0]
   connect_bd_net -net avg_err_state_s_2 [get_bd_pins s_avg] [get_bd_pins avg_err_state/s_2]
-  connect_bd_net -net avg_err_state_s_3 [get_bd_pins s_restart] [get_bd_pins acc_state/SCLR] [get_bd_pins avg_err_state/s_3]
+  connect_bd_net -net avg_err_state_s_3 [get_bd_pins s_restart] [get_bd_pins avg_err_state/s_3] [get_bd_pins util_vector_logic_0/Op1]
   connect_bd_net -net avg_err_state_s_4 [get_bd_pins s_square] [get_bd_pins avg_err_state/s_4]
   connect_bd_net -net avg_err_state_s_5 [get_bd_pins s_root] [get_bd_pins avg_err_state/s_5]
   connect_bd_net -net avg_err_state_s_6 [get_bd_pins s_zncc] [get_bd_pins avg_err_state/s_6]
   connect_bd_net -net avg_err_state_s_7 [get_bd_pins s_done] [get_bd_pins avg_err_state/s_7]
+  connect_bd_net -net avg_err_state_state [get_bd_pins avg_err_state/state] [get_bd_pins xlconcat_0/In1]
   connect_bd_net -net cycle_cont_stop_cycle [get_bd_pins stop_cycle] [get_bd_pins avg_err_state/stop_cycle]
   connect_bd_net -net do_cycle_1 [get_bd_pins do_cycle] [get_bd_pins acc_state/do_cycle]
   connect_bd_net -net len_cont_not_zero [get_bd_pins len_not_zero] [get_bd_pins avg_err_state/len_not_zero]
   connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins CLK] [get_bd_pins acc_state/CLK] [get_bd_pins avg_err_state/CLK]
   connect_bd_net -net util_vector_logic_0_Res [get_bd_pins valid_div] [get_bd_pins avg_err_state/valid_div]
+  connect_bd_net -net util_vector_logic_0_Res1 [get_bd_pins acc_state/SCLR] [get_bd_pins util_vector_logic_0/Res]
   connect_bd_net -net util_vector_logic_1_Res [get_bd_pins valid_sqrt] [get_bd_pins avg_err_state/valid_sqrt]
   connect_bd_net -net valid_zncc_1 [get_bd_pins valid_zncc] [get_bd_pins avg_err_state/valid_zncc]
+  connect_bd_net -net xlconcat_0_dout [get_bd_pins states] [get_bd_pins xlconcat_0/dout]
+  connect_bd_net -net xlconstant_0_dout [get_bd_pins xlconcat_0/In2] [get_bd_pins xlconstant_0/dout]
 
   # Restore current instance
   current_bd_instance $oldCurInst
@@ -2452,12 +2710,12 @@ proc create_root_design { parentCell } {
    CONFIG.CLKIN1_JITTER_PS {50.0} \
    CONFIG.CLKIN2_JITTER_PS {66.660000000000011} \
    CONFIG.CLKOUT1_DRIVES {BUFG} \
-   CONFIG.CLKOUT1_JITTER {110.944} \
-   CONFIG.CLKOUT1_PHASE_ERROR {105.461} \
+   CONFIG.CLKOUT1_JITTER {89.301} \
+   CONFIG.CLKOUT1_PHASE_ERROR {91.235} \
    CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {300} \
    CONFIG.CLKOUT2_DRIVES {BUFG} \
-   CONFIG.CLKOUT2_JITTER {102.821} \
-   CONFIG.CLKOUT2_PHASE_ERROR {105.461} \
+   CONFIG.CLKOUT2_JITTER {82.539} \
+   CONFIG.CLKOUT2_PHASE_ERROR {91.235} \
    CONFIG.CLKOUT2_REQUESTED_OUT_FREQ {450} \
    CONFIG.CLKOUT2_USED {true} \
    CONFIG.CLKOUT3_DRIVES {BUFG} \
@@ -2467,15 +2725,16 @@ proc create_root_design { parentCell } {
    CONFIG.CLKOUT7_DRIVES {BUFG} \
    CONFIG.CLK_IN1_BOARD_INTERFACE {sys_diff_clock} \
    CONFIG.CLK_IN2_BOARD_INTERFACE {Custom} \
-   CONFIG.MMCM_CLKFBOUT_MULT_F {9} \
+   CONFIG.FEEDBACK_SOURCE {FDBK_AUTO} \
+   CONFIG.MMCM_CLKFBOUT_MULT_F {4.500} \
    CONFIG.MMCM_CLKIN1_PERIOD {5.000} \
    CONFIG.MMCM_CLKIN2_PERIOD {10.0} \
-   CONFIG.MMCM_CLKOUT0_DIVIDE_F {3} \
+   CONFIG.MMCM_CLKOUT0_DIVIDE_F {3.000} \
    CONFIG.MMCM_CLKOUT1_DIVIDE {2} \
    CONFIG.MMCM_COMPENSATION {ZHOLD} \
-   CONFIG.MMCM_DIVCLK_DIVIDE {2} \
+   CONFIG.MMCM_DIVCLK_DIVIDE {1} \
    CONFIG.NUM_OUT_CLKS {2} \
-   CONFIG.PRIMITIVE {PLL} \
+   CONFIG.PRIMITIVE {MMCM} \
    CONFIG.PRIM_SOURCE {Differential_clock_capable_pin} \
    CONFIG.RESET_BOARD_INTERFACE {reset} \
    CONFIG.SECONDARY_IN_FREQ {100.000} \
@@ -2922,16 +3181,17 @@ proc create_root_design { parentCell } {
   connect_bd_net -net acc_state_s_3 [get_bd_pins control_unit/s_addr] [get_bd_pins datapath/s_addr]
   connect_bd_net -net addr_zero_1 [get_bd_pins control_unit/addr_zero] [get_bd_pins datapath/addr_zero]
   connect_bd_net -net avg_cont1_avg [get_bd_pins axi_gpio_2/gpio_io_i] [get_bd_pins datapath/debug_2]
-  connect_bd_net -net avg_cont_avg [get_bd_pins axi_gpio_0/gpio_io_i] [get_bd_pins datapath/debug_0]
+  connect_bd_net -net avg_cont_avg [get_bd_pins axi_gpio_0/gpio_io_i] [get_bd_pins datapath/max_index]
   connect_bd_net -net avg_err_state_s_0 [get_bd_pins control_unit/s_wait] [get_bd_pins datapath/s_wait]
   connect_bd_net -net avg_err_state_s_2 [get_bd_pins control_unit/s_avg] [get_bd_pins datapath/s_avg]
   connect_bd_net -net avg_err_state_s_3 [get_bd_pins control_unit/s_restart] [get_bd_pins datapath/s_restart]
   connect_bd_net -net avg_err_state_s_4 [get_bd_pins control_unit/s_square] [get_bd_pins datapath/s_square]
   connect_bd_net -net avg_err_state_s_5 [get_bd_pins control_unit/s_root] [get_bd_pins datapath/s_root]
   connect_bd_net -net control_unit_s_done [get_bd_pins control_unit/s_done] [get_bd_pins datapath/s_done]
+  connect_bd_net -net control_unit_states [get_bd_pins axi_gpio_1/gpio_io_i] [get_bd_pins control_unit/states]
   connect_bd_net -net cycle_cont_stop_cycle [get_bd_pins control_unit/stop_cycle] [get_bd_pins datapath/stop_cycle]
+  connect_bd_net -net datapath_clear [get_bd_pins control_unit/SCLR] [get_bd_pins datapath/clear]
   connect_bd_net -net do_cycle_1 [get_bd_pins control_unit/do_cycle] [get_bd_pins datapath/do_cycle]
-  connect_bd_net -net err_cont_err [get_bd_pins axi_gpio_1/gpio_io_i] [get_bd_pins datapath/debug_1]
   connect_bd_net -net len_cont_not_zero [get_bd_pins control_unit/len_not_zero] [get_bd_pins datapath/len_not_zero]
   connect_bd_net -net processing_system7_0_FCLK_CLK0 [get_bd_pins axi_bram_ctrl_0/s_axi_aclk] [get_bd_pins axi_bram_ctrl_1/s_axi_aclk] [get_bd_pins axi_bram_ctrl_2/s_axi_aclk] [get_bd_pins axi_gpio_0/s_axi_aclk] [get_bd_pins axi_gpio_1/s_axi_aclk] [get_bd_pins axi_gpio_2/s_axi_aclk] [get_bd_pins axi_smc/aclk] [get_bd_pins clk_wiz_0/clk_out2] [get_bd_pins processing_system7_0/M_AXI_GP0_ACLK] [get_bd_pins rst_ps7_0_50M/slowest_sync_clk]
   connect_bd_net -net processing_system7_0_FCLK_CLK1 [get_bd_pins clk_wiz_0/clk_out1] [get_bd_pins control_unit/CLK] [get_bd_pins datapath/CLK]

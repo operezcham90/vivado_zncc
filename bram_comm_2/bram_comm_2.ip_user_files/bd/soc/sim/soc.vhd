@@ -1,7 +1,7 @@
 --Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
 --Tool Version: Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
---Date        : Sat Mar 20 16:56:22 2021
+--Date        : Sat Apr  3 16:21:08 2021
 --Host        : DESKTOP-K3HMOPR running 64-bit major release  (build 9200)
 --Command     : generate_target soc.bd
 --Design      : soc
@@ -14,6 +14,7 @@ use UNISIM.VCOMPONENTS.ALL;
 entity acc_group_imp_110YIM7 is
   port (
     CLK : in STD_LOGIC;
+    SCLR : in STD_LOGIC;
     acc0 : out STD_LOGIC_VECTOR ( 47 downto 0 );
     acc1 : out STD_LOGIC_VECTOR ( 47 downto 0 );
     acc2 : out STD_LOGIC_VECTOR ( 47 downto 0 );
@@ -271,6 +272,14 @@ architecture STRUCTURE of acc_group_imp_110YIM7 is
     Res : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component soc_util_vector_logic_0_9;
+  component soc_util_vector_logic_0_10 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Op2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component soc_util_vector_logic_0_10;
+  signal SCLR_1 : STD_LOGIC;
   signal acc_state_s_2 : STD_LOGIC;
   signal addr_cont_addr : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal avg0_1 : STD_LOGIC_VECTOR ( 16 downto 0 );
@@ -300,6 +309,7 @@ architecture STRUCTURE of acc_group_imp_110YIM7 is
   signal s_restart_1 : STD_LOGIC;
   signal util_reduced_logic_0_Res_1 : STD_LOGIC;
   signal util_vector_logic_0_Res_1 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal util_vector_logic_2_Res : STD_LOGIC_VECTOR ( 0 to 0 );
   signal xbip_dsp48_macro_0_P : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal xbip_dsp48_macro_1_P : STD_LOGIC_VECTOR ( 17 downto 0 );
   signal xbip_dsp48_macro_1_P_1 : STD_LOGIC_VECTOR ( 17 downto 0 );
@@ -315,6 +325,7 @@ architecture STRUCTURE of acc_group_imp_110YIM7 is
   signal xlslice_1_Dout_1 : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal xlslice_3_Dout_1 : STD_LOGIC_VECTOR ( 29 downto 0 );
 begin
+  SCLR_1 <= SCLR;
   acc0(47 downto 0) <= xbip_dsp48_macro_3_P(47 downto 0);
   acc1(47 downto 0) <= xbip_dsp48_macro_0_P(47 downto 0);
   acc2(47 downto 0) <= xbip_dsp48_macro_6_P(47 downto 0);
@@ -375,7 +386,7 @@ util_reduced_logic_1: component soc_util_reduced_logic_0_4
     );
 util_vector_logic_0: component soc_util_vector_logic_0_9
      port map (
-      Op1(0) => s_restart_1,
+      Op1(0) => util_vector_logic_2_Res(0),
       Op2(0) => s_done_1,
       Res(0) => avg_err_state_s_3(0)
     );
@@ -384,6 +395,12 @@ util_vector_logic_1: component soc_util_vector_logic_0_6
       Op1(0) => util_reduced_logic_0_Res_1,
       Op2(0) => acc_state_s_2,
       Res(0) => util_vector_logic_0_Res_1(0)
+    );
+util_vector_logic_2: component soc_util_vector_logic_0_10
+     port map (
+      Op1(0) => SCLR_1,
+      Op2(0) => s_restart_1,
+      Res(0) => util_vector_logic_2_Res(0)
     );
 xbip_dsp48_macro_0: component soc_xbip_dsp48_macro_0_1
      port map (
@@ -549,7 +566,8 @@ entity acc_state_imp_CKK7KL is
     s_0 : out STD_LOGIC_VECTOR ( 0 to 0 );
     s_1 : out STD_LOGIC_VECTOR ( 0 to 0 );
     s_2 : out STD_LOGIC_VECTOR ( 0 to 0 );
-    s_3 : out STD_LOGIC_VECTOR ( 0 to 0 )
+    s_3 : out STD_LOGIC_VECTOR ( 0 to 0 );
+    state : out STD_LOGIC_VECTOR ( 1 downto 0 )
   );
 end acc_state_imp_CKK7KL;
 
@@ -659,6 +677,7 @@ begin
   s_1(0) <= s_1_Res(0);
   s_2(0) <= s_2_Res(0);
   s_3(0) <= s_3_Res(0);
+  state(1 downto 0) <= c_counter_binary_0_Q(1 downto 0);
 c_counter_binary_0: component soc_c_counter_binary_0_2
      port map (
       CE => util_reduced_logic_0_Res,
@@ -738,6 +757,7 @@ entity addr_cont_imp_E554NB is
   port (
     CE : in STD_LOGIC;
     CLK : in STD_LOGIC;
+    SCLR : in STD_LOGIC;
     addr : out STD_LOGIC_VECTOR ( 31 downto 0 );
     not_zero : out STD_LOGIC;
     s_restart : in STD_LOGIC;
@@ -774,17 +794,27 @@ architecture STRUCTURE of addr_cont_imp_E554NB is
     Res : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component soc_util_vector_logic_1_4;
+  component soc_util_vector_logic_1_6 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Op2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component soc_util_vector_logic_1_6;
   signal CE_1 : STD_LOGIC;
   signal CLK_1 : STD_LOGIC;
+  signal SCLR_1 : STD_LOGIC;
   signal c_counter_binary_0_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal s_reset_1 : STD_LOGIC;
   signal s_zncc_1 : STD_LOGIC;
   signal util_reduced_logic_0_Res : STD_LOGIC;
   signal util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 0 to 0 );
   signal util_vector_logic_1_Res : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal util_vector_logic_2_Res : STD_LOGIC_VECTOR ( 0 to 0 );
 begin
   CE_1 <= CE;
   CLK_1 <= CLK;
+  SCLR_1 <= SCLR;
   addr(31 downto 0) <= c_counter_binary_0_Q(31 downto 0);
   not_zero <= util_reduced_logic_0_Res;
   s_reset_1 <= s_restart;
@@ -795,7 +825,7 @@ c_counter_binary_0: component soc_c_counter_binary_0_0
       CE => CE_1,
       CLK => CLK_1,
       Q(31 downto 0) => c_counter_binary_0_Q(31 downto 0),
-      SCLR => util_vector_logic_1_Res(0)
+      SCLR => util_vector_logic_2_Res(0)
     );
 util_reduced_logic_0: component soc_util_reduced_logic_0_0
      port map (
@@ -813,6 +843,12 @@ util_vector_logic_1: component soc_util_vector_logic_1_4
       Op2(0) => s_zncc_1,
       Res(0) => util_vector_logic_1_Res(0)
     );
+util_vector_logic_2: component soc_util_vector_logic_1_6
+     port map (
+      Op1(0) => util_vector_logic_1_Res(0),
+      Op2(0) => SCLR_1,
+      Res(0) => util_vector_logic_2_Res(0)
+    );
 end STRUCTURE;
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -821,6 +857,7 @@ use UNISIM.VCOMPONENTS.ALL;
 entity avg_err_state_imp_XDJ2SW is
   port (
     CLK : in STD_LOGIC;
+    SCLR : in STD_LOGIC;
     addr_zero : in STD_LOGIC;
     len_not_zero : in STD_LOGIC;
     s_0 : out STD_LOGIC;
@@ -832,6 +869,7 @@ entity avg_err_state_imp_XDJ2SW is
     s_6 : out STD_LOGIC;
     s_7 : out STD_LOGIC;
     s_8 : out STD_LOGIC;
+    state : out STD_LOGIC_VECTOR ( 3 downto 0 );
     stop_cycle : in STD_LOGIC;
     valid_div : in STD_LOGIC;
     valid_sqrt : in STD_LOGIC;
@@ -1105,6 +1143,14 @@ architecture STRUCTURE of avg_err_state_imp_XDJ2SW is
     dout : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component soc_xlconstant_0_3;
+  component soc_util_vector_logic_7_0 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Op2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component soc_util_vector_logic_7_0;
+  signal SCLR_1 : STD_LOGIC;
   signal addr_zero_1 : STD_LOGIC;
   signal avg_err_logic_enable : STD_LOGIC;
   signal c_0_dout : STD_LOGIC_VECTOR ( 3 downto 0 );
@@ -1141,6 +1187,7 @@ architecture STRUCTURE of avg_err_state_imp_XDJ2SW is
   signal util_vector_logic_4_Res : STD_LOGIC_VECTOR ( 0 to 0 );
   signal util_vector_logic_5_Res : STD_LOGIC_VECTOR ( 0 to 0 );
   signal util_vector_logic_6_Res : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal util_vector_logic_7_Res : STD_LOGIC_VECTOR ( 0 to 0 );
   signal valid_div_1 : STD_LOGIC;
   signal valid_sqrt_1 : STD_LOGIC;
   signal valid_zncc_1 : STD_LOGIC;
@@ -1150,6 +1197,7 @@ architecture STRUCTURE of avg_err_state_imp_XDJ2SW is
   signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 8 downto 0 );
   signal xlconstant_0_dout : STD_LOGIC_VECTOR ( 0 to 0 );
 begin
+  SCLR_1 <= SCLR;
   addr_zero_1 <= addr_zero;
   len_not_zero_1 <= len_not_zero;
   processing_system7_0_FCLK_CLK1 <= CLK;
@@ -1162,6 +1210,7 @@ begin
   s_6 <= s_6_Res;
   s_7 <= s_7_Res;
   s_8 <= s_8_Res;
+  state(3 downto 0) <= c_counter_binary_0_Q(3 downto 0);
   stop_cycle_1 <= stop_cycle;
   valid_div_1 <= valid_div;
   valid_sqrt_1 <= valid_sqrt;
@@ -1243,7 +1292,7 @@ c_counter_binary_0: component soc_c_counter_binary_0_1
       CE => avg_err_logic_enable,
       CLK => processing_system7_0_FCLK_CLK1,
       Q(3 downto 0) => c_counter_binary_0_Q(3 downto 0),
-      SCLR => s_8_Res
+      SCLR => util_vector_logic_7_Res(0)
     );
 n_x_0: component soc_util_vector_logic_0_3
      port map (
@@ -1357,6 +1406,12 @@ util_vector_logic_6: component soc_util_vector_logic_5_0
       Op2(0) => valid_zncc_1,
       Res(0) => util_vector_logic_6_Res(0)
     );
+util_vector_logic_7: component soc_util_vector_logic_7_0
+     port map (
+      Op1(0) => s_8_Res,
+      Op2(0) => SCLR_1,
+      Res(0) => util_vector_logic_7_Res(0)
+    );
 x_0: component soc_xlslice_0_1
      port map (
       Din(3 downto 0) => c_counter_binary_0_Q(3 downto 0),
@@ -1417,8 +1472,10 @@ architecture STRUCTURE of avg_pair_imp_PMKWS4 is
   port (
     aclk : in STD_LOGIC;
     s_axis_divisor_tvalid : in STD_LOGIC;
+    s_axis_divisor_tready : out STD_LOGIC;
     s_axis_divisor_tdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
     s_axis_dividend_tvalid : in STD_LOGIC;
+    s_axis_dividend_tready : out STD_LOGIC;
     s_axis_dividend_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 );
     m_axis_dout_tvalid : out STD_LOGIC;
     m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 79 downto 0 )
@@ -1434,8 +1491,10 @@ architecture STRUCTURE of avg_pair_imp_PMKWS4 is
   port (
     aclk : in STD_LOGIC;
     s_axis_divisor_tvalid : in STD_LOGIC;
+    s_axis_divisor_tready : out STD_LOGIC;
     s_axis_divisor_tdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
     s_axis_dividend_tvalid : in STD_LOGIC;
+    s_axis_dividend_tready : out STD_LOGIC;
     s_axis_dividend_tdata : in STD_LOGIC_VECTOR ( 47 downto 0 );
     m_axis_dout_tvalid : out STD_LOGIC;
     m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 79 downto 0 )
@@ -1486,6 +1545,10 @@ architecture STRUCTURE of avg_pair_imp_PMKWS4 is
   signal s_axis_dividend_tdata_0_1 : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal s_axis_dividend_tdata_1_1 : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal NLW_div_gen_0_s_axis_dividend_tready_UNCONNECTED : STD_LOGIC;
+  signal NLW_div_gen_0_s_axis_divisor_tready_UNCONNECTED : STD_LOGIC;
+  signal NLW_div_gen_1_s_axis_dividend_tready_UNCONNECTED : STD_LOGIC;
+  signal NLW_div_gen_1_s_axis_divisor_tready_UNCONNECTED : STD_LOGIC;
 begin
   avg0(16 downto 0) <= avg_pair_avg0(16 downto 0);
   avg1(16 downto 0) <= avg_pair_avg1(16 downto 0);
@@ -1517,8 +1580,10 @@ div_gen_0: component soc_div_gen_0_0
       m_axis_dout_tdata(79 downto 0) => div_gen_0_m_axis_dout_tdata(79 downto 0),
       m_axis_dout_tvalid => div_cont_valid_out,
       s_axis_dividend_tdata(47 downto 0) => s_axis_dividend_tdata_0_1(47 downto 0),
+      s_axis_dividend_tready => NLW_div_gen_0_s_axis_dividend_tready_UNCONNECTED,
       s_axis_dividend_tvalid => avg_err_state_s_2,
       s_axis_divisor_tdata(31 downto 0) => divisor_1(31 downto 0),
+      s_axis_divisor_tready => NLW_div_gen_0_s_axis_divisor_tready_UNCONNECTED,
       s_axis_divisor_tvalid => avg_err_state_s_2
     );
 div_gen_1: component soc_div_gen_0_1
@@ -1527,8 +1592,10 @@ div_gen_1: component soc_div_gen_0_1
       m_axis_dout_tdata(79 downto 0) => div_gen_0_m_axis_dout_tdata_1(79 downto 0),
       m_axis_dout_tvalid => div_cont1_valid_out,
       s_axis_dividend_tdata(47 downto 0) => s_axis_dividend_tdata_1_1(47 downto 0),
+      s_axis_dividend_tready => NLW_div_gen_1_s_axis_dividend_tready_UNCONNECTED,
       s_axis_dividend_tvalid => avg_err_state_s_2,
       s_axis_divisor_tdata(31 downto 0) => divisor_1(31 downto 0),
+      s_axis_divisor_tready => NLW_div_gen_1_s_axis_divisor_tready_UNCONNECTED,
       s_axis_divisor_tvalid => avg_err_state_s_2
     );
 util_vector_logic_0: component soc_util_vector_logic_0_11
@@ -2153,7 +2220,8 @@ use UNISIM.VCOMPONENTS.ALL;
 entity index_cont_imp_HZAII1 is
   port (
     CLK : in STD_LOGIC;
-    Q : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    SCLR : in STD_LOGIC;
+    index : out STD_LOGIC_VECTOR ( 31 downto 0 );
     s_done : in STD_LOGIC
   );
 end index_cont_imp_HZAII1;
@@ -2167,11 +2235,13 @@ architecture STRUCTURE of index_cont_imp_HZAII1 is
     Q : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component soc_c_counter_binary_0_3;
+  signal SCLR_1 : STD_LOGIC;
   signal c_counter_binary_0_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal processing_system7_0_FCLK_CLK1 : STD_LOGIC;
   signal s_done_1 : STD_LOGIC;
 begin
-  Q(31 downto 0) <= c_counter_binary_0_Q(31 downto 0);
+  SCLR_1 <= SCLR;
+  index(31 downto 0) <= c_counter_binary_0_Q(31 downto 0);
   processing_system7_0_FCLK_CLK1 <= CLK;
   s_done_1 <= s_done;
 c_counter_binary_0: component soc_c_counter_binary_0_3
@@ -2179,7 +2249,7 @@ c_counter_binary_0: component soc_c_counter_binary_0_3
       CE => s_done_1,
       CLK => processing_system7_0_FCLK_CLK1,
       Q(31 downto 0) => c_counter_binary_0_Q(31 downto 0),
-      SCLR => '0'
+      SCLR => SCLR_1
     );
 end STRUCTURE;
 library IEEE;
@@ -2190,11 +2260,12 @@ entity len_cont_imp_3H2370 is
   port (
     CE : in STD_LOGIC;
     CLK : in STD_LOGIC;
-    SCLR : in STD_LOGIC;
+    clear : out STD_LOGIC;
     len : out STD_LOGIC_VECTOR ( 31 downto 0 );
     len_in : in STD_LOGIC_VECTOR ( 31 downto 0 );
     len_off : out STD_LOGIC_VECTOR ( 31 downto 0 );
     not_zero : out STD_LOGIC;
+    s_zncc : in STD_LOGIC;
     zero : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
 end len_cont_imp_3H2370;
@@ -2227,22 +2298,38 @@ architecture STRUCTURE of len_cont_imp_3H2370 is
     S : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
   end component soc_c_addsub_0_2;
+  component soc_util_reduced_logic_0_6 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    Res : out STD_LOGIC
+  );
+  end component soc_util_reduced_logic_0_6;
+  component soc_util_vector_logic_1_5 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Op2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component soc_util_vector_logic_1_5;
   signal CE_1 : STD_LOGIC;
-  signal SCLR_1 : STD_LOGIC;
   signal axi_bram_ctrl_0_bram_doutb : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal c_addsub_0_S : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal c_shift_ram_0_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal processing_system7_0_FCLK_CLK1 : STD_LOGIC;
+  signal s_zncc_1 : STD_LOGIC;
   signal util_reduced_logic_0_Res : STD_LOGIC;
+  signal util_reduced_logic_1_Res : STD_LOGIC;
   signal util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal util_vector_logic_1_Res : STD_LOGIC_VECTOR ( 0 to 0 );
 begin
   CE_1 <= CE;
-  SCLR_1 <= SCLR;
   axi_bram_ctrl_0_bram_doutb(31 downto 0) <= len_in(31 downto 0);
+  clear <= util_reduced_logic_1_Res;
   len(31 downto 0) <= c_shift_ram_0_Q(31 downto 0);
   len_off(31 downto 0) <= c_addsub_0_S(31 downto 0);
   not_zero <= util_reduced_logic_0_Res;
   processing_system7_0_FCLK_CLK1 <= CLK;
+  s_zncc_1 <= s_zncc;
   zero(0) <= util_vector_logic_0_Res(0);
 c_addsub_0: component soc_c_addsub_0_2
      port map (
@@ -2255,17 +2342,133 @@ c_shift_ram_0: component soc_c_shift_ram_0_0
       CLK => processing_system7_0_FCLK_CLK1,
       D(31 downto 0) => axi_bram_ctrl_0_bram_doutb(31 downto 0),
       Q(31 downto 0) => c_shift_ram_0_Q(31 downto 0),
-      SCLR => SCLR_1
+      SCLR => util_vector_logic_1_Res(0)
     );
 util_reduced_logic_0: component soc_util_reduced_logic_0_1
      port map (
       Op1(31 downto 0) => c_shift_ram_0_Q(31 downto 0),
       Res => util_reduced_logic_0_Res
     );
+util_reduced_logic_1: component soc_util_reduced_logic_0_6
+     port map (
+      Op1(31 downto 0) => c_shift_ram_0_Q(31 downto 0),
+      Res => util_reduced_logic_1_Res
+    );
 util_vector_logic_0: component soc_util_vector_logic_0_1
      port map (
       Op1(0) => util_reduced_logic_0_Res,
       Res(0) => util_vector_logic_0_Res(0)
+    );
+util_vector_logic_1: component soc_util_vector_logic_1_5
+     port map (
+      Op1(0) => s_zncc_1,
+      Op2(0) => util_reduced_logic_1_Res,
+      Res(0) => util_vector_logic_1_Res(0)
+    );
+end STRUCTURE;
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+library UNISIM;
+use UNISIM.VCOMPONENTS.ALL;
+entity max_cont_imp_7JZ0TP is
+  port (
+    CLK : in STD_LOGIC;
+    SCLR : in STD_LOGIC;
+    compare : in STD_LOGIC;
+    index : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    max_index : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    value : in STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+end max_cont_imp_7JZ0TP;
+
+architecture STRUCTURE of max_cont_imp_7JZ0TP is
+  component soc_c_shift_ram_0_5 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    CLK : in STD_LOGIC;
+    CE : in STD_LOGIC;
+    SCLR : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component soc_c_shift_ram_0_5;
+  component soc_c_shift_ram_0_8 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    CLK : in STD_LOGIC;
+    CE : in STD_LOGIC;
+    SINIT : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component soc_c_shift_ram_0_8;
+  component soc_util_vector_logic_0_14 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Op2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component soc_util_vector_logic_0_14;
+  component soc_c_addsub_0_1 is
+  port (
+    A : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    B : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    S : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component soc_c_addsub_0_1;
+  component soc_xlslice_0_8 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component soc_xlslice_0_8;
+  signal CLK_1 : STD_LOGIC;
+  signal SCLR_1 : STD_LOGIC;
+  signal c_addsub_0_S : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal c_shift_ram_0_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal c_shift_ram_1_Q : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal compare_1 : STD_LOGIC;
+  signal index_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal value_1 : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal xlslice_0_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+begin
+  CLK_1 <= CLK;
+  SCLR_1 <= SCLR;
+  compare_1 <= compare;
+  index_1(31 downto 0) <= index(31 downto 0);
+  max_index(31 downto 0) <= c_shift_ram_0_Q(31 downto 0);
+  value_1(15 downto 0) <= value(15 downto 0);
+c_addsub_0: component soc_c_addsub_0_1
+     port map (
+      A(15 downto 0) => c_shift_ram_1_Q(15 downto 0),
+      B(15 downto 0) => value_1(15 downto 0),
+      S(15 downto 0) => c_addsub_0_S(15 downto 0)
+    );
+c_shift_ram_0: component soc_c_shift_ram_0_5
+     port map (
+      CE => util_vector_logic_0_Res(0),
+      CLK => CLK_1,
+      D(31 downto 0) => index_1(31 downto 0),
+      Q(31 downto 0) => c_shift_ram_0_Q(31 downto 0),
+      SCLR => SCLR_1
+    );
+c_shift_ram_1: component soc_c_shift_ram_0_8
+     port map (
+      CE => util_vector_logic_0_Res(0),
+      CLK => CLK_1,
+      D(15 downto 0) => value_1(15 downto 0),
+      Q(15 downto 0) => c_shift_ram_1_Q(15 downto 0),
+      SINIT => SCLR_1
+    );
+util_vector_logic_0: component soc_util_vector_logic_0_14
+     port map (
+      Op1(0) => compare_1,
+      Op2(0) => xlslice_0_Dout(0),
+      Res(0) => util_vector_logic_0_Res(0)
+    );
+xlslice_0: component soc_xlslice_0_8
+     port map (
+      Din(15 downto 0) => c_addsub_0_S(15 downto 0),
+      Dout(0) => xlslice_0_Dout(0)
     );
 end STRUCTURE;
 library IEEE;
@@ -2276,27 +2479,16 @@ entity zncc_cont_imp_1VWJ2M2 is
   port (
     CLK : in STD_LOGIC;
     cc : in STD_LOGIC_VECTOR ( 47 downto 0 );
+    index : in STD_LOGIC_VECTOR ( 31 downto 0 );
     norm : in STD_LOGIC_VECTOR ( 63 downto 0 );
     s_zncc : in STD_LOGIC;
     valid_zncc : out STD_LOGIC;
-    zncc : out STD_LOGIC_VECTOR ( 31 downto 0 )
+    zncc : out STD_LOGIC_VECTOR ( 15 downto 0 );
+    zncc_dual : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
 end zncc_cont_imp_1VWJ2M2;
 
 architecture STRUCTURE of zncc_cont_imp_1VWJ2M2 is
-  component soc_div_gen_0_3 is
-  port (
-    aclk : in STD_LOGIC;
-    s_axis_divisor_tvalid : in STD_LOGIC;
-    s_axis_divisor_tready : out STD_LOGIC;
-    s_axis_divisor_tdata : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    s_axis_dividend_tvalid : in STD_LOGIC;
-    s_axis_dividend_tready : out STD_LOGIC;
-    s_axis_dividend_tdata : in STD_LOGIC_VECTOR ( 63 downto 0 );
-    m_axis_dout_tvalid : out STD_LOGIC;
-    m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 87 downto 0 )
-  );
-  end component soc_div_gen_0_3;
   component soc_xlconcat_0_3 is
   port (
     In0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
@@ -2309,52 +2501,136 @@ architecture STRUCTURE of zncc_cont_imp_1VWJ2M2 is
     dout : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component soc_xlconstant_0_7;
-  component soc_xlslice_0_12 is
+  component soc_xlconcat_1_3 is
   port (
-    Din : in STD_LOGIC_VECTOR ( 87 downto 0 );
-    Dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
+    In0 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    In1 : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
   );
-  end component soc_xlslice_0_12;
+  end component soc_xlconcat_1_3;
+  component soc_xlslice_1_3 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component soc_xlslice_1_3;
+  component soc_util_vector_logic_0_15 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component soc_util_vector_logic_0_15;
+  component soc_util_vector_logic_1_7 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Op2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component soc_util_vector_logic_1_7;
+  component soc_util_vector_logic_1_8 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Op2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component soc_util_vector_logic_1_8;
+  component soc_div_gen_0_2 is
+  port (
+    aclk : in STD_LOGIC;
+    s_axis_divisor_tvalid : in STD_LOGIC;
+    s_axis_divisor_tready : out STD_LOGIC;
+    s_axis_divisor_tdata : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    s_axis_dividend_tvalid : in STD_LOGIC;
+    s_axis_dividend_tready : out STD_LOGIC;
+    s_axis_dividend_tdata : in STD_LOGIC_VECTOR ( 63 downto 0 );
+    m_axis_dout_tvalid : out STD_LOGIC;
+    m_axis_dout_tdata : out STD_LOGIC_VECTOR ( 63 downto 0 )
+  );
+  end component soc_div_gen_0_2;
+  component soc_xlslice_0_13 is
+  port (
+    Din : in STD_LOGIC_VECTOR ( 62 downto 0 );
+    Dout : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component soc_xlslice_0_13;
   component soc_c_shift_ram_0_4 is
   port (
-    D : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    D : in STD_LOGIC_VECTOR ( 15 downto 0 );
     CLK : in STD_LOGIC;
     CE : in STD_LOGIC;
-    SCLR : in STD_LOGIC;
-    Q : out STD_LOGIC_VECTOR ( 31 downto 0 )
+    Q : out STD_LOGIC_VECTOR ( 15 downto 0 )
   );
   end component soc_c_shift_ram_0_4;
+  component soc_c_shift_ram_0_6 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    CLK : in STD_LOGIC;
+    CE : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component soc_c_shift_ram_0_6;
+  component soc_c_shift_ram_0_7 is
+  port (
+    D : in STD_LOGIC_VECTOR ( 15 downto 0 );
+    CLK : in STD_LOGIC;
+    CE : in STD_LOGIC;
+    Q : out STD_LOGIC_VECTOR ( 15 downto 0 )
+  );
+  end component soc_c_shift_ram_0_7;
   signal CLK_1 : STD_LOGIC;
-  signal c_shift_ram_0_Q : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal c_shift_ram_0_Q : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal c_shift_ram_1_Q : STD_LOGIC_VECTOR ( 15 downto 0 );
+  signal c_shift_ram_2_Q : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal cc_1 : STD_LOGIC_VECTOR ( 47 downto 0 );
-  signal div_gen_0_m_axis_dout_tdata : STD_LOGIC_VECTOR ( 87 downto 0 );
+  signal div_gen_0_m_axis_dout_tdata : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal div_gen_0_m_axis_dout_tvalid : STD_LOGIC;
+  signal even_bit_Dout : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal index_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal norm_1 : STD_LOGIC_VECTOR ( 63 downto 0 );
   signal s_zncc_1 : STD_LOGIC;
+  signal util_vector_logic_0_Res : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal util_vector_logic_1_Res : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal util_vector_logic_2_Res : STD_LOGIC_VECTOR ( 0 to 0 );
   signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 63 downto 0 );
+  signal xlconcat_1_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal xlconstant_0_dout : STD_LOGIC_VECTOR ( 15 downto 0 );
-  signal xlslice_0_Dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal xlslice_0_ok_Dout : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal NLW_div_gen_0_s_axis_dividend_tready_UNCONNECTED : STD_LOGIC;
   signal NLW_div_gen_0_s_axis_divisor_tready_UNCONNECTED : STD_LOGIC;
 begin
   CLK_1 <= CLK;
   cc_1(47 downto 0) <= cc(47 downto 0);
+  index_1(31 downto 0) <= index(31 downto 0);
   norm_1(63 downto 0) <= norm(63 downto 0);
   s_zncc_1 <= s_zncc;
   valid_zncc <= div_gen_0_m_axis_dout_tvalid;
-  zncc(31 downto 0) <= c_shift_ram_0_Q(31 downto 0);
+  zncc(15 downto 0) <= c_shift_ram_2_Q(15 downto 0);
+  zncc_dual(31 downto 0) <= xlconcat_1_dout(31 downto 0);
 c_shift_ram_0: component soc_c_shift_ram_0_4
+     port map (
+      CE => util_vector_logic_2_Res(0),
+      CLK => CLK_1,
+      D(15 downto 0) => xlslice_0_ok_Dout(15 downto 0),
+      Q(15 downto 0) => c_shift_ram_0_Q(15 downto 0)
+    );
+c_shift_ram_1: component soc_c_shift_ram_0_6
+     port map (
+      CE => util_vector_logic_1_Res(0),
+      CLK => CLK_1,
+      D(15 downto 0) => xlslice_0_ok_Dout(15 downto 0),
+      Q(15 downto 0) => c_shift_ram_1_Q(15 downto 0)
+    );
+c_shift_ram_2: component soc_c_shift_ram_0_7
      port map (
       CE => div_gen_0_m_axis_dout_tvalid,
       CLK => CLK_1,
-      D(31 downto 0) => xlslice_0_Dout(31 downto 0),
-      Q(31 downto 0) => c_shift_ram_0_Q(31 downto 0),
-      SCLR => '0'
+      D(15 downto 0) => xlslice_0_ok_Dout(15 downto 0),
+      Q(15 downto 0) => c_shift_ram_2_Q(15 downto 0)
     );
-div_gen_0: component soc_div_gen_0_3
+div_gen_0: component soc_div_gen_0_2
      port map (
       aclk => CLK_1,
-      m_axis_dout_tdata(87 downto 0) => div_gen_0_m_axis_dout_tdata(87 downto 0),
+      m_axis_dout_tdata(63 downto 0) => div_gen_0_m_axis_dout_tdata(63 downto 0),
       m_axis_dout_tvalid => div_gen_0_m_axis_dout_tvalid,
       s_axis_dividend_tdata(63 downto 0) => xlconcat_0_dout(63 downto 0),
       s_axis_dividend_tready => NLW_div_gen_0_s_axis_dividend_tready_UNCONNECTED,
@@ -2363,20 +2639,48 @@ div_gen_0: component soc_div_gen_0_3
       s_axis_divisor_tready => NLW_div_gen_0_s_axis_divisor_tready_UNCONNECTED,
       s_axis_divisor_tvalid => s_zncc_1
     );
+even_bit: component soc_xlslice_1_3
+     port map (
+      Din(31 downto 0) => index_1(31 downto 0),
+      Dout(0) => even_bit_Dout(0)
+    );
+util_vector_logic_0: component soc_util_vector_logic_0_15
+     port map (
+      Op1(0) => even_bit_Dout(0),
+      Res(0) => util_vector_logic_0_Res(0)
+    );
+util_vector_logic_1: component soc_util_vector_logic_1_7
+     port map (
+      Op1(0) => div_gen_0_m_axis_dout_tvalid,
+      Op2(0) => even_bit_Dout(0),
+      Res(0) => util_vector_logic_1_Res(0)
+    );
+util_vector_logic_2: component soc_util_vector_logic_1_8
+     port map (
+      Op1(0) => div_gen_0_m_axis_dout_tvalid,
+      Op2(0) => util_vector_logic_0_Res(0),
+      Res(0) => util_vector_logic_2_Res(0)
+    );
 xlconcat_0: component soc_xlconcat_0_3
      port map (
       In0(15 downto 0) => xlconstant_0_dout(15 downto 0),
       In1(47 downto 0) => cc_1(47 downto 0),
       dout(63 downto 0) => xlconcat_0_dout(63 downto 0)
     );
+xlconcat_1: component soc_xlconcat_1_3
+     port map (
+      In0(15 downto 0) => c_shift_ram_0_Q(15 downto 0),
+      In1(15 downto 0) => c_shift_ram_1_Q(15 downto 0),
+      dout(31 downto 0) => xlconcat_1_dout(31 downto 0)
+    );
 xlconstant_0: component soc_xlconstant_0_7
      port map (
       dout(15 downto 0) => xlconstant_0_dout(15 downto 0)
     );
-xlslice_0: component soc_xlslice_0_12
+xlslice_0_ok: component soc_xlslice_0_13
      port map (
-      Din(87 downto 0) => div_gen_0_m_axis_dout_tdata(87 downto 0),
-      Dout(31 downto 0) => xlslice_0_Dout(31 downto 0)
+      Din(62 downto 0) => div_gen_0_m_axis_dout_tdata(62 downto 0),
+      Dout(15 downto 0) => xlslice_0_ok_Dout(15 downto 0)
     );
 end STRUCTURE;
 library IEEE;
@@ -2386,6 +2690,7 @@ use UNISIM.VCOMPONENTS.ALL;
 entity control_unit_imp_YKRN9 is
   port (
     CLK : in STD_LOGIC;
+    SCLR : in STD_LOGIC;
     addr_zero : in STD_LOGIC;
     do_cycle : in STD_LOGIC;
     len_not_zero : in STD_LOGIC;
@@ -2398,6 +2703,7 @@ entity control_unit_imp_YKRN9 is
     s_square : out STD_LOGIC;
     s_wait : out STD_LOGIC;
     s_zncc : out STD_LOGIC;
+    states : out STD_LOGIC_VECTOR ( 31 downto 0 );
     stop_cycle : in STD_LOGIC;
     valid_div : in STD_LOGIC;
     valid_sqrt : in STD_LOGIC;
@@ -2406,8 +2712,30 @@ entity control_unit_imp_YKRN9 is
 end control_unit_imp_YKRN9;
 
 architecture STRUCTURE of control_unit_imp_YKRN9 is
+  component soc_util_vector_logic_0_13 is
+  port (
+    Op1 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Op2 : in STD_LOGIC_VECTOR ( 0 to 0 );
+    Res : out STD_LOGIC_VECTOR ( 0 to 0 )
+  );
+  end component soc_util_vector_logic_0_13;
+  component soc_xlconcat_0_9 is
+  port (
+    In0 : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    In1 : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    In2 : in STD_LOGIC_VECTOR ( 25 downto 0 );
+    dout : out STD_LOGIC_VECTOR ( 31 downto 0 )
+  );
+  end component soc_xlconcat_0_9;
+  component soc_xlconstant_0_4 is
+  port (
+    dout : out STD_LOGIC_VECTOR ( 25 downto 0 )
+  );
+  end component soc_xlconstant_0_4;
+  signal SCLR_1 : STD_LOGIC;
   signal acc_state_s_2 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal acc_state_s_3 : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal acc_state_state : STD_LOGIC_VECTOR ( 1 downto 0 );
   signal addr_zero_1 : STD_LOGIC;
   signal avg_err_state_s_0 : STD_LOGIC;
   signal avg_err_state_s_2 : STD_LOGIC;
@@ -2416,18 +2744,23 @@ architecture STRUCTURE of control_unit_imp_YKRN9 is
   signal avg_err_state_s_5 : STD_LOGIC;
   signal avg_err_state_s_6 : STD_LOGIC;
   signal avg_err_state_s_7 : STD_LOGIC;
+  signal avg_err_state_state : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal cycle_cont_stop_cycle : STD_LOGIC;
   signal do_cycle_1 : STD_LOGIC;
   signal len_cont_not_zero : STD_LOGIC;
   signal processing_system7_0_FCLK_CLK1 : STD_LOGIC;
   signal util_vector_logic_0_Res : STD_LOGIC;
+  signal util_vector_logic_0_Res1 : STD_LOGIC_VECTOR ( 0 to 0 );
   signal util_vector_logic_1_Res : STD_LOGIC;
   signal valid_zncc_1 : STD_LOGIC;
+  signal xlconcat_0_dout : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal xlconstant_0_dout : STD_LOGIC_VECTOR ( 25 downto 0 );
   signal NLW_acc_state_s_0_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_acc_state_s_1_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_avg_err_state_s_1_UNCONNECTED : STD_LOGIC;
   signal NLW_avg_err_state_s_8_UNCONNECTED : STD_LOGIC;
 begin
+  SCLR_1 <= SCLR;
   addr_zero_1 <= addr_zero;
   cycle_cont_stop_cycle <= stop_cycle;
   do_cycle_1 <= do_cycle;
@@ -2442,22 +2775,25 @@ begin
   s_square <= avg_err_state_s_4;
   s_wait <= avg_err_state_s_0;
   s_zncc <= avg_err_state_s_6;
+  states(31 downto 0) <= xlconcat_0_dout(31 downto 0);
   util_vector_logic_0_Res <= valid_div;
   util_vector_logic_1_Res <= valid_sqrt;
   valid_zncc_1 <= valid_zncc;
 acc_state: entity work.acc_state_imp_CKK7KL
      port map (
       CLK => processing_system7_0_FCLK_CLK1,
-      SCLR => avg_err_state_s_3,
+      SCLR => util_vector_logic_0_Res1(0),
       do_cycle => do_cycle_1,
       s_0(0) => NLW_acc_state_s_0_UNCONNECTED(0),
       s_1(0) => NLW_acc_state_s_1_UNCONNECTED(0),
       s_2(0) => acc_state_s_2(0),
-      s_3(0) => acc_state_s_3(0)
+      s_3(0) => acc_state_s_3(0),
+      state(1 downto 0) => acc_state_state(1 downto 0)
     );
 avg_err_state: entity work.avg_err_state_imp_XDJ2SW
      port map (
       CLK => processing_system7_0_FCLK_CLK1,
+      SCLR => SCLR_1,
       addr_zero => addr_zero_1,
       len_not_zero => len_cont_not_zero,
       s_0 => avg_err_state_s_0,
@@ -2469,10 +2805,28 @@ avg_err_state: entity work.avg_err_state_imp_XDJ2SW
       s_6 => avg_err_state_s_6,
       s_7 => avg_err_state_s_7,
       s_8 => NLW_avg_err_state_s_8_UNCONNECTED,
+      state(3 downto 0) => avg_err_state_state(3 downto 0),
       stop_cycle => cycle_cont_stop_cycle,
       valid_div => util_vector_logic_0_Res,
       valid_sqrt => util_vector_logic_1_Res,
       valid_zncc => valid_zncc_1
+    );
+util_vector_logic_0: component soc_util_vector_logic_0_13
+     port map (
+      Op1(0) => avg_err_state_s_3,
+      Op2(0) => SCLR_1,
+      Res(0) => util_vector_logic_0_Res1(0)
+    );
+xlconcat_0: component soc_xlconcat_0_9
+     port map (
+      In0(1 downto 0) => acc_state_state(1 downto 0),
+      In1(3 downto 0) => avg_err_state_state(3 downto 0),
+      In2(25 downto 0) => xlconstant_0_dout(25 downto 0),
+      dout(31 downto 0) => xlconcat_0_dout(31 downto 0)
+    );
+xlconstant_0: component soc_xlconstant_0_4
+     port map (
+      dout(25 downto 0) => xlconstant_0_dout(25 downto 0)
     );
 end STRUCTURE;
 library IEEE;
@@ -2504,11 +2858,11 @@ entity datapath_imp_1I69NQ2 is
     BRAM_PORTA2_we : in STD_LOGIC_VECTOR ( 3 downto 0 );
     CLK : in STD_LOGIC;
     addr_zero : out STD_LOGIC_VECTOR ( 0 to 0 );
-    debug_0 : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    debug_1 : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    clear : out STD_LOGIC;
     debug_2 : out STD_LOGIC_VECTOR ( 31 downto 0 );
     do_cycle : out STD_LOGIC_VECTOR ( 0 to 0 );
     len_not_zero : out STD_LOGIC;
+    max_index : out STD_LOGIC_VECTOR ( 31 downto 0 );
     s_acc : in STD_LOGIC;
     s_addr : in STD_LOGIC;
     s_avg : in STD_LOGIC;
@@ -2533,6 +2887,7 @@ architecture STRUCTURE of datapath_imp_1I69NQ2 is
   signal Conn1_EN : STD_LOGIC;
   signal Conn1_RST : STD_LOGIC;
   signal Conn1_WE : STD_LOGIC_VECTOR ( 3 downto 0 );
+  signal SCLR_1 : STD_LOGIC;
   signal acc_group_acc0 : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal acc_group_acc1 : STD_LOGIC_VECTOR ( 47 downto 0 );
   signal acc_group_acc2 : STD_LOGIC_VECTOR ( 47 downto 0 );
@@ -2571,12 +2926,14 @@ architecture STRUCTURE of datapath_imp_1I69NQ2 is
   signal len_cont_len_off : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal len_cont_not_zero : STD_LOGIC;
   signal long_in_1 : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal max_cont_max_index : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal processing_system7_0_FCLK_CLK1 : STD_LOGIC;
   signal s_done_1 : STD_LOGIC;
   signal s_zncc_1 : STD_LOGIC;
   signal util_vector_logic_1_Res : STD_LOGIC_VECTOR ( 0 to 0 );
   signal zncc_cont_valid_zncc : STD_LOGIC;
   signal zncc_cont_zncc : STD_LOGIC_VECTOR ( 31 downto 0 );
+  signal zncc_cont_zncc1 : STD_LOGIC_VECTOR ( 15 downto 0 );
   signal NLW_addr_cont_not_zero_UNCONNECTED : STD_LOGIC;
   signal NLW_len_cont_zero_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
 begin
@@ -2609,11 +2966,11 @@ begin
   axi_bram_ctrl_0_BRAM_PORTA_EN <= BRAM_PORTA1_en;
   axi_bram_ctrl_0_BRAM_PORTA_RST <= BRAM_PORTA1_rst;
   axi_bram_ctrl_0_BRAM_PORTA_WE(3 downto 0) <= BRAM_PORTA1_we(3 downto 0);
-  debug_0(31 downto 0) <= c_counter_binary_0_Q(31 downto 0);
-  debug_1(31 downto 0) <= divisor_1(31 downto 0);
+  clear <= SCLR_1;
   debug_2(31 downto 0) <= zncc_cont_zncc(31 downto 0);
   do_cycle(0) <= do_cycle_1(0);
   len_not_zero <= len_cont_not_zero;
+  max_index(31 downto 0) <= max_cont_max_index(31 downto 0);
   processing_system7_0_FCLK_CLK1 <= CLK;
   s_done_1 <= s_done;
   s_zncc_1 <= s_zncc;
@@ -2624,6 +2981,7 @@ begin
 acc_group: entity work.acc_group_imp_110YIM7
      port map (
       CLK => processing_system7_0_FCLK_CLK1,
+      SCLR => SCLR_1,
       acc0(47 downto 0) => acc_group_acc0(47 downto 0),
       acc1(47 downto 0) => acc_group_acc1(47 downto 0),
       acc2(47 downto 0) => acc_group_acc2(47 downto 0),
@@ -2641,6 +2999,7 @@ addr_cont: entity work.addr_cont_imp_E554NB
      port map (
       CE => acc_state_s_3,
       CLK => processing_system7_0_FCLK_CLK1,
+      SCLR => SCLR_1,
       addr(31 downto 0) => addr_cont_addr(31 downto 0),
       not_zero => NLW_addr_cont_not_zero_UNCONNECTED,
       s_restart => avg_err_state_s_3,
@@ -2714,28 +3073,41 @@ err_pair: entity work.err_pair_imp_W7F3M
 index_cont: entity work.index_cont_imp_HZAII1
      port map (
       CLK => processing_system7_0_FCLK_CLK1,
-      Q(31 downto 0) => c_counter_binary_0_Q(31 downto 0),
+      SCLR => SCLR_1,
+      index(31 downto 0) => c_counter_binary_0_Q(31 downto 0),
       s_done => s_done_1
     );
 len_cont: entity work.len_cont_imp_3H2370
      port map (
       CE => avg_err_state_s_0,
       CLK => processing_system7_0_FCLK_CLK1,
-      SCLR => s_zncc_1,
+      clear => SCLR_1,
       len(31 downto 0) => divisor_1(31 downto 0),
       len_in(31 downto 0) => bram_cont_long_sel(31 downto 0),
       len_off(31 downto 0) => len_cont_len_off(31 downto 0),
       not_zero => len_cont_not_zero,
+      s_zncc => s_zncc_1,
       zero(0) => NLW_len_cont_zero_UNCONNECTED(0)
+    );
+max_cont: entity work.max_cont_imp_7JZ0TP
+     port map (
+      CLK => processing_system7_0_FCLK_CLK1,
+      SCLR => SCLR_1,
+      compare => zncc_cont_valid_zncc,
+      index(31 downto 0) => c_counter_binary_0_Q(31 downto 0),
+      max_index(31 downto 0) => max_cont_max_index(31 downto 0),
+      value(15 downto 0) => zncc_cont_zncc1(15 downto 0)
     );
 zncc_cont: entity work.zncc_cont_imp_1VWJ2M2
      port map (
       CLK => processing_system7_0_FCLK_CLK1,
       cc(47 downto 0) => acc_group_acc2(47 downto 0),
+      index(31 downto 0) => c_counter_binary_0_Q(31 downto 0),
       norm(63 downto 0) => err_pair_norm(63 downto 0),
       s_zncc => s_zncc_1,
       valid_zncc => zncc_cont_valid_zncc,
-      zncc(31 downto 0) => zncc_cont_zncc(31 downto 0)
+      zncc(15 downto 0) => zncc_cont_zncc1(15 downto 0),
+      zncc_dual(31 downto 0) => zncc_cont_zncc(31 downto 0)
     );
 end STRUCTURE;
 library IEEE;
@@ -2769,10 +3141,10 @@ entity soc is
     sys_diff_clock_clk_n : in STD_LOGIC;
     sys_diff_clock_clk_p : in STD_LOGIC
   );
-  attribute CORE_GENERATION_INFO : string;
-  attribute CORE_GENERATION_INFO of soc : entity is "soc,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=soc,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=152,numReposBlks=138,numNonXlnxBlks=0,numHierBlks=14,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=6,da_board_cnt=2,da_bram_cntlr_cnt=3,da_ps7_cnt=1,synth_mode=OOC_per_IP}";
-  attribute HW_HANDOFF : string;
-  attribute HW_HANDOFF of soc : entity is "soc.hwdef";
+  attribute core_generation_info : string;
+  attribute core_generation_info of soc : entity is "soc,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=soc,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=173,numReposBlks=158,numNonXlnxBlks=0,numHierBlks=15,maxHierDepth=2,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=6,da_board_cnt=2,da_bram_cntlr_cnt=3,da_ps7_cnt=1,synth_mode=OOC_per_IP}";
+  attribute hw_handoff : string;
+  attribute hw_handoff of soc : entity is "soc.hwdef";
 end soc;
 
 architecture STRUCTURE of soc is
@@ -3228,6 +3600,7 @@ architecture STRUCTURE of soc is
     clk_in1_n : in STD_LOGIC;
     reset : in STD_LOGIC;
     clk_out1 : out STD_LOGIC;
+    clk_out2 : out STD_LOGIC;
     locked : out STD_LOGIC
   );
   end component soc_clk_wiz_0_0;
@@ -3451,9 +3824,10 @@ architecture STRUCTURE of soc is
   signal axi_smc_M05_AXI_WSTRB : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal axi_smc_M05_AXI_WVALID : STD_LOGIC;
   signal control_unit_s_done : STD_LOGIC;
+  signal control_unit_states : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal cycle_cont_stop_cycle : STD_LOGIC_VECTOR ( 0 to 0 );
+  signal datapath_clear : STD_LOGIC;
   signal do_cycle_1 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal err_cont_err : STD_LOGIC_VECTOR ( 31 downto 0 );
   signal len_cont_not_zero : STD_LOGIC;
   signal processing_system7_0_DDR_ADDR : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal processing_system7_0_DDR_BA : STD_LOGIC_VECTOR ( 2 downto 0 );
@@ -3538,6 +3912,7 @@ architecture STRUCTURE of soc is
   signal NLW_axi_smc_M05_AXI_arqos_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal NLW_axi_smc_M05_AXI_awqos_UNCONNECTED : STD_LOGIC_VECTOR ( 3 downto 0 );
   signal NLW_clk_wiz_0_locked_UNCONNECTED : STD_LOGIC;
+  signal NLW_processing_system7_0_FCLK_CLK0_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_TTC0_WAVE0_OUT_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_TTC0_WAVE1_OUT_UNCONNECTED : STD_LOGIC;
   signal NLW_processing_system7_0_TTC0_WAVE2_OUT_UNCONNECTED : STD_LOGIC;
@@ -3547,47 +3922,47 @@ architecture STRUCTURE of soc is
   signal NLW_rst_ps7_0_50M_bus_struct_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_ps7_0_50M_interconnect_aresetn_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
   signal NLW_rst_ps7_0_50M_peripheral_reset_UNCONNECTED : STD_LOGIC_VECTOR ( 0 to 0 );
-  attribute BMM_INFO_ADDRESS_SPACE : string;
-  attribute BMM_INFO_ADDRESS_SPACE of axi_bram_ctrl_0 : label is "byte  0x40000000 32 > soc datapath/bram_pair/axi_bram_ctrl_0_bram_1";
   attribute KEEP_HIERARCHY : string;
   attribute KEEP_HIERARCHY of axi_bram_ctrl_0 : label is "yes";
-  attribute BMM_INFO_ADDRESS_SPACE of axi_bram_ctrl_1 : label is "byte  0x42000000 32 > soc datapath/bram_pair/axi_bram_ctrl_0_bram";
+  attribute bmm_info_address_space : string;
+  attribute bmm_info_address_space of axi_bram_ctrl_0 : label is "byte  0x40000000 32 > soc datapath/bram_pair/axi_bram_ctrl_0_bram_1";
   attribute KEEP_HIERARCHY of axi_bram_ctrl_1 : label is "yes";
-  attribute BMM_INFO_ADDRESS_SPACE of axi_bram_ctrl_2 : label is "byte  0x44000000 32 > soc datapath/bram_res/axi_bram_ctrl_2_bram";
+  attribute bmm_info_address_space of axi_bram_ctrl_1 : label is "byte  0x42000000 32 > soc datapath/bram_pair/axi_bram_ctrl_0_bram";
   attribute KEEP_HIERARCHY of axi_bram_ctrl_2 : label is "yes";
-  attribute BMM_INFO_PROCESSOR : string;
-  attribute BMM_INFO_PROCESSOR of processing_system7_0 : label is "arm > soc axi_bram_ctrl_0 soc axi_bram_ctrl_1 soc axi_bram_ctrl_2";
+  attribute bmm_info_address_space of axi_bram_ctrl_2 : label is "byte  0x44000000 32 > soc datapath/bram_res/axi_bram_ctrl_2_bram";
   attribute KEEP_HIERARCHY of processing_system7_0 : label is "yes";
-  attribute X_INTERFACE_INFO : string;
-  attribute X_INTERFACE_INFO of DDR_cas_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CAS_N";
-  attribute X_INTERFACE_INFO of DDR_ck_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_N";
-  attribute X_INTERFACE_INFO of DDR_ck_p : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_P";
-  attribute X_INTERFACE_INFO of DDR_cke : signal is "xilinx.com:interface:ddrx:1.0 DDR CKE";
-  attribute X_INTERFACE_INFO of DDR_cs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CS_N";
-  attribute X_INTERFACE_INFO of DDR_odt : signal is "xilinx.com:interface:ddrx:1.0 DDR ODT";
-  attribute X_INTERFACE_INFO of DDR_ras_n : signal is "xilinx.com:interface:ddrx:1.0 DDR RAS_N";
-  attribute X_INTERFACE_INFO of DDR_reset_n : signal is "xilinx.com:interface:ddrx:1.0 DDR RESET_N";
-  attribute X_INTERFACE_INFO of DDR_we_n : signal is "xilinx.com:interface:ddrx:1.0 DDR WE_N";
-  attribute X_INTERFACE_INFO of FIXED_IO_ddr_vrn : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRN";
-  attribute X_INTERFACE_PARAMETER : string;
-  attribute X_INTERFACE_PARAMETER of FIXED_IO_ddr_vrn : signal is "XIL_INTERFACENAME FIXED_IO, CAN_DEBUG false";
-  attribute X_INTERFACE_INFO of FIXED_IO_ddr_vrp : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRP";
-  attribute X_INTERFACE_INFO of FIXED_IO_ps_clk : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK";
-  attribute X_INTERFACE_INFO of FIXED_IO_ps_porb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB";
-  attribute X_INTERFACE_INFO of FIXED_IO_ps_srstb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB";
-  attribute X_INTERFACE_INFO of reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
-  attribute X_INTERFACE_PARAMETER of reset : signal is "XIL_INTERFACENAME RST.RESET, POLARITY ACTIVE_HIGH";
-  attribute X_INTERFACE_INFO of sys_diff_clock_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 sys_diff_clock CLK_N";
-  attribute X_INTERFACE_PARAMETER of sys_diff_clock_clk_n : signal is "XIL_INTERFACENAME sys_diff_clock, CAN_DEBUG false, FREQ_HZ 200000000";
-  attribute X_INTERFACE_INFO of sys_diff_clock_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 sys_diff_clock CLK_P";
-  attribute X_INTERFACE_INFO of DDR_addr : signal is "xilinx.com:interface:ddrx:1.0 DDR ADDR";
-  attribute X_INTERFACE_PARAMETER of DDR_addr : signal is "XIL_INTERFACENAME DDR, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250";
-  attribute X_INTERFACE_INFO of DDR_ba : signal is "xilinx.com:interface:ddrx:1.0 DDR BA";
-  attribute X_INTERFACE_INFO of DDR_dm : signal is "xilinx.com:interface:ddrx:1.0 DDR DM";
-  attribute X_INTERFACE_INFO of DDR_dq : signal is "xilinx.com:interface:ddrx:1.0 DDR DQ";
-  attribute X_INTERFACE_INFO of DDR_dqs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_N";
-  attribute X_INTERFACE_INFO of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
-  attribute X_INTERFACE_INFO of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
+  attribute bmm_info_processor : string;
+  attribute bmm_info_processor of processing_system7_0 : label is "arm > soc axi_bram_ctrl_0 soc axi_bram_ctrl_1 soc axi_bram_ctrl_2";
+  attribute x_interface_info : string;
+  attribute x_interface_info of DDR_cas_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CAS_N";
+  attribute x_interface_info of DDR_ck_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_N";
+  attribute x_interface_info of DDR_ck_p : signal is "xilinx.com:interface:ddrx:1.0 DDR CK_P";
+  attribute x_interface_info of DDR_cke : signal is "xilinx.com:interface:ddrx:1.0 DDR CKE";
+  attribute x_interface_info of DDR_cs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR CS_N";
+  attribute x_interface_info of DDR_odt : signal is "xilinx.com:interface:ddrx:1.0 DDR ODT";
+  attribute x_interface_info of DDR_ras_n : signal is "xilinx.com:interface:ddrx:1.0 DDR RAS_N";
+  attribute x_interface_info of DDR_reset_n : signal is "xilinx.com:interface:ddrx:1.0 DDR RESET_N";
+  attribute x_interface_info of DDR_we_n : signal is "xilinx.com:interface:ddrx:1.0 DDR WE_N";
+  attribute x_interface_info of FIXED_IO_ddr_vrn : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRN";
+  attribute x_interface_parameter : string;
+  attribute x_interface_parameter of FIXED_IO_ddr_vrn : signal is "XIL_INTERFACENAME FIXED_IO, CAN_DEBUG false";
+  attribute x_interface_info of FIXED_IO_ddr_vrp : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRP";
+  attribute x_interface_info of FIXED_IO_ps_clk : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK";
+  attribute x_interface_info of FIXED_IO_ps_porb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_PORB";
+  attribute x_interface_info of FIXED_IO_ps_srstb : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB";
+  attribute x_interface_info of reset : signal is "xilinx.com:signal:reset:1.0 RST.RESET RST";
+  attribute x_interface_parameter of reset : signal is "XIL_INTERFACENAME RST.RESET, POLARITY ACTIVE_HIGH";
+  attribute x_interface_info of sys_diff_clock_clk_n : signal is "xilinx.com:interface:diff_clock:1.0 sys_diff_clock CLK_N";
+  attribute x_interface_parameter of sys_diff_clock_clk_n : signal is "XIL_INTERFACENAME sys_diff_clock, CAN_DEBUG false, FREQ_HZ 200000000";
+  attribute x_interface_info of sys_diff_clock_clk_p : signal is "xilinx.com:interface:diff_clock:1.0 sys_diff_clock CLK_P";
+  attribute x_interface_info of DDR_addr : signal is "xilinx.com:interface:ddrx:1.0 DDR ADDR";
+  attribute x_interface_parameter of DDR_addr : signal is "XIL_INTERFACENAME DDR, AXI_ARBITRATION_SCHEME TDM, BURST_LENGTH 8, CAN_DEBUG false, CAS_LATENCY 11, CAS_WRITE_LATENCY 11, CS_ENABLED true, DATA_MASK_ENABLED true, DATA_WIDTH 8, MEMORY_TYPE COMPONENTS, MEM_ADDR_MAP ROW_COLUMN_BANK, SLOT Single, TIMEPERIOD_PS 1250";
+  attribute x_interface_info of DDR_ba : signal is "xilinx.com:interface:ddrx:1.0 DDR BA";
+  attribute x_interface_info of DDR_dm : signal is "xilinx.com:interface:ddrx:1.0 DDR DM";
+  attribute x_interface_info of DDR_dq : signal is "xilinx.com:interface:ddrx:1.0 DDR DQ";
+  attribute x_interface_info of DDR_dqs_n : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_N";
+  attribute x_interface_info of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
+  attribute x_interface_info of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
 begin
   reset_1 <= reset;
   sys_diff_clock_1_CLK_N <= sys_diff_clock_clk_n;
@@ -3746,7 +4121,7 @@ axi_gpio_0: component soc_axi_gpio_0_0
     );
 axi_gpio_1: component soc_axi_gpio_0_1
      port map (
-      gpio_io_i(31 downto 0) => err_cont_err(31 downto 0),
+      gpio_io_i(31 downto 0) => control_unit_states(31 downto 0),
       s_axi_aclk => processing_system7_0_FCLK_CLK0,
       s_axi_araddr(8 downto 0) => axi_smc_M02_AXI_ARADDR(8 downto 0),
       s_axi_aresetn => rst_ps7_0_50M_peripheral_aresetn(0),
@@ -3994,12 +4369,14 @@ clk_wiz_0: component soc_clk_wiz_0_0
       clk_in1_n => sys_diff_clock_1_CLK_N,
       clk_in1_p => sys_diff_clock_1_CLK_P,
       clk_out1 => processing_system7_0_FCLK_CLK1,
+      clk_out2 => processing_system7_0_FCLK_CLK0,
       locked => NLW_clk_wiz_0_locked_UNCONNECTED,
       reset => reset_1
     );
 control_unit: entity work.control_unit_imp_YKRN9
      port map (
       CLK => processing_system7_0_FCLK_CLK1,
+      SCLR => datapath_clear,
       addr_zero => addr_zero_1(0),
       do_cycle => do_cycle_1(0),
       len_not_zero => len_cont_not_zero,
@@ -4012,6 +4389,7 @@ control_unit: entity work.control_unit_imp_YKRN9
       s_square => avg_err_state_s_4,
       s_wait => avg_err_state_s_0,
       s_zncc => s_zncc_1,
+      states(31 downto 0) => control_unit_states(31 downto 0),
       stop_cycle => cycle_cont_stop_cycle(0),
       valid_div => util_vector_logic_0_Res(0),
       valid_sqrt => util_vector_logic_1_Res(0),
@@ -4042,11 +4420,11 @@ datapath: entity work.datapath_imp_1I69NQ2
       BRAM_PORTA2_we(3 downto 0) => axi_bram_ctrl_2_BRAM_PORTA_WE(3 downto 0),
       CLK => processing_system7_0_FCLK_CLK1,
       addr_zero(0) => addr_zero_1(0),
-      debug_0(31 downto 0) => avg_cont_avg(31 downto 0),
-      debug_1(31 downto 0) => err_cont_err(31 downto 0),
+      clear => datapath_clear,
       debug_2(31 downto 0) => avg_cont1_avg(31 downto 0),
       do_cycle(0) => do_cycle_1(0),
       len_not_zero => len_cont_not_zero,
+      max_index(31 downto 0) => avg_cont_avg(31 downto 0),
       s_acc => acc_state_s_2(0),
       s_addr => acc_state_s_3(0),
       s_avg => avg_err_state_s_2,
@@ -4080,7 +4458,7 @@ processing_system7_0: component soc_processing_system7_0_0
       DDR_VRN => FIXED_IO_ddr_vrn,
       DDR_VRP => FIXED_IO_ddr_vrp,
       DDR_WEB => DDR_we_n,
-      FCLK_CLK0 => processing_system7_0_FCLK_CLK0,
+      FCLK_CLK0 => NLW_processing_system7_0_FCLK_CLK0_UNCONNECTED,
       FCLK_RESET0_N => processing_system7_0_FCLK_RESET0_N,
       MIO(53 downto 0) => FIXED_IO_mio(53 downto 0),
       M_AXI_GP0_ACLK => processing_system7_0_FCLK_CLK0,

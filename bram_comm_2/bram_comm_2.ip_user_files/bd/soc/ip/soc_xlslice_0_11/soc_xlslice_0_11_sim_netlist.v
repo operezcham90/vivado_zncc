@@ -1,10 +1,10 @@
 // Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-// Date        : Tue Mar  9 23:52:24 2021
+// Date        : Tue Mar  9 23:52:23 2021
 // Host        : DESKTOP-K3HMOPR running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode funcsim
-//               c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_xlslice_0_11/soc_xlslice_0_11_sim_netlist.v
+// Command     : write_verilog -force -mode funcsim -rename_top soc_xlslice_0_11 -prefix
+//               soc_xlslice_0_11_ soc_xlslice_0_11_sim_netlist.v
 // Design      : soc_xlslice_0_11
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.

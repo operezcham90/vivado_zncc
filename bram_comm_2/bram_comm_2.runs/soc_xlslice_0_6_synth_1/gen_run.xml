@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="soc_xlslice_0_6_synth_1" LaunchPart="xc7z045ffg900-2" LaunchTime="1615847514">
+<GenRun Id="soc_xlslice_0_6_synth_1" LaunchPart="xc7z045ffg900-2" LaunchTime="1617483200">
   <File Type="PA-TCL" Name="soc_xlslice_0_6.tcl"/>
   <File Type="REPORTS-TCL" Name="soc_xlslice_0_6_reports.tcl"/>
   <File Type="RDS-RDS" Name="soc_xlslice_0_6.vds"/>

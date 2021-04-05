@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<bd:repository xmlns:bd="http://www.xilinx.com/bd" bd:BoundaryCRC="0xD33FAF43361193DB" bd:bdsource="SBD" bd:device="xc7z045ffg900-2" bd:isScoped="true" bd:isValidated="true" bd:synthFlowMode="None" bd:tool_version="2017.3" bd:top="bd_776a" bd:version="1.00.a">
+<bd:repository xmlns:bd="http://www.xilinx.com/bd" bd:BoundaryCRC="0xD33FAF43E8DB0FA3" bd:bdsource="SBD" bd:device="xc7z045ffg900-2" bd:isScoped="true" bd:isValidated="true" bd:synthFlowMode="None" bd:tool_version="2017.3" bd:top="bd_776a" bd:version="1.00.a">
 
   <spirit:component xmlns:spirit="http://www.spiritconsortium.org/XMLSchema/SPIRIT/1685-2009">
     <spirit:vendor>xilinx.com</spirit:vendor>
@@ -39,10 +39,10 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>FREQ_HZ</spirit:name>
-            <spirit:value>50000000</spirit:value>
+            <spirit:value>450000000</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="user_prop"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
@@ -237,19 +237,19 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>PHASE</spirit:name>
-            <spirit:value>0.000</spirit:value>
+            <spirit:value>0.0</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="default"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>CLK_DOMAIN</spirit:name>
-            <spirit:value>soc_processing_system7_0_0_FCLK_CLK0</spirit:value>
+            <spirit:value>soc_clk_wiz_0_0_clk_out1</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="default_prop"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
@@ -317,10 +317,10 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>FREQ_HZ</spirit:name>
-            <spirit:value>50000000</spirit:value>
+            <spirit:value>450000000</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="user_prop"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
@@ -515,19 +515,19 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>PHASE</spirit:name>
-            <spirit:value>0.000</spirit:value>
+            <spirit:value>0.0</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="default"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>CLK_DOMAIN</spirit:name>
-            <spirit:value>soc_processing_system7_0_0_FCLK_CLK0</spirit:value>
+            <spirit:value>soc_clk_wiz_0_0_clk_out1</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="default_prop"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
@@ -595,10 +595,10 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>FREQ_HZ</spirit:name>
-            <spirit:value>50000000</spirit:value>
+            <spirit:value>450000000</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="user_prop"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
@@ -793,19 +793,19 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>PHASE</spirit:name>
-            <spirit:value>0.000</spirit:value>
+            <spirit:value>0.0</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="default"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>CLK_DOMAIN</spirit:name>
-            <spirit:value>soc_processing_system7_0_0_FCLK_CLK0</spirit:value>
+            <spirit:value>soc_clk_wiz_0_0_clk_out1</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="default_prop"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
@@ -873,10 +873,10 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>FREQ_HZ</spirit:name>
-            <spirit:value>50000000</spirit:value>
+            <spirit:value>450000000</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="user_prop"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
@@ -1071,19 +1071,19 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>PHASE</spirit:name>
-            <spirit:value>0.000</spirit:value>
+            <spirit:value>0.0</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="default"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>CLK_DOMAIN</spirit:name>
-            <spirit:value>soc_processing_system7_0_0_FCLK_CLK0</spirit:value>
+            <spirit:value>soc_clk_wiz_0_0_clk_out1</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="default_prop"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
@@ -1151,10 +1151,10 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>FREQ_HZ</spirit:name>
-            <spirit:value>50000000</spirit:value>
+            <spirit:value>450000000</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="user_prop"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
@@ -1349,19 +1349,19 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>PHASE</spirit:name>
-            <spirit:value>0.000</spirit:value>
+            <spirit:value>0.0</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="default"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>CLK_DOMAIN</spirit:name>
-            <spirit:value>soc_processing_system7_0_0_FCLK_CLK0</spirit:value>
+            <spirit:value>soc_clk_wiz_0_0_clk_out1</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="default_prop"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
@@ -1429,10 +1429,10 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>FREQ_HZ</spirit:name>
-            <spirit:value>50000000</spirit:value>
+            <spirit:value>450000000</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="user_prop"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
@@ -1627,19 +1627,19 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>PHASE</spirit:name>
-            <spirit:value>0.000</spirit:value>
+            <spirit:value>0.0</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="default"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>CLK_DOMAIN</spirit:name>
-            <spirit:value>soc_processing_system7_0_0_FCLK_CLK0</spirit:value>
+            <spirit:value>soc_clk_wiz_0_0_clk_out1</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="default_prop"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
@@ -1707,10 +1707,10 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>FREQ_HZ</spirit:name>
-            <spirit:value>50000000</spirit:value>
+            <spirit:value>450000000</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="user_prop"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
@@ -1905,19 +1905,19 @@
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>PHASE</spirit:name>
-            <spirit:value>0.000</spirit:value>
+            <spirit:value>0.0</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="default"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>CLK_DOMAIN</spirit:name>
-            <spirit:value>soc_processing_system7_0_0_FCLK_CLK0</spirit:value>
+            <spirit:value>soc_clk_wiz_0_0_clk_out1</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="default_prop"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
@@ -1979,28 +1979,28 @@
         <spirit:parameters>
           <spirit:parameter>
             <spirit:name>FREQ_HZ</spirit:name>
-            <spirit:value>50000000</spirit:value>
+            <spirit:value>450000000</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="user_prop"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>PHASE</spirit:name>
-            <spirit:value>0.000</spirit:value>
+            <spirit:value>0.0</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="default"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>
           <spirit:parameter>
             <spirit:name>CLK_DOMAIN</spirit:name>
-            <spirit:value>soc_processing_system7_0_0_FCLK_CLK0</spirit:value>
+            <spirit:value>soc_clk_wiz_0_0_clk_out1</spirit:value>
             <spirit:vendorExtensions>
               <bd:configElementInfos>
-                <bd:configElementInfo bd:valueSource="default_prop"/>
+                <bd:configElementInfo bd:valueSource="ip_prop"/>
               </bd:configElementInfos>
             </spirit:vendorExtensions>
           </spirit:parameter>

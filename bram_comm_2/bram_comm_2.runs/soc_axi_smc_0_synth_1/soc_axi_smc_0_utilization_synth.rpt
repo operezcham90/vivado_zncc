@@ -1,7 +1,7 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-| Date         : Thu Mar 18 23:17:13 2021
+| Date         : Sat Apr  3 15:02:00 2021
 | Host         : DESKTOP-K3HMOPR running 64-bit major release  (build 9200)
 | Command      : report_utilization -file soc_axi_smc_0_utilization_synth.rpt -pb soc_axi_smc_0_utilization_synth.pb
 | Design       : soc_axi_smc_0

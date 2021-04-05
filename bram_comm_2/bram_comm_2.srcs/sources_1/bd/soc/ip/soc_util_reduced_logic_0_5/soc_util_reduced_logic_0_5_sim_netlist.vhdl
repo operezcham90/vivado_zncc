@@ -1,10 +1,10 @@
 -- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
--- Date        : Sat Feb 27 23:12:11 2021
+-- Date        : Sat Feb 27 23:12:10 2021
 -- Host        : DESKTOP-K3HMOPR running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_util_reduced_logic_0_5/soc_util_reduced_logic_0_5_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top soc_util_reduced_logic_0_5 -prefix
+--               soc_util_reduced_logic_0_5_ soc_util_reduced_logic_0_5_sim_netlist.vhdl
 -- Design      : soc_util_reduced_logic_0_5
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -19,8 +19,6 @@ entity soc_util_reduced_logic_0_5_util_reduced_logic_v2_0_3_util_reduced_logic i
     Res : out STD_LOGIC;
     Op1 : in STD_LOGIC_VECTOR ( 3 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of soc_util_reduced_logic_0_5_util_reduced_logic_v2_0_3_util_reduced_logic : entity is "util_reduced_logic_v2_0_3_util_reduced_logic";
 end soc_util_reduced_logic_0_5_util_reduced_logic_v2_0_3_util_reduced_logic;
 
 architecture STRUCTURE of soc_util_reduced_logic_0_5_util_reduced_logic_v2_0_3_util_reduced_logic is

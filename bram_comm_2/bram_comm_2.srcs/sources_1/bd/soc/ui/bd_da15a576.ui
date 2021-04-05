@@ -12,10 +12,10 @@ preplace inst xlconcat_0 -pg 1 -lvl 1 -y 230 -defaultsOSRD
 preplace netloc Conn1 1 0 2 NJ 50 NJ
 preplace netloc CLK_1 1 0 2 NJ 110 NJ
 preplace netloc zncc_val_1 1 0 2 NJ 130 NJ
-preplace netloc save_1 1 0 2 10 150 NJ
+preplace netloc save_1 1 0 2 20 150 NJ
 preplace netloc xlconcat_0_dout 1 1 1 200J
 preplace netloc index_1 1 0 2 NJ 90 NJ
-levelinfo -pg 1 -10 110 330 470 -top 0 -bot 310
+levelinfo -pg 1 0 110 330 470 -top 0 -bot 310
 ",
 }
 0

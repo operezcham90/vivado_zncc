@@ -1,7 +1,4 @@
 
-*** Halting run - EA reset detected ***
-
-
 *** Running vivado
     with args -log soc_util_reduced_logic_0_1.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source soc_util_reduced_logic_0_1.tcl
 

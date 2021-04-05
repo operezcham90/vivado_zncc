@@ -506,18 +506,11 @@ vlog -work xil_defaultlib -64 -incr "+incdir+../../../../bram_comm_2.srcs/source
 
 vcom -work xil_defaultlib -64 -93 \
 "../../../bd/soc/ip/soc_mult_gen_0_0/sim/soc_mult_gen_0_0.vhd" \
-"../../../bd/soc/ip/soc_div_gen_0_3/sim/soc_div_gen_0_3.vhd" \
 
 vlog -work xil_defaultlib -64 -incr "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/ec67/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/d5d3/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/e0a2/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/571c/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/5123" "+incdir+C:/Xilinx/Vivado/2017.3/data/xilinx_vip/include" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/ec67/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/d5d3/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/e0a2/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/571c/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/5123" "+incdir+C:/Xilinx/Vivado/2017.3/data/xilinx_vip/include" \
 "../../../bd/soc/ip/soc_xlconcat_0_3/sim/soc_xlconcat_0_3.v" \
 "../../../bd/soc/ip/soc_xlconstant_0_7/sim/soc_xlconstant_0_7.v" \
-"../../../bd/soc/ip/soc_xlslice_0_12/sim/soc_xlslice_0_12.v" \
 "../../../bd/soc/ip/soc_util_vector_logic_5_0/sim/soc_util_vector_logic_5_0.v" \
-
-vcom -work xil_defaultlib -64 -93 \
-"../../../bd/soc/ip/soc_c_shift_ram_0_4/sim/soc_c_shift_ram_0_4.vhd" \
-
-vlog -work xil_defaultlib -64 -incr "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/ec67/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/d5d3/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/e0a2/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/571c/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/5123" "+incdir+C:/Xilinx/Vivado/2017.3/data/xilinx_vip/include" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/ec67/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/d5d3/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/e0a2/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/571c/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/5123" "+incdir+C:/Xilinx/Vivado/2017.3/data/xilinx_vip/include" \
 "../../../bd/soc/ip/soc_xlslice_0_5/sim/soc_xlslice_0_5.v" \
 "../../../bd/soc/ip/soc_xlconcat_0_5/sim/soc_xlconcat_0_5.v" \
 "../../../bd/soc/ip/soc_xlconstant_0_1/sim/soc_xlconstant_0_1.v" \
@@ -544,6 +537,43 @@ vcom -work xil_defaultlib -64 -93 \
 vlog -work xil_defaultlib -64 -incr "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/ec67/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/d5d3/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/e0a2/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/571c/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/5123" "+incdir+C:/Xilinx/Vivado/2017.3/data/xilinx_vip/include" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/ec67/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/d5d3/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/e0a2/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/571c/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/5123" "+incdir+C:/Xilinx/Vivado/2017.3/data/xilinx_vip/include" \
 "../../../bd/soc/ip/soc_util_vector_logic_1_4/sim/soc_util_vector_logic_1_4.v" \
 "../../../bd/soc/ip/soc_util_vector_logic_0_9/sim/soc_util_vector_logic_0_9.v" \
+"../../../bd/soc/ip/soc_util_reduced_logic_0_6/sim/soc_util_reduced_logic_0_6.v" \
+"../../../bd/soc/ip/soc_util_vector_logic_1_5/sim/soc_util_vector_logic_1_5.v" \
+"../../../bd/soc/ip/soc_util_vector_logic_1_6/sim/soc_util_vector_logic_1_6.v" \
+"../../../bd/soc/ip/soc_util_vector_logic_0_10/sim/soc_util_vector_logic_0_10.v" \
+"../../../bd/soc/ip/soc_util_vector_logic_7_0/sim/soc_util_vector_logic_7_0.v" \
+"../../../bd/soc/ip/soc_util_vector_logic_0_13/sim/soc_util_vector_logic_0_13.v" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/soc/ip/soc_c_shift_ram_0_5/sim/soc_c_shift_ram_0_5.vhd" \
+"../../../bd/soc/ip/soc_c_shift_ram_0_8/sim/soc_c_shift_ram_0_8.vhd" \
+
+vlog -work xil_defaultlib -64 -incr "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/ec67/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/d5d3/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/e0a2/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/571c/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/5123" "+incdir+C:/Xilinx/Vivado/2017.3/data/xilinx_vip/include" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/ec67/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/d5d3/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/e0a2/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/571c/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/5123" "+incdir+C:/Xilinx/Vivado/2017.3/data/xilinx_vip/include" \
+"../../../bd/soc/ip/soc_util_vector_logic_0_14/sim/soc_util_vector_logic_0_14.v" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/soc/ip/soc_c_addsub_0_1/sim/soc_c_addsub_0_1.vhd" \
+
+vlog -work xil_defaultlib -64 -incr "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/ec67/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/d5d3/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/e0a2/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/571c/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/5123" "+incdir+C:/Xilinx/Vivado/2017.3/data/xilinx_vip/include" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/ec67/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/d5d3/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/e0a2/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/571c/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/5123" "+incdir+C:/Xilinx/Vivado/2017.3/data/xilinx_vip/include" \
+"../../../bd/soc/ip/soc_xlslice_0_8/sim/soc_xlslice_0_8.v" \
+"../../../bd/soc/ip/soc_xlconcat_0_9/sim/soc_xlconcat_0_9.v" \
+"../../../bd/soc/ip/soc_xlconstant_0_4/sim/soc_xlconstant_0_4.v" \
+"../../../bd/soc/ip/soc_xlconcat_1_3/sim/soc_xlconcat_1_3.v" \
+"../../../bd/soc/ip/soc_xlslice_1_3/sim/soc_xlslice_1_3.v" \
+"../../../bd/soc/ip/soc_util_vector_logic_0_15/sim/soc_util_vector_logic_0_15.v" \
+"../../../bd/soc/ip/soc_util_vector_logic_1_7/sim/soc_util_vector_logic_1_7.v" \
+"../../../bd/soc/ip/soc_util_vector_logic_1_8/sim/soc_util_vector_logic_1_8.v" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/soc/ip/soc_div_gen_0_2/sim/soc_div_gen_0_2.vhd" \
+
+vlog -work xil_defaultlib -64 -incr "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/ec67/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/d5d3/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/e0a2/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/571c/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/5123" "+incdir+C:/Xilinx/Vivado/2017.3/data/xilinx_vip/include" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/ec67/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/d5d3/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/e0a2/hdl" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/571c/hdl/verilog" "+incdir+../../../../bram_comm_2.srcs/sources_1/bd/soc/ipshared/5123" "+incdir+C:/Xilinx/Vivado/2017.3/data/xilinx_vip/include" \
+"../../../bd/soc/ip/soc_xlslice_0_13/sim/soc_xlslice_0_13.v" \
+
+vcom -work xil_defaultlib -64 -93 \
+"../../../bd/soc/ip/soc_c_shift_ram_0_4/sim/soc_c_shift_ram_0_4.vhd" \
+"../../../bd/soc/ip/soc_c_shift_ram_0_6/sim/soc_c_shift_ram_0_6.vhd" \
+"../../../bd/soc/ip/soc_c_shift_ram_0_7/sim/soc_c_shift_ram_0_7.vhd" \
 
 vlog -work xil_defaultlib \
 "glbl.v"

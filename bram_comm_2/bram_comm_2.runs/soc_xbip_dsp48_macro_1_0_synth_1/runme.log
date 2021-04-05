@@ -9,34 +9,4 @@
     ** Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 
 source soc_xbip_dsp48_macro_1_0.tcl -notrace
-Starting RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:11 . Memory (MB): peak = 404.742 ; gain = 99.133
-INFO: [Synth 8-638] synthesizing module 'soc_xbip_dsp48_macro_1_0' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_xbip_dsp48_macro_1_0/synth/soc_xbip_dsp48_macro_1_0.vhd:69]
-INFO: [Synth 8-256] done synthesizing module 'soc_xbip_dsp48_macro_1_0' (6#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_xbip_dsp48_macro_1_0/synth/soc_xbip_dsp48_macro_1_0.vhd:69]
-Finished RTL Elaboration : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 453.164 ; gain = 147.555
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 453.164 ; gain = 147.555
-INFO: [Device 21-403] Loading part xc7z045ffg900-2
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.046 . Memory (MB): peak = 741.035 ; gain = 0.000
-Finished Constraint Validation : Time (s): cpu = 00:00:36 ; elapsed = 00:00:44 . Memory (MB): peak = 741.035 ; gain = 435.426
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:36 ; elapsed = 00:00:44 . Memory (MB): peak = 741.035 ; gain = 435.426
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:36 ; elapsed = 00:00:44 . Memory (MB): peak = 741.035 ; gain = 435.426
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:36 ; elapsed = 00:00:44 . Memory (MB): peak = 741.035 ; gain = 435.426
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:00:46 . Memory (MB): peak = 741.035 ; gain = 435.426
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:02 ; elapsed = 00:01:15 . Memory (MB): peak = 832.531 ; gain = 526.922
-Finished Timing Optimization : Time (s): cpu = 00:01:02 ; elapsed = 00:01:15 . Memory (MB): peak = 832.531 ; gain = 526.922
-Finished Technology Mapping : Time (s): cpu = 00:01:02 ; elapsed = 00:01:15 . Memory (MB): peak = 841.672 ; gain = 536.063
-Finished IO Insertion : Time (s): cpu = 00:01:03 ; elapsed = 00:01:17 . Memory (MB): peak = 841.672 ; gain = 536.063
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:03 ; elapsed = 00:01:17 . Memory (MB): peak = 841.672 ; gain = 536.063
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:03 ; elapsed = 00:01:17 . Memory (MB): peak = 841.672 ; gain = 536.063
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:03 ; elapsed = 00:01:17 . Memory (MB): peak = 841.672 ; gain = 536.063
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:03 ; elapsed = 00:01:17 . Memory (MB): peak = 841.672 ; gain = 536.063
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:03 ; elapsed = 00:01:17 . Memory (MB): peak = 841.672 ; gain = 536.063
-
-Report Cell Usage: 
-+------+--------+------+
-|      |Cell    |Count |
-+------+--------+------+
-|1     |DSP48E1 |     1|
-|2     |LUT2    |     2|
-+------+--------+------+
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:03 ; elapsed = 00:01:17 . Memory (MB): peak = 841.672 ; gain = 536.063
-synth_design: Time (s): cpu = 00:01:06 ; elapsed = 00:01:21 . Memory (MB): peak = 841.672 ; gain = 544.770
+INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP soc_xbip_dsp48_macro_1_0, cache-ID = 76edd35a17ae325a.

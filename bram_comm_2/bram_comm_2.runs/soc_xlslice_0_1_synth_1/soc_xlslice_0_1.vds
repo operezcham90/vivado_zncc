@@ -2,42 +2,12 @@
 # Vivado v2017.3 (64-bit)
 # SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
 # IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
-# Start of session at: Sat Feb 27 23:09:30 2021
-# Process ID: 4996
-# Current directory: C:/Users/dell_/bram_comm_2/bram_comm_2.runs/soc_xlslice_0_1_synth_1
+# Start of session at: Sat Apr  3 14:55:51 2021
+# Process ID: 8116
+# Current directory: C:/Users/dell_/Documents/vivado_zncc/bram_comm_2/bram_comm_2.runs/soc_xlslice_0_1_synth_1
 # Command line: vivado.exe -log soc_xlslice_0_1.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source soc_xlslice_0_1.tcl
-# Log file: C:/Users/dell_/bram_comm_2/bram_comm_2.runs/soc_xlslice_0_1_synth_1/soc_xlslice_0_1.vds
-# Journal file: C:/Users/dell_/bram_comm_2/bram_comm_2.runs/soc_xlslice_0_1_synth_1\vivado.jou
+# Log file: C:/Users/dell_/Documents/vivado_zncc/bram_comm_2/bram_comm_2.runs/soc_xlslice_0_1_synth_1/soc_xlslice_0_1.vds
+# Journal file: C:/Users/dell_/Documents/vivado_zncc/bram_comm_2/bram_comm_2.runs/soc_xlslice_0_1_synth_1\vivado.jou
 #-----------------------------------------------------------
 source soc_xlslice_0_1.tcl -notrace
-Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 403.734 ; gain = 97.844
-INFO: [Synth 8-638] synthesizing module 'soc_xlslice_0_1' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_xlslice_0_1/synth/soc_xlslice_0_1.v:57]
-INFO: [Synth 8-638] synthesizing module 'xlslice_v1_0_1_xlslice' [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ipshared/f3db/hdl/xlslice_v1_0_vl_rfs.v:13]
-INFO: [Synth 8-256] done synthesizing module 'xlslice_v1_0_1_xlslice' (1#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ipshared/f3db/hdl/xlslice_v1_0_vl_rfs.v:13]
-INFO: [Synth 8-256] done synthesizing module 'soc_xlslice_0_1' (2#1) [c:/Users/dell_/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_xlslice_0_1/synth/soc_xlslice_0_1.v:57]
-Finished RTL Elaboration : Time (s): cpu = 00:00:08 ; elapsed = 00:00:09 . Memory (MB): peak = 444.813 ; gain = 138.922
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 444.813 ; gain = 138.922
-INFO: [Device 21-403] Loading part xc7z045ffg900-2
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 737.258 ; gain = 0.000
-Finished Constraint Validation : Time (s): cpu = 00:00:22 ; elapsed = 00:00:30 . Memory (MB): peak = 737.258 ; gain = 431.367
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:22 ; elapsed = 00:00:30 . Memory (MB): peak = 737.258 ; gain = 431.367
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:30 . Memory (MB): peak = 737.258 ; gain = 431.367
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:22 ; elapsed = 00:00:30 . Memory (MB): peak = 737.258 ; gain = 431.367
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:23 ; elapsed = 00:00:31 . Memory (MB): peak = 737.258 ; gain = 431.367
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:37 ; elapsed = 00:00:51 . Memory (MB): peak = 768.547 ; gain = 462.656
-Finished Timing Optimization : Time (s): cpu = 00:00:37 ; elapsed = 00:00:51 . Memory (MB): peak = 768.547 ; gain = 462.656
-Finished Technology Mapping : Time (s): cpu = 00:00:37 ; elapsed = 00:00:51 . Memory (MB): peak = 778.691 ; gain = 472.801
-Finished IO Insertion : Time (s): cpu = 00:00:38 ; elapsed = 00:00:53 . Memory (MB): peak = 778.691 ; gain = 472.801
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:38 ; elapsed = 00:00:53 . Memory (MB): peak = 778.691 ; gain = 472.801
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:38 ; elapsed = 00:00:53 . Memory (MB): peak = 778.691 ; gain = 472.801
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:38 ; elapsed = 00:00:53 . Memory (MB): peak = 778.691 ; gain = 472.801
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:38 ; elapsed = 00:00:53 . Memory (MB): peak = 778.691 ; gain = 472.801
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:38 ; elapsed = 00:00:53 . Memory (MB): peak = 778.691 ; gain = 472.801
-
-Report Cell Usage: 
-+-+-----+------+
-| |Cell |Count |
-+-+-----+------+
-+-+-----+------+
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:38 ; elapsed = 00:00:53 . Memory (MB): peak = 778.691 ; gain = 472.801
-synth_design: Time (s): cpu = 00:00:40 ; elapsed = 00:00:56 . Memory (MB): peak = 801.539 ; gain = 504.352
+INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP soc_xlslice_0_1, cache-ID = 4422c8b2ce78ebdf.

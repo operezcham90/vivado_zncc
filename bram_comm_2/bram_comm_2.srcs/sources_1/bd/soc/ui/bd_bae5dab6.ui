@@ -2,73 +2,76 @@
    ExpandedHierarchyInLayout: "",
    guistr: "# # String gsaved with Nlview 6.6.11  2017-06-12 bk=1.3860 VDI=40 GEI=35 GUI=JA:1.6
 #  -string -flagsOSRD
-preplace port s_acc -pg 1 -y 580 -defaultsOSRD
-preplace port len_not_zero -pg 1 -y 230 -defaultsOSRD
-preplace port BRAM_PORTA0 -pg 1 -y 470 -defaultsOSRD
-preplace port BRAM_PORTA1 -pg 1 -y 450 -defaultsOSRD
-preplace port BRAM_PORTA2 -pg 1 -y 1220 -defaultsOSRD
-preplace port valid_zncc -pg 1 -y 1000 -defaultsOSRD
-preplace port s_done -pg 1 -y 740 -defaultsOSRD
-preplace port s_zncc -pg 1 -y 930 -defaultsOSRD
-preplace port s_avg -pg 1 -y 80 -defaultsOSRD
-preplace port s_wait -pg 1 -y 290 -defaultsOSRD
-preplace port CLK -pg 1 -y 490 -defaultsOSRD
-preplace port s_root -pg 1 -y 790 -defaultsOSRD
-preplace port s_addr -pg 1 -y 910 -defaultsOSRD
-preplace port s_restart -pg 1 -y 600 -defaultsOSRD
-preplace portBus s_square -pg 1 -y 620 -defaultsOSRD
-preplace portBus debug_0 -pg 1 -y 1160 -defaultsOSRD
-preplace portBus stop_cycle -pg 1 -y 320 -defaultsOSRD
-preplace portBus debug_1 -pg 1 -y 190 -defaultsOSRD
-preplace portBus debug_2 -pg 1 -y 1020 -defaultsOSRD
-preplace portBus addr_zero -pg 1 -y 940 -defaultsOSRD
-preplace portBus valid_div -pg 1 -y 120 -defaultsOSRD
-preplace portBus do_cycle -pg 1 -y 300 -defaultsOSRD
-preplace portBus valid_sqrt -pg 1 -y 790 -defaultsOSRD
-preplace inst avg_pair -pg 1 -lvl 1 -y 100 -defaultsOSRD
-preplace inst acc_group -pg 1 -lvl 2 -y 650 -defaultsOSRD
-preplace inst cycle_cont -pg 1 -lvl 4 -y 310 -defaultsOSRD
-preplace inst addr_cont -pg 1 -lvl 4 -y 920 -defaultsOSRD
-preplace inst err_pair -pg 1 -lvl 3 -y 800 -defaultsOSRD
-preplace inst index_cont -pg 1 -lvl 3 -y 1160 -defaultsOSRD
-preplace inst zncc_cont -pg 1 -lvl 3 -y 1000 -defaultsOSRD
-preplace inst len_cont -pg 1 -lvl 3 -y 280 -defaultsOSRD
-preplace inst bram_res -pg 1 -lvl 4 -y 1260 -defaultsOSRD
-preplace inst bram_pair -pg 1 -lvl 1 -y 490 -defaultsOSRD
-preplace netloc Conn1 1 0 4 NJ 1220 NJ 1220 NJ 1220 NJ
-preplace netloc err_pair_norm 1 2 2 710 710 980
-preplace netloc avg_err_state_s_4 1 0 2 NJ 620 NJ
-preplace netloc zncc_cont_valid_zncc 1 3 2 970 1000 NJ
-preplace netloc avg_pair_valid_div 1 1 4 NJ 120 NJ 120 NJ 120 NJ
-preplace netloc acc_group_acc0 1 0 3 30 380 NJ 380 680
+preplace port s_acc -pg 1 -y 90 -defaultsOSRD
+preplace port len_not_zero -pg 1 -y 780 -defaultsOSRD
+preplace port BRAM_PORTA0 -pg 1 -y 510 -defaultsOSRD
+preplace port BRAM_PORTA1 -pg 1 -y 490 -defaultsOSRD
+preplace port BRAM_PORTA2 -pg 1 -y 420 -defaultsOSRD
+preplace port valid_zncc -pg 1 -y 350 -defaultsOSRD
+preplace port s_done -pg 1 -y 620 -defaultsOSRD
+preplace port s_zncc -pg 1 -y 910 -defaultsOSRD
+preplace port s_avg -pg 1 -y 190 -defaultsOSRD
+preplace port s_wait -pg 1 -y 890 -defaultsOSRD
+preplace port CLK -pg 1 -y 170 -defaultsOSRD
+preplace port clear -pg 1 -y 150 -defaultsOSRD
+preplace port s_root -pg 1 -y 320 -defaultsOSRD
+preplace port s_addr -pg 1 -y 1050 -defaultsOSRD
+preplace port s_restart -pg 1 -y 640 -defaultsOSRD
+preplace portBus s_square -pg 1 -y 110 -defaultsOSRD
+preplace portBus max_index -pg 1 -y 250 -defaultsOSRD
+preplace portBus stop_cycle -pg 1 -y 910 -defaultsOSRD
+preplace portBus debug_2 -pg 1 -y 370 -defaultsOSRD
+preplace portBus addr_zero -pg 1 -y 1090 -defaultsOSRD
+preplace portBus valid_div -pg 1 -y 330 -defaultsOSRD
+preplace portBus do_cycle -pg 1 -y 890 -defaultsOSRD
+preplace portBus valid_sqrt -pg 1 -y 130 -defaultsOSRD
+preplace inst avg_pair -pg 1 -lvl 1 -y 210 -defaultsOSRD
+preplace inst acc_group -pg 1 -lvl 2 -y 170 -defaultsOSRD
+preplace inst cycle_cont -pg 1 -lvl 4 -y 900 -defaultsOSRD
+preplace inst addr_cont -pg 1 -lvl 4 -y 1070 -defaultsOSRD
+preplace inst err_pair -pg 1 -lvl 3 -y 140 -defaultsOSRD
+preplace inst index_cont -pg 1 -lvl 3 -y 690 -defaultsOSRD
+preplace inst zncc_cont -pg 1 -lvl 3 -y 530 -defaultsOSRD
+preplace inst len_cont -pg 1 -lvl 3 -y 880 -defaultsOSRD
+preplace inst max_cont -pg 1 -lvl 4 -y 250 -defaultsOSRD
+preplace inst bram_res -pg 1 -lvl 4 -y 460 -defaultsOSRD
+preplace inst bram_pair -pg 1 -lvl 1 -y 530 -defaultsOSRD
+preplace netloc Conn1 1 0 4 30J 410 NJ 410 NJ 410 1030J
+preplace netloc SCLR_1 1 1 4 400 610 700 610 990 150 NJ
+preplace netloc err_pair_norm 1 2 2 720 220 960
+preplace netloc avg_err_state_s_4 1 0 2 NJ 110 340J
+preplace netloc zncc_cont_valid_zncc 1 3 2 970 350 NJ
+preplace netloc avg_pair_valid_div 1 1 4 340J 340 NJ 340 NJ 340 1290J
+preplace netloc acc_group_acc0 1 0 3 30 320 NJ 320 670
 preplace netloc addr_zero_1 1 4 1 NJ
-preplace netloc len_cont_not_zero 1 0 5 40 200 350J 170 NJ 170 990 230 NJ
-preplace netloc avg_err_state_s_5 1 0 3 NJ 790 NJ 790 NJ
-preplace netloc acc_group_acc1 1 0 3 50 340 NJ 340 690
-preplace netloc avg_pair_avg1 1 1 1 360
+preplace netloc len_cont_not_zero 1 0 5 40 780 NJ 780 NJ 780 1030 780 NJ
+preplace netloc avg_err_state_s_5 1 0 3 0J 350 NJ 350 690J
+preplace netloc acc_group_acc1 1 0 3 40 330 NJ 330 660
+preplace netloc avg_pair_avg1 1 1 1 340
 preplace netloc axi_bram_ctrl_0_BRAM_PORTA 1 0 1 NJ
-preplace netloc zncc_cont_zncc 1 3 2 960 1020 NJ
-preplace netloc acc_group_acc2 1 2 1 660
+preplace netloc zncc_cont_zncc 1 3 2 1020 360 1290J
+preplace netloc acc_group_acc2 1 2 1 700
 preplace netloc axi_bram_ctrl_0_BRAM_PORTA1 1 0 1 NJ
-preplace netloc divisor_1 1 0 5 40 190 NJ 190 NJ 190 980 190 NJ
-preplace netloc addr_cont_addr 1 0 5 50 590 410 420 NJ 420 980 420 1260
-preplace netloc c_counter_binary_0_Q 1 3 2 990 1160 NJ
-preplace netloc s_zncc_1 1 0 4 NJ 930 NJ 930 700 900 990
+preplace netloc divisor_1 1 0 4 20 360 NJ 360 NJ 360 960
+preplace netloc addr_cont_addr 1 0 5 40 430 350 430 NJ 430 980 970 1290
+preplace netloc max_cont_max_index 1 4 1 NJ
+preplace netloc c_counter_binary_0_Q 1 3 1 1000
+preplace netloc s_zncc_1 1 0 4 NJ 910 NJ 910 710 970 960J
 preplace netloc len_cont_len_off 1 3 1 N
 preplace netloc cycle_cont_stop_cycle 1 4 1 NJ
-preplace netloc avg_err_state_s_0 1 0 3 NJ 290 NJ 290 NJ
-preplace netloc bram_cont_long_sel 1 1 2 380 250 NJ
-preplace netloc acc_state_s_2 1 0 2 NJ 580 NJ
-preplace netloc util_vector_logic_1_Res 1 3 2 NJ 790 NJ
-preplace netloc long_in_1 1 1 1 350
+preplace netloc avg_err_state_s_0 1 0 3 NJ 890 NJ 890 NJ
+preplace netloc bram_cont_long_sel 1 1 2 380 520 670
+preplace netloc acc_state_s_2 1 0 2 NJ 90 NJ
+preplace netloc util_vector_logic_1_Res 1 3 2 NJ 130 NJ
+preplace netloc long_in_1 1 1 1 360
 preplace netloc avg_err_state_s_2 1 0 1 NJ
-preplace netloc acc_state_s_3 1 0 4 NJ 910 NJ 910 NJ 910 NJ
-preplace netloc processing_system7_0_FCLK_CLK1 1 0 4 20 390 400 390 670 880 980
-preplace netloc s_done_1 1 0 3 NJ 740 380 800 650J
-preplace netloc avg0_1 1 1 1 370
-preplace netloc avg_err_state_s_3 1 0 4 NJ 600 390 500 NJ 500 990J
+preplace netloc acc_state_s_3 1 0 4 NJ 1050 NJ 1050 NJ 1050 NJ
+preplace netloc processing_system7_0_FCLK_CLK1 1 0 4 10 70 340 10 680 230 1010
+preplace netloc s_done_1 1 0 3 NJ 620 390 620 690J
+preplace netloc avg0_1 1 1 1 N
+preplace netloc avg_err_state_s_3 1 0 4 NJ 640 370 640 660J 760 970J
 preplace netloc do_cycle_1 1 4 1 NJ
-levelinfo -pg 1 0 200 530 840 1130 1280 -top 0 -bot 1350
+levelinfo -pg 1 -20 190 540 840 1160 1310 -top 0 -bot 1160
 ",
 }
 0

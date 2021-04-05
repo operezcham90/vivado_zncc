@@ -1,10 +1,10 @@
 // Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2017.3 (win64) Build 2018833 Wed Oct  4 19:58:22 MDT 2017
-// Date        : Sat Feb 27 22:55:59 2021
+// Date        : Sat Apr  3 14:54:45 2021
 // Host        : DESKTOP-K3HMOPR running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub -rename_top soc_axi_gpio_0_0 -prefix
-//               soc_axi_gpio_0_0_ soc_axi_gpio_0_0_stub.v
+// Command     : write_verilog -force -mode synth_stub
+//               C:/Users/dell_/Documents/vivado_zncc/bram_comm_2/bram_comm_2.srcs/sources_1/bd/soc/ip/soc_axi_gpio_0_0/soc_axi_gpio_0_0_stub.v
 // Design      : soc_axi_gpio_0_0
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7z045ffg900-2

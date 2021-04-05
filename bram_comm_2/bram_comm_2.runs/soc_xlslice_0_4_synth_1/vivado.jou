@@ -2,11 +2,11 @@
 # Vivado v2017.3 (64-bit)
 # SW Build 2018833 on Wed Oct  4 19:58:22 MDT 2017
 # IP Build 2016188 on Wed Oct  4 21:52:56 MDT 2017
-# Start of session at: Sat Feb 27 23:14:47 2021
-# Process ID: 21144
-# Current directory: C:/Users/dell_/bram_comm_2/bram_comm_2.runs/soc_xlslice_0_4_synth_1
+# Start of session at: Sat Apr  3 14:55:15 2021
+# Process ID: 1220
+# Current directory: C:/Users/dell_/Documents/vivado_zncc/bram_comm_2/bram_comm_2.runs/soc_xlslice_0_4_synth_1
 # Command line: vivado.exe -log soc_xlslice_0_4.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source soc_xlslice_0_4.tcl
-# Log file: C:/Users/dell_/bram_comm_2/bram_comm_2.runs/soc_xlslice_0_4_synth_1/soc_xlslice_0_4.vds
-# Journal file: C:/Users/dell_/bram_comm_2/bram_comm_2.runs/soc_xlslice_0_4_synth_1\vivado.jou
+# Log file: C:/Users/dell_/Documents/vivado_zncc/bram_comm_2/bram_comm_2.runs/soc_xlslice_0_4_synth_1/soc_xlslice_0_4.vds
+# Journal file: C:/Users/dell_/Documents/vivado_zncc/bram_comm_2/bram_comm_2.runs/soc_xlslice_0_4_synth_1\vivado.jou
 #-----------------------------------------------------------
 source soc_xlslice_0_4.tcl -notrace
